@@ -2,7 +2,10 @@
 <html lang="en"> 
 <head> 
 	<meta charset="UTF-8" />
-    <title>Learning Phaser</title>
+	<title>Learning Phaser</title>
+	<script type="text/javascript">
+		var RESOLUTION_SCALE = 0.75;
+	</script>
 	<script type="text/javascript" src="js/phaser.min.js"></script>
 	<script type="text/javascript" src="js/preload.js"></script>
 	<script type="text/javascript" src="js/gameplay.js"></script>
@@ -16,7 +19,7 @@
 
 <script type="text/javascript">
 
-	let game = new Phaser.Game(800, 600, Phaser.AUTO);
+	let game = new Phaser.Game(750 * RESOLUTION_SCALE, 1334 * RESOLUTION_SCALE, Phaser.AUTO);
 	game.state.add("Preload", preloadState);
 	game.state.add("Gameplay", gameplayState);
 	game.state.start("Preload");
