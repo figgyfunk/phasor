@@ -4,11 +4,12 @@ Country = function(game, x, y, name, currentState, wheat) {
     state of despair(red, yellow, green), 
     getter and setter for state*/
     if (name === "Russia") {
-        //this.pic = game.add.sprite(x, y, "Russia");
-        //this.pic.scale.setTo(RESOLUTION_SCALE/4, RESOLUTION_SCALE/4); 
+        this.pic = game.add.sprite(x, y, "Russia");
+        this.pic.scale.setTo(RESOLUTION_SCALE/4, RESOLUTION_SCALE/4); 
     } /* else ifs... */
     this.currentState = currentState;
     this.wheat = wheat;
+    this.startX = x;
 };
 Country.prototype = Object.create(Phaser.Sprite.prototype);
 Country.prototype.constructor = Country;
@@ -26,3 +27,8 @@ Country.prototype.update = function(event, decision) {
         this.currentState = 'red';
     }
 };
+
+
+Country.prototype.updatePosition = function(newX) {
+    this.pic.position.x = newX;
+}
