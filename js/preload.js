@@ -10,6 +10,9 @@ preloadState.prototype.preload = function() {
     game.load.image("worldmap", "assets/BIGWORLDMAP.png");
     game.load.spritesheet("duck", "assets/dude.png", 32, 48);
 
+    // russia
+    game.load.image("Russia", "assets/russia.png");
+
 }
 
 preloadState.prototype.create = function() {

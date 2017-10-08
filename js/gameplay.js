@@ -6,12 +6,17 @@ let gameplayState = function(){
 }
 
 gameplayState.prototype.preload = function() {
-
+    
 }
 
 gameplayState.prototype.create = function() {
     this.map = game.add.sprite(0, 0, "worldmap");
     this.map.scale.setTo(RESOLUTION_SCALE, RESOLUTION_SCALE); 
+    // countries
+    this.country1 = new Country(game, 100, 100, 'Russia', 'green', 200);
+
+    // event 1
+    this.event1 = new EventRequest(game, 100, 100, "Russia needs 100 wheat", 100, 20);
 }
 
 gameplayState.prototype.update = function() {
@@ -39,4 +44,9 @@ gameplayState.prototype.update = function() {
             this.pointerDownMapStartX = this.map.x;
         }
     }
+    // player decides to give wheat or not
+    this.country1.update(this.event1, true);
+    /*                                ^^^^ */
+    this.event1.update();
 }
+
