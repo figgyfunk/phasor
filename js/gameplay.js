@@ -1,18 +1,30 @@
 // The constructor.  A function constructor
 let gameplayState = function(){
-    this.pointerDown = false;
+
+    // Variables used for dragging with mouse pointer.
+    this.dragging = false;
     this.pointerDownStartX = 0;
     this.fixedPointX = 0;
+    this.gamePointer = null;
+
+
+    // For displaying map and each country, and displaying events for countries.
+    this.mapSprite = null
+    this.inMapView = true;
+    this.countryObjectMap = new Map(); // Keys will be country names, values will be countries.
+
+    // Used for determining current event.
+    this.eventArray = [];
+    this.turnCounter = 0;
+
+
+    // Gameplay variables.
     this.wheatQty = 50;
     this.globalMorale = 50;
     this.localMorale = 50;
     this.WHEATMAX = 100;
     this.GLOBALMAX = 100;
     this.LOCALMAX = 100;
-    this.inMapView = true;
-    this.countryHashMap = new Map();
-    this.eventArray = [];
-    this.turnCounter = 0;
 }
 
 gameplayState.prototype.preload = function() {
@@ -20,97 +32,127 @@ gameplayState.prototype.preload = function() {
 }
 
 gameplayState.prototype.create = function() {
-    this.map = game.add.sprite(0, 0, "worldmap");
-    this.map.scale.setTo(RESOLUTION_SCALE, RESOLUTION_SCALE); 
-    // countries
-    this.country1 = new Country(game, 100, 100, 'Russia', 'green', 200);
-    this.countryHashMap.set("Russia", this.country1);
+    // Assign gamePointer. Reassign for mobile support.
+    this.gamePointer = game.input.mousePointer;
 
-    // event 1
-    this.eventArray.push(new EventRequest(game, this.countryHashMap.get("Russia").pic.position.x, this.countryHashMap.get("Russia").pic.position.y, "Russia needs 100 wheat", 100, 20, "Russia"));
+
+    this.mapSprite = game.add.sprite(0, 0, "worldmap");
+    this.mapSprite.scale.setTo(RESOLUTION_SCALE, RESOLUTION_SCALE); 
+    // Begin initializing Countries and adding to countryObjectMap
+    this.countryObjectMap.set("Russia", new Country(game, 100, 100, 'Russia', 'green', 200));
+
+    // add Russia event.
+    this.addEvent("Russia", "Russia needs 100 wheat", 100, 20);
 }
+
+gameplayState.prototype.addEvent = function(name, eventText, wheatCost, moraleEffect) {
+    let eventX = this.countryObjectMap.get(name).pic.position.x;
+    let eventY = this.countryObjectMap.get(name).pic.position.y;
+    this.eventArray.push(new EventRequest(game, eventX, eventY, eventText, wheatCost, moraleEffect, name));
+}
+
 
 gameplayState.prototype.displayCurrentEvent = function() {
     let event = (this.eventArray[this.turnCounter]);
-    event.updatePosition(this.countryHashMap.get(event.country).pic.position.x);
+    event.updatePosition(this.countryObjectMap.get(event.country).pic.position.x);
 }
 
+// Sets mouse-related variables for dragging images.
+gameplayState.prototype.gamePointerDown = function(fixedPointX) {
+    // Verify this function was called correctly.
+    if (this.gamePointer.isDown) { 
+        this.dragging = true;
+        this.pointerDownStartX = this.gamePointer.screenX;
+        this.fixedPointX = fixedPointX;   
+    }
+}
+
+// Reets mouse-related variables to defaults for dragging images.
+gameplayState.prototype.gamePointerUp = function() {
+    // Verify this function was called correctly.
+    if (this.gamePointer.isUp) { 
+        this.dragging = false;
+        this.pointerDownStartX = 0;
+        this.fixedPointX = 0;
+    }
+}
+
+// A choice was made for the current event! Lets set the necessary variables.
+gameplayState.prototype.eventSwiped = function(isLeft) {
+    if (isLeft) {
+        console.log("Left");
+    } else {
+        console.log("right");
+    }
+
+    this.eventArray[this.turnCounter].endEvent();
+    this.inMapView = true;
+}
 
 gameplayState.prototype.update = function() {
     let currentEvent = (this.eventArray[this.turnCounter]);
     if (currentEvent.eventStarted) {
+        // Necessary to check as the event can be started whenever the user taps on it. This happens within EventRequest and not gameplayState.
         this.inMapView = false;
     }
 
     if (this.inMapView) {
-        if (this.pointerDown) {
-            let newMapPosX = this.fixedPointX + (game.input.mousePointer.x - this.pointerDownStartX);
+        if (this.dragging) {
+            // Currently Dragging.
+            let pointerDragDistance = this.gamePointer.x - this.pointerDownStartX;
+            let newMapPosX = this.fixedPointX + pointerDragDistance;
             if (newMapPosX > 0) {
-                this.map.x = 0;
-            } else if (newMapPosX > -(this.map.width - game.width)) {
-                this.map.x = newMapPosX;
+                this.mapSprite.x = 0;
+            } else if (newMapPosX > -(this.mapSprite.width - game.width)) {
+                this.mapSprite.x = newMapPosX;
             } else {
-                this.map.x = -(this.map.width - game.width);
+                this.mapSprite.x = -(this.mapSprite.width - game.width);
             }
 
-            if (game.input.mousePointer.isUp) {
-                this.pointerDown = false;
-                this.pointerDownStartX = false;
-                this.fixedPointX = 0;
+            if (this.gamePointer.isUp) {
+                this.gamePointerUp();
             }
-        } else {
-            if (game.input.mousePointer.isDown)
-            {
-                this.pointerDown = true;
-                this.pointerDownStartX = game.input.mousePointer.screenX;
-                this.fixedPointX = this.map.x;
+
+            // loop through countries and update their position as the screen is dragged across.
+            let mapIter = this.countryObjectMap.values();
+            while (true) {   
+                let country = mapIter.next();
+                if (country.done)
+                {
+                    break;
+                }
+                country = country.value;        
+                country.updatePosition(this.mapSprite.x + country.startX);
+                country = mapIter.next().value;
             }
+
+        } else if (this.gamePointer.isDown) { 
+            // Not dragging, pointer was just pressed down.
+            this.gamePointerDown(this.mapSprite.x);
         }
 
-        let mapIter = this.countryHashMap.values();
-        
-        while (true) {   
-            let country = mapIter.next();
-            if (country.done)
-            {
-                break;
-            }
-            country = country.value;        
-            country.updatePosition(this.map.x + country.startX);
-            country = mapIter.next().value;
-        }
         this.displayCurrentEvent();
     } else {
-        if (this.pointerDown) {
-
-            let newImagePosX = this.fixedPointX + (game.input.mousePointer.x - this.pointerDownStartX);
+        // Event screen is up, 
+        if (this.dragging) {
+            let pointerDragDistance = this.gamePointer.x - this.pointerDownStartX;
+            let newImagePosX = this.fixedPointX + pointerDragDistance;
             currentEvent.personPic.position.x = newImagePosX;
 
-            if (game.input.mousePointer.isUp) {
-                if (Math.abs(game.input.mousePointer.x - this.pointerDownStartX) < 200) {
+            if (this.gamePointer.isUp) {
+                if (Math.abs(pointerDragDistance) < 200) {
                     currentEvent.resetPicPosition();
                 } else {
-                    if ((game.input.mousePointer.x - this.pointerDownStartX) < 0) {
-                        console.log("Left");
-                    } else {
-                        console.log("Right");
-                    }
-
-                    currentEvent.endEvent();
-                    this.inMapView = true;
+                    // a pointerDragDistance value below zero indicates a swipe to the left.
+                    this.eventSwiped(pointerDragDistance < 0);
                 }
-                this.pointerDown = false;
-                this.pointerDownStartX = false;
-                this.fixedPointX = 0;
+                this.gamePointerUp();
             }
         } else {
-            if (game.input.mousePointer.isDown)
+            if (this.gamePointer.isDown)
             {
-                this.pointerDown = true;
-                this.pointerDownStartX = game.input.mousePointer.screenX;
-                this.fixedPointX = currentEvent.personPic.position.x;
+                this.gamePointerDown(currentEvent.personPic.position.x);
             }
         }
     }
 }
-
