@@ -89,6 +89,21 @@ gameplayState.prototype.eventSwiped = function(isLeft) {
     this.inMapView = true;
 }
 
+gameplayState.prototype.updateCountryPositions = function() {
+     // loop through countries and update their position as the screen is dragged across.
+     let mapIter = this.countryObjectMap.values();
+     while (true) {   
+         let country = mapIter.next();
+         if (country.done)
+         {
+             break;
+         }
+         country = country.value;        
+         country.updatePosition(this.mapSprite.x + country.startX);
+         country = mapIter.next().value;
+     }
+}
+
 gameplayState.prototype.update = function() {
     let currentEvent = (this.eventArray[this.turnCounter]);
     if (currentEvent.eventStarted) {
@@ -112,19 +127,8 @@ gameplayState.prototype.update = function() {
             if (this.gamePointer.isUp) {
                 this.gamePointerUp();
             }
-
-            // loop through countries and update their position as the screen is dragged across.
-            let mapIter = this.countryObjectMap.values();
-            while (true) {   
-                let country = mapIter.next();
-                if (country.done)
-                {
-                    break;
-                }
-                country = country.value;        
-                country.updatePosition(this.mapSprite.x + country.startX);
-                country = mapIter.next().value;
-            }
+            
+            this.updateCountryPositions();
 
         } else if (this.gamePointer.isDown) { 
             // Not dragging, pointer was just pressed down.
