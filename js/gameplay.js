@@ -35,6 +35,8 @@ gameplayState.prototype.create = function() {
     // Assign gamePointer. Reassign for mobile support.
     this.gamePointer = game.input.mousePointer;
 
+    this.gamePointerUp();
+
 
     this.mapSprite = game.add.sprite(0, 0, "worldmap");
     this.mapSprite.scale.setTo(RESOLUTION_SCALE, RESOLUTION_SCALE); 
@@ -62,7 +64,7 @@ gameplayState.prototype.gamePointerDown = function(fixedPointX) {
     // Verify this function was called correctly.
     if (this.gamePointer.isDown) { 
         this.dragging = true;
-        this.pointerDownStartX = this.gamePointer.screenX;
+        this.pointerDownStartX = this.gamePointer.x;
         this.fixedPointX = fixedPointX;   
     }
 }
