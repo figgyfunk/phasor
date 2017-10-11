@@ -7,7 +7,7 @@ preloadState.prototype.preload = function() {
     game.load.image("platform", "assets/platform.png");
     //game.load.image("sky", "assets/sky.png");
     game.load.image("star", "assets/star.png");
-    game.load.image("worldmap", "assets/BIGWORLDMAP.png");
+    game.load.image("worldmap", "assets/map.png");
     game.load.spritesheet("duck", "assets/dude.png", 32, 48);
     
     // Temporary event icon

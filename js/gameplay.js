@@ -42,7 +42,8 @@ gameplayState.prototype.create = function() {
     this.mapSprite = game.add.sprite(0, 0, "worldmap");
     this.mapSprite.scale.setTo(RESOLUTION_SCALE, RESOLUTION_SCALE); 
     // Begin initializing Countries and adding to countryObjectMap
-    this.countryObjectMap.set("West Europe", new Country(game, 100, 100, 'West Europe', 'green', 200));
+    this.countryObjectMap.set("West Europe", new Country(game, 1600, 0, 'West Europe', 'green', 200));
+
 
     this.textWheat = game.add.text(50, 20, this.wheatQty);
     this.textWheat.visible = true;
@@ -55,6 +56,7 @@ gameplayState.prototype.create = function() {
 
     // add Russia event.
     this.addEvent("West Europe", "West Europe what's good", 10, 5, 5, 5, 5);
+    this.addEvent("West Europe", "West Europe what's bad", 30, 10, 10, 10 ,10);
 }
 
 gameplayState.prototype.addEvent = function(name, eventText, wheatCost, globalMoraleYes, localMoraleYes, globalMoraleNo, localMoraleNo) {
@@ -111,12 +113,18 @@ gameplayState.prototype.eventSwiped = function(isLeft) {
     this.inMapView = true;
     this.wheatQty += this.calculateWheatGain();
 
+    if (this.turnCounter === this.eventArray.length - 1) {
+        console.log("No More Events!");
+    } else {
+        this.turnCounter++;
+    }
+
     this.textWheat.text = this.wheatQty;
     this.textLocal.text = this.localMorale;
     this.textGlobal.text = this.globalMorale;
     this.textTurn.text = this.turnCounter + 1;
-
     console.log(this.countryObjectMap.get(currentEvent.country).currentState);
+    
 }
 
 gameplayState.prototype.updateCountryPositions = function() {
