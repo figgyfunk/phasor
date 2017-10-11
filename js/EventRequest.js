@@ -1,5 +1,5 @@
 /* EventRequest class*/
-EventRequest = function(game, x, y, text, country, wheatNeeded, globalMoraleYes, localMoraleYes,  globalMoraleNo, localMoraleNo,) {
+EventRequest = function(game, x, y, text, country, wheatNeeded, globalMoraleYes, localMoraleYes,  globalMoraleNo, localMoraleNo) {
     this.wheatNeeded = wheatNeeded;
 	this.globalMoraleYes = globalMoraleYes;
 	this.localMoraleYes = localMoraleYes;
@@ -9,6 +9,7 @@ EventRequest = function(game, x, y, text, country, wheatNeeded, globalMoraleYes,
 	this.text.visible = false;
 	this.pic = game.add.sprite(x, y, "smiley");
 	this.pic.scale.setTo(RESOLUTION_SCALE / 4, RESOLUTION_SCALE / 4);
+	this.pic.visible = false;
 
 	this.pic.inputEnabled = true;
 

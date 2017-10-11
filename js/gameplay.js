@@ -14,7 +14,8 @@ let gameplayState = function(){
     this.countryObjectMap = new Map(); // Keys will be country names, values will be countries.
 
     // Used for determining current event.
-    this.eventArray = [];
+    //this.eventArray = [];
+    this.countryEvents = [];
     this.turnCounter = 0;
 
 
@@ -42,7 +43,8 @@ gameplayState.prototype.create = function() {
     this.mapSprite = game.add.sprite(0, 0, "worldmap");
     this.mapSprite.scale.setTo(RESOLUTION_SCALE, RESOLUTION_SCALE); 
     // Begin initializing Countries and adding to countryObjectMap
-    this.countryObjectMap.set("West Europe", new Country(game, 1600, 0, 'West Europe', 'green', 200));
+    this.countryObjectMap.set("Western Europe", new Country(game, 1600, 0, 'Western Europe', 'green'));
+    this.countryObjectMap.set("India", new Country(game, 400, 400, 'India', 'red'));
 
 
     this.textWheat = game.add.text(50, 20, this.wheatQty);
@@ -54,23 +56,22 @@ gameplayState.prototype.create = function() {
     this.textTurn = game.add.text(1000, 20, this.turnCounter + 1);
     this.textTurn.visible = true;
 
-    // add Russia event.
-    this.addEvent("West Europe", "West Europe what's good", 10, 5, 5, 5, 5);
-    this.addEvent("West Europe", "West Europe what's bad", 30, 10, 10, 10 ,10);
+    // add events.
+    this.countryEvents.push("India");
+    this.countryEvents.push("Western Europe");
+    this.countryEvents.push("India");
+    this.countryEvents.push("Western Europe");
 }
 
-gameplayState.prototype.addEvent = function(name, eventText, wheatCost, globalMoraleYes, localMoraleYes, globalMoraleNo, localMoraleNo) {
-    let eventX = this.countryObjectMap.get(name).pic.position.x;
-    let eventY = this.countryObjectMap.get(name).pic.position.y;
-    this.eventArray.push(new EventRequest(game, eventX, eventY, eventText, name, wheatCost, globalMoraleYes, localMoraleYes,  globalMoraleNo, localMoraleNo));
-}
 
 gameplayState.prototype.calculateWheatGain = function() {
     return Math.ceil((this.localMorale / this.LOCALMAX) * this.wheatIncreaseFlatRate);
 }
 
 gameplayState.prototype.displayCurrentEvent = function() {
-    let event = (this.eventArray[this.turnCounter]);
+    let currentCountry = this.countryObjectMap.get(this.countryEvents[this.turnCounter]);
+    let event = currentCountry.eventData[currentCountry.currentIndex];
+    event.pic.visible = true;
     event.updatePosition(this.countryObjectMap.get(event.country).pic.position.x);
 }
 
@@ -96,7 +97,8 @@ gameplayState.prototype.gamePointerUp = function() {
 
 // A choice was made for the current event! Lets set the necessary variables.
 gameplayState.prototype.eventSwiped = function(isLeft) {
-    let currentEvent = this.eventArray[this.turnCounter];
+    let currentCountry = this.countryObjectMap.get(this.countryEvents[this.turnCounter]);
+    let currentEvent = currentCountry.eventData[currentCountry.currentIndex];
     if (isLeft) {
         this.globalMorale -= currentEvent.globalMoraleNo;
         this.localMorale -= currentEvent.localMoraleNo;
@@ -105,15 +107,17 @@ gameplayState.prototype.eventSwiped = function(isLeft) {
         this.wheatQty -= currentEvent.wheatNeeded;
         this.globalMorale += currentEvent.globalMoraleYes;
         this.localMorale += currentEvent.localMoraleYes;
-        
     }
 
     currentEvent.endEvent();
+
     this.countryObjectMap.get(currentEvent.country).update(currentEvent, isLeft);
     this.inMapView = true;
     this.wheatQty += this.calculateWheatGain();
 
-    if (this.turnCounter === this.eventArray.length - 1) {
+    
+
+    if (this.turnCounter === this.countryEvents.length - 1) {
         console.log("No More Events!");
     } else {
         this.turnCounter++;
@@ -130,20 +134,24 @@ gameplayState.prototype.eventSwiped = function(isLeft) {
 gameplayState.prototype.updateCountryPositions = function() {
      // loop through countries and update their position as the screen is dragged across.
      let mapIter = this.countryObjectMap.values();
-     while (true) {   
-         let country = mapIter.next();
-         if (country.done)
+     let count = 0;
+     while (true) {  
+        console.log(mapIter);
+         let countryItr = mapIter.next();
+         if (countryItr.done)
          {
              break;
          }
-         country = country.value;        
+         let country = countryItr.value;        
          country.updatePosition(this.mapSprite.x + country.startX);
-         country = mapIter.next().value;
+         count++;
      }
 }
 
 gameplayState.prototype.update = function() {
-    let currentEvent = (this.eventArray[this.turnCounter]);
+    let currentCountry = this.countryObjectMap.get(this.countryEvents[this.turnCounter]);
+    console.log(this.countryEvents[this.turnCounter]);
+    let currentEvent = currentCountry.eventData[currentCountry.currentIndex];
     if (currentEvent.eventStarted) {
         // Necessary to check as the event can be started whenever the user taps on it. This happens within EventRequest and not gameplayState.
         this.inMapView = false;
