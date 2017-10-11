@@ -1,7 +1,10 @@
 /* EventRequest class*/
-EventRequest = function(game, x, y, text, wheatNeeded, morale, country) {
+EventRequest = function(game, x, y, text, country, wheatNeeded, globalMoraleYes, localMoraleYes,  globalMoraleNo, localMoraleNo,) {
     this.wheatNeeded = wheatNeeded;
-    this.morale = morale;
+	this.globalMoraleYes = globalMoraleYes;
+	this.localMoraleYes = localMoraleYes;
+	this.globalMoraleNo = globalMoraleNo;
+	this.localMoraleNo = localMoraleNo;
 	this.text = game.add.text(x, y, text);
 	this.text.visible = false;
 	this.pic = game.add.sprite(x, y, "smiley");
@@ -36,7 +39,7 @@ EventRequest.prototype.startEvent = function() {
 	this.text.visible = true;
 	this.pic.visible = false;
 	this.pic.inputEnabled = false;
-	this.text.position.y = 800;
+	this.text.position.y = 600;
 	this.text.position.x = 50;
 
 	this.personPic = game.add.sprite(300, 300, "man");
