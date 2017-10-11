@@ -34,6 +34,8 @@ EventRequest.prototype.startEvent = function() {
 	this.eventStarted = true;
 	
 	this.text.visible = true;
+	this.pic.visible = false;
+	this.pic.inputEnabled = false;
 	this.text.position.y = 800;
 	this.text.position.x = 50;
 
