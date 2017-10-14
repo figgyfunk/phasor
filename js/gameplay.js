@@ -72,7 +72,9 @@ gameplayState.prototype.displayCurrentEvent = function() {
     let currentCountry = this.countryObjectMap.get(this.countryEvents[this.turnCounter]);
     let event = currentCountry.eventData[currentCountry.currentIndex];
     event.pic.visible = true;
-    event.updatePosition(this.countryObjectMap.get(event.country).pic.position.x);
+
+    game.world.bringToTop(event.pic);
+    event.updateXPosition(currentCountry.pic.position.x + currentCountry.eventX);
 };
 
 // Sets mouse-related variables for dragging images.
@@ -96,22 +98,25 @@ gameplayState.prototype.gamePointerUp = function() {
 };
 
 // A choice was made for the current event! Lets set the necessary variables.
-gameplayState.prototype.eventSwiped = function(isLeft) {
+gameplayState.prototype.eventSwiped = function(isRight) {
     let currentCountry = this.countryObjectMap.get(this.countryEvents[this.turnCounter]);
     let currentEvent = currentCountry.eventData[currentCountry.currentIndex];
-    if (isLeft) {
-        this.globalMorale -= currentEvent.globalMoraleNo;
-        this.localMorale -= currentEvent.localMoraleNo;
-        //console.log("Left");
-    } else {
+    if (isRight) {
         this.wheatQty -= currentEvent.wheatNeeded;
         this.globalMorale += currentEvent.globalMoraleYes;
         this.localMorale += currentEvent.localMoraleYes;
+        console.log("Right");  
+    } else {
+        this.globalMorale += currentEvent.globalMoraleNo;
+        this.localMorale += currentEvent.localMoraleNo;
+        console.log("Left");
     }
 
     currentEvent.endEvent();
 
-    this.countryObjectMap.get(currentEvent.country).update(currentEvent, isLeft);
+    // pass in true for choosing yes, and false for choosing no.
+    // a swipe to the right means the player chose yes.
+    this.countryObjectMap.get(currentEvent.country).processDecision(isRight);
     this.inMapView = true;
     this.wheatQty += this.calculateWheatGain();
 
@@ -121,12 +126,15 @@ gameplayState.prototype.eventSwiped = function(isLeft) {
         console.log("No More Events!");
     } else {
         this.turnCounter++;
+
     }
 
     this.textWheat.text = this.wheatQty;
     this.textLocal.text = this.localMorale;
     this.textGlobal.text = this.globalMorale;
-    this.textTurn.text = this.turnCounter + 1;
+    this.textTurn.text = this.turnCounter+ 1;
+
+
     console.log(this.countryObjectMap.get(currentEvent.country).currentState);
     
 };
@@ -194,7 +202,7 @@ gameplayState.prototype.update = function() {
                     currentEvent.resetPicPosition();
                 } else {
                     // a pointerDragDistance value below zero indicates a swipe to the left.
-                    this.eventSwiped(pointerDragDistance < 0);
+                    this.eventSwiped(pointerDragDistance > 0);
                 }
                 this.gamePointerUp();
             }

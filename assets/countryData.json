@@ -1,8 +1,8 @@
 {
     "India": {
         "initialState": "red",
-        "eventX": 1200,
-        "eventY": 400,
+        "eventX": 1850,
+        "eventY": 300,
         "eventData": [
             { 
                 "eventText": "First Ever India Event", 
@@ -33,8 +33,8 @@
 
     "West Europe": {
         "initialState": "yellow",
-        "eventX": 800,
-        "eventY": 100,
+        "eventX": 1300,
+        "eventY": 150,
         "eventData": [
             { 
                 "eventText": "First Ever West Europe Event", 

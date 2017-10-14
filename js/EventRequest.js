@@ -17,19 +17,18 @@ EventRequest = function(game, x, y, text, country, wheatNeeded, globalMoraleYes,
 
 	this.eventStarted = false;
 
-	this.count = 0;
 	this.country = country;
 };
 EventRequest.prototype.constructor = EventRequest;
 EventRequest.prototype.update = function() {
-	if (this.count > 200) {
-		// disappear
-		this.text.position.x -= 1000;
-	}
-	this.count++;
+	// if (this.count > 200) {
+	// 	// disappear
+	// 	this.text.position.x -= 1000;
+	// }
+	// this.count++;
 };
 
-EventRequest.prototype.updatePosition = function(newX) {
+EventRequest.prototype.updateXPosition = function(newX) {
 	this.pic.position.x = newX;
 	this.text.position.x = newX;
 }
