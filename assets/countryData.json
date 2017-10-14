@@ -1,0 +1,57 @@
+{
+    "India": {
+        "initialState": "red",
+        "eventX": 1200,
+        "eventY": 400,
+        "eventData": [
+            { 
+                "eventText": "First Ever India Event", 
+                "wheatNeeded": 1,
+                "globalMoraleYes": 1,
+                "localMoraleYes": 1,
+                "globalMoraleNo": 1,
+                "localMoraleNo": 1
+            }, 
+            {
+                "eventText": "First India Yes Event", 
+                "wheatNeeded": 1,
+                "globalMoraleYes": 1,
+                "localMoraleYes": 1,
+                "globalMoraleNo": 1,
+                "localMoraleNo": 1
+            },
+            {
+                "eventText": "First India No Event", 
+                "wheatNeeded": 1,
+                "globalMoraleYes": 1,
+                "localMoraleYes": 1,
+                "globalMoraleNo": 1,
+                "localMoraleNo": 1
+            }
+        ]
+    }, 
+
+    "West Europe": {
+        "initialState": "yellow",
+        "eventX": 800,
+        "eventY": 100,
+        "eventData": [
+            { 
+                "eventText": "First Ever West Europe Event", 
+                "wheatNeeded": 1,
+                "globalMoraleYes": 1,
+                "localMoraleYes": 1,
+                "globalMoraleNo": 1,
+                "localMoraleNo": 1
+            }, 
+            {
+                "eventText": "Second West Europe Event", 
+                "wheatNeeded": 1,
+                "globalMoraleYes": 1,
+                "localMoraleYes": 1,
+                "globalMoraleNo": 1,
+                "localMoraleNo": 1
+            }
+        ]
+    }
+}
