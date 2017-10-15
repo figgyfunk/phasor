@@ -172,6 +172,18 @@ gameplayState.prototype.eventSwiped = function(isRight) {
         console.log("Left");
     }
 
+    if (this.localMorale > this.LOCALMAX) {
+        this.localMorale = this.LOCALMAX;
+    }
+    if (this.globalMorale > this.GLOBALMAX) {
+        this.globalMorale = this.GLOBALMAX;
+    }
+    if (this.wheatQty > this.WHEATMAX) {
+        this.wheatQty = this.WHEATMAX;
+    }
+
+    // ALSO NEED TO CHECK FOR LOSS
+    
     currentEvent.endEvent();
 
     // pass in true for choosing yes, and false for choosing no.
