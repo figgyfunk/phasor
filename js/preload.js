@@ -17,6 +17,36 @@ preloadState.prototype.preload = function() {
     // Temporary restart button
     game.load.image("restartbutton", "assets/restart.png");
 
+    // icons
+    game.load.image("localmorale", "assets/main_screen/moral_flag.png");
+    game.load.image("globalmorale", "assets/main_screen/moral_world.png");
+    game.load.image("wheatQ", "assets/main_screen/wheat_for_now.png");
+
+    // oval office
+    game.load.image("ovaloffice", "assets/main_screen/oval_office.png");
+    game.load.image("desk", "assets/main_screen/deskbase.png");
+
+    // presidents
+    game.load.image("Argentina", "assets/temp_presidents/Argentina.png");
+    game.load.image("Australia", "assets/temp_presidents/Australia.png");
+    game.load.image("Brazil", "assets/temp_presidents/Brazil.png");
+    game.load.image("Canada", "assets/temp_presidents/Canada.png");
+    game.load.image("Central America", "assets/temp_presidents/Central_America.png");
+    game.load.image("China", "assets/temp_presidents/China.png");
+    game.load.image("East Africa", "assets/temp_presidents/East_Africa.png");
+    game.load.image("India", "assets/temp_presidents/India.png");
+    game.load.image("Middle East", "assets/temp_presidents/Middle_East.png");
+    game.load.image("North Africa", "assets/temp_presidents/North_Africa.png");
+    game.load.image("Pacific Islands", "assets/temp_presidents/Pacific_islands.png");
+    game.load.image("South Africa", "assets/temp_presidents/South_Africa.png");
+    game.load.image("Soviet Union", "assets/temp_presidents/soviet_union.png");
+    game.load.image("USA", "assets/temp_presidents/USA.png");
+    game.load.image("West Africa", "assets/temp_presidents/West_Africa.png");
+    game.load.image("West Europe", "assets/temp_presidents/West_Europe.png");
+
+
+
+
     /* BEGIN LOADING COUNTRY IMAGES */
     // India
     game.load.image("redIndia", "assets/map/India/red_I_map.png");
