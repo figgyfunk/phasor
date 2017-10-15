@@ -12,6 +12,10 @@ preloadState.prototype.preload = function() {
     game.load.image("smiley", "assets/smiley.png");
     // Temporary event image
     game.load.image("man", "assets/man.png");
+    // Temporary start button
+    game.load.image("startbutton", "assets/start.png");
+    // Temporary restart button
+    game.load.image("restartbutton", "assets/restart.png");
 
     /* BEGIN LOADING COUNTRY IMAGES */
     // India
@@ -29,7 +33,7 @@ preloadState.prototype.preload = function() {
 }
 
 preloadState.prototype.create = function() {
-    game.state.start("Gameplay");
+    game.state.start("MenuState");
 }
 
 preloadState.prototype.update = function() {
