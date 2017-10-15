@@ -63,6 +63,13 @@ gameplayState.prototype.create = function() {
 
     this.wheatIncreaseFlatRate = 15;
 
+    let WHEAT_BAR_START_POS = 60;
+    let LOCALMORALE_BAR_POS = 410;
+    let GLOBALMORALE_BAR_POS = 810;
+    let STATUS_BAR_LENGTH = 10;
+    this.wheatBar = new Phaser.Rectangle(90, 30, 200, 10);
+    this.localMoraleBar = new Phaser.Rectangle(440, 30, 200, 10);
+    this.globalMoraleBar = new Phaser.Rectangle(840, 30, 200, 10);
 
     // Assign gamePointer. Reassign for mobile support.
     this.gamePointer = game.input.mousePointer;
@@ -213,6 +220,39 @@ gameplayState.prototype.updateCountryPositions = function() {
 };
 
 gameplayState.prototype.update = function() {
+    // status bar colour logic resize(w, h)
+    if (true){
+        this.wheatBar.resize(200*(this.globalMorale/this.GLOBALMAX), 10); 
+        this.localMoraleBar.resize(200*(this.globalMorale/this.GLOBALMAX), 10); 
+        this.globalMoraleBar.resize(200*(this.globalMorale/this.GLOBALMAX), 10);
+        // this.wheatBar = new Phaser.Rectangle(90, 30, 200, 10);
+
+        if ((this.wheatQty/this.WHEATMAX)*100 < 66){
+            game.debug.geom(this.wheatBar,'#ffff00');
+        } else if ((this.wheatQty/this.WHEATMAX)*100 < 33){
+            game.debug.geom(this.wheatBar,'#ff0000');
+        }
+        else{
+            game.debug.geom(this.wheatBar,'#00ff00');
+        }
+        if ((this.globalMorale/this.GLOBALMAX)*100 < 66){
+            game.debug.geom(this.globalMoraleBar,'#ffff00');
+        } else if ((this.globalMorale/this.GLOBALMAX)*100 < 33){
+            game.debug.geom(this.globalMoraleBar,'#ff0000');
+        }
+        else{
+            game.debug.geom(this.globalMoraleBar,'#00ff00');
+        }
+        if ((this.localMorale/this.LOCALMAX)*100 < 66){
+            game.debug.geom(this.localMoraleBar,'#ffff00');
+        } else if ((this.localMorale/this.LOCALMAX)*100 < 33){
+            game.debug.geom(this.localMoraleBar,'#ff0000');
+        }
+        else{
+            game.debug.geom(this.localMoraleBar,'#00ff00');
+        }
+    }
+
     let currentCountry = this.countryObjectMap.get(this.countryEvents[this.turnCounter]);
     //console.log(this.countryEvents[this.turnCounter]);
     let currentEvent = currentCountry.eventData[currentCountry.currentIndex];
