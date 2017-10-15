@@ -76,6 +76,22 @@
                 "localMoraleYes": 1,
                 "globalMoraleNo": 1,
                 "localMoraleNo": 1
+            },
+            { 
+                "eventText": "First East Europe Yes Event", 
+                "wheatNeeded": 1,
+                "globalMoraleYes": 1,
+                "localMoraleYes": 1,
+                "globalMoraleNo": 1,
+                "localMoraleNo": 1
+            },
+            { 
+                "eventText": "First East Europe No Event", 
+                "wheatNeeded": 1,
+                "globalMoraleYes": 1,
+                "localMoraleYes": 1,
+                "globalMoraleNo": 1,
+                "localMoraleNo": 1
             }
         ]
     },

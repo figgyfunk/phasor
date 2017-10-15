@@ -105,13 +105,14 @@ gameplayState.prototype.create = function() {
     this.textTurn.visible = true;
 
     // add events.
-    this.countryEvents.push("Pacific Islands");
-    this.countryEvents.push("Middle East");
-    this.countryEvents.push("China");
-    this.countryEvents.push("West Africa");
-    this.countryEvents.push("Soviet Union");
-    this.countryEvents.push("South Africa");
-    this.countryEvents.push("North Africa");
+    // this.countryEvents.push("Pacific Islands");
+    // this.countryEvents.push("Middle East");
+    // this.countryEvents.push("China");
+    // this.countryEvents.push("West Africa");
+    // this.countryEvents.push("Soviet Union");
+    // this.countryEvents.push("South Africa");
+    // this.countryEvents.push("North Africa");
+    this.countryEvents.push("East Europe");
     this.countryEvents.push("East Europe");
     this.countryEvents.push("East Africa");
     this.countryEvents.push("Central America");
