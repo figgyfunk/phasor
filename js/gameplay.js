@@ -63,17 +63,17 @@ gameplayState.prototype.create = function() {
 
     this.wheatIncreaseFlatRate = 15;
 
-    this.WHEAT_STATUS_X = 60;
-    this.WHEAT_STATUS_Y = 60;
-    this.LOCALMORALE_STATUS_X = 410;
-    this.LOCALMORALE_STATUS_Y = 410;
-    this.GLOBALMORALE_STATUS_X = 810;
-    this.GLOBALMORALE_STATUS_Y = 810;
+    this.WHEAT_STATUS_X = 50;
+    this.WHEAT_STATUS_Y = 20;
+    this.LOCALMORALE_STATUS_X = 400;
+    this.LOCALMORALE_STATUS_Y = 20;
+    this.GLOBALMORALE_STATUS_X = 800;
+    this.GLOBALMORALE_STATUS_Y = 20;
     this.STATUS_BAR_LENGTH = 200;
 
-    this.wheatBar = new Phaser.Rectangle(90, 30, this.STATUS_BAR_LENGTH, 10);
-    this.localMoraleBar = new Phaser.Rectangle(440, 30, this.STATUS_BAR_LENGTH, 10);
-    this.globalMoraleBar = new Phaser.Rectangle(840, 30, this.STATUS_BAR_LENGTH, 10);
+    this.wheatBar = new Phaser.Rectangle(this.WHEAT_STATUS_X + 40, this.WHEAT_STATUS_Y + 10, this.STATUS_BAR_LENGTH, 10);
+    this.localMoraleBar = new Phaser.Rectangle(this.LOCALMORALE_STATUS_X + 40, this.LOCALMORALE_STATUS_Y + 10, this.STATUS_BAR_LENGTH, 10);
+    this.globalMoraleBar = new Phaser.Rectangle(this.GLOBALMORALE_STATUS_X + 40, this.GLOBALMORALE_STATUS_Y + 10, this.STATUS_BAR_LENGTH, 10);
 
     // Assign gamePointer. Reassign for mobile support.
     this.gamePointer = game.input.mousePointer;
@@ -99,11 +99,11 @@ gameplayState.prototype.create = function() {
     this.countryObjectMap.set("West Africa", new Country(game, 'West Africa'));
 
 
-    this.textWheat = game.add.text(50, 20, this.wheatQty);
+    this.textWheat = game.add.text(this.WHEAT_STATUS_X, this.WHEAT_STATUS_Y, this.wheatQty);
     this.textWheat.visible = true;
-    this.textLocal = game.add.text(400, 20, this.localMorale);
+    this.textLocal = game.add.text(this.LOCALMORALE_STATUS_X, this.LOCALMORALE_STATUS_Y, this.localMorale);
     this.textLocal.visible = true;
-    this.textGlobal = game.add.text(800, 20, this.globalMorale);
+    this.textGlobal = game.add.text(this.GLOBALMORALE_STATUS_X, this.GLOBALMORALE_STATUS_Y, this.globalMorale);
     this.textGlobal.visible = true;
     this.textTurn = game.add.text(1000, 20, this.turnCounter + 1);
     this.textTurn.visible = true;
