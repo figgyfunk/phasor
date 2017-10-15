@@ -1,6 +1,40 @@
 // The constructor.  A function constructor
 let gameplayState = function(){
 
+    // // Variables used for dragging with mouse pointer.
+    // this.dragging = false;
+    // this.pointerDownStartX = 0;
+    // this.fixedPointX = 0;
+    // this.gamePointer = null;
+
+
+    // // For displaying map and each country, and displaying events for countries.
+    // this.mapSprite = null
+    // this.inMapView = true;
+    // this.countryObjectMap = new Map(); // Keys will be country names, values will be countries.
+
+    // // Used for determining current event.
+    // //this.eventArray = [];
+    // this.countryEvents = [];
+    // this.turnCounter = 0;
+
+
+    // // Gameplay variables.
+    // this.wheatQty = 50;
+    // this.globalMorale = 50;
+    // this.localMorale = 50;
+    // this.WHEATMAX = 100;
+    // this.GLOBALMAX = 100;
+    // this.LOCALMAX = 100;
+
+    // this.wheatIncreaseFlatRate = 15;
+};
+
+gameplayState.prototype.preload = function() {
+    
+};
+
+gameplayState.prototype.create = function() {
     // Variables used for dragging with mouse pointer.
     this.dragging = false;
     this.pointerDownStartX = 0;
@@ -28,13 +62,8 @@ let gameplayState = function(){
     this.LOCALMAX = 100;
 
     this.wheatIncreaseFlatRate = 15;
-};
 
-gameplayState.prototype.preload = function() {
-    
-};
 
-gameplayState.prototype.create = function() {
     // Assign gamePointer. Reassign for mobile support.
     this.gamePointer = game.input.mousePointer;
 
@@ -78,6 +107,8 @@ gameplayState.prototype.create = function() {
     this.countryEvents.push("West Europe");
     this.countryEvents.push("India");
     this.countryEvents.push("West Europe");
+
+
 };
 
 
@@ -138,9 +169,11 @@ gameplayState.prototype.eventSwiped = function(isRight) {
     this.wheatQty += this.calculateWheatGain();
 
     
-
+    console.log(this.turnCounter);
+    console.log(this.countryEvents.length);
     if (this.turnCounter === this.countryEvents.length - 1) {
         console.log("No More Events!");
+        this.state.start("HighScore");
     } else {
         this.turnCounter++;
 
@@ -230,4 +263,6 @@ gameplayState.prototype.update = function() {
             }
         }
     }
+    window.localStorage.setItem('Score', this.wheatQty);
+    // console.log(window.localStorage.getItem('Score'));
 };
