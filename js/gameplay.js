@@ -83,6 +83,9 @@ gameplayState.prototype.create = function() {
     this.countryObjectMap.set("South Africa", new Country(game, 'South Africa'));
     this.countryObjectMap.set("Soviet Union", new Country(game, 'Soviet Union'));
     this.countryObjectMap.set("West Africa", new Country(game, 'West Africa'));
+    this.countryObjectMap.set("China", new Country(game, "China"));
+    this.countryObjectMap.set("Middle East", new Country(game, "Middle East"));
+    this.countryObjectMap.set("Pacific Islands", new Country(game, "Pacific Islands"));
 
 
     this.textWheat = game.add.text(50, 20, this.wheatQty);
@@ -95,6 +98,9 @@ gameplayState.prototype.create = function() {
     this.textTurn.visible = true;
 
     // add events.
+    this.countryEvents.push("Pacific Islands");
+    this.countryEvents.push("Middle East");
+    this.countryEvents.push("China");
     this.countryEvents.push("West Africa");
     this.countryEvents.push("Soviet Union");
     this.countryEvents.push("South Africa");

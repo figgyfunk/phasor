@@ -34,6 +34,21 @@
             }
         ]
     },
+    "China": {
+        "initialState": "yellow",
+        "eventX": 2040,
+        "eventY": 220,
+        "eventData": [
+            { 
+                "eventText": "First Ever China Event", 
+                "wheatNeeded": 1,
+                "globalMoraleYes": 1,
+                "localMoraleYes": 1,
+                "globalMoraleNo": 1,
+                "localMoraleNo": 1
+            }
+        ]
+    },
     "East Africa": {
         "initialState": "yellow",
         "eventX": 1450,
@@ -95,6 +110,21 @@
             }
         ]
     },
+    "Middle East": {
+        "initialState": "green",
+        "eventX": 1600,
+        "eventY": 200,
+        "eventData": [
+            { 
+                "eventText": "First Ever Middle East Event", 
+                "wheatNeeded": 1,
+                "globalMoraleYes": 1,
+                "localMoraleYes": 1,
+                "globalMoraleNo": 1,
+                "localMoraleNo": 1
+            }
+        ]
+    },
     "North Africa": {
         "initialState": "red",
         "eventX": 1300,
@@ -109,6 +139,21 @@
                 "localMoraleNo": 1
             }
         ]
+    },
+    "Pacific Islands": {
+        "initialState": "yellow",
+        "eventX": 2170,
+        "eventY": 340,
+        "eventData": [
+            { 
+                "eventText": "First Ever Pacific Islands Event", 
+                "wheatNeeded": 1,
+                "globalMoraleYes": 1,
+                "localMoraleYes": 1,
+                "globalMoraleNo": 1,
+                "localMoraleNo": 1
+            }
+        ] 
     },
     "South Africa": {
         "initialState": "green",
