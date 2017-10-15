@@ -34,6 +34,7 @@ preloadState.prototype.preload = function() {
     game.load.image("Central America", "assets/temp_presidents/Central_America.png");
     game.load.image("China", "assets/temp_presidents/China.png");
     game.load.image("East Africa", "assets/temp_presidents/East_Africa.png");
+    game.load.image("East Europe", "assets/temp_presidents/East_Europe.png");
     game.load.image("India", "assets/temp_presidents/India.png");
     game.load.image("Middle East", "assets/temp_presidents/Middle_East.png");
     game.load.image("North Africa", "assets/temp_presidents/North_Africa.png");
