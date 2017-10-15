@@ -9,7 +9,7 @@ preloadState.prototype.preload = function() {
     game.load.json("countryData", "assets/countryData.json");
 
     // Temporary event icon
-    game.load.image("smiley", "assets/smiley.png");
+    game.load.image("Alert", "assets/map/Alert.png");
     // Temporary event image
     game.load.image("man", "assets/man.png");
     // Temporary start button
