@@ -63,12 +63,14 @@ gameplayState.prototype.create = function() {
 
     this.wheatIncreaseFlatRate = 15;
 
+    //global variables to control status locations respectively. Based on the top left corner of the text fields/graphics
     this.WHEAT_STATUS_X = 50;
     this.WHEAT_STATUS_Y = 20;
     this.LOCALMORALE_STATUS_X = 400;
     this.LOCALMORALE_STATUS_Y = 20;
     this.GLOBALMORALE_STATUS_X = 800;
     this.GLOBALMORALE_STATUS_Y = 20;
+    //length of the status bar. Changes on w.r.t the value.
     this.STATUS_BAR_LENGTH = 200;
 
     this.wheatBar = new Phaser.Rectangle(this.WHEAT_STATUS_X + 40, this.WHEAT_STATUS_Y + 10, this.STATUS_BAR_LENGTH, 10);
