@@ -13,17 +13,20 @@ let loadCountryData = function(country, game) {
 
     country.eventData = [];
     let jsonEventData = data["eventData"];
-    for (let i = 0; i < jsonEventData.length; i++) {
-        let eventText = jsonEventData[i]["eventText"];
-        let wheatNeeded = jsonEventData[i]["wheatNeeded"];
-        let globalMoraleYes =jsonEventData[i]["globalMoraleYes"];
-        let localMoraleYes = jsonEventData[i]["localMoraleYes"];
-        let globalMoraleNo = jsonEventData[i]["globalMoraleNo"];
-        let localMoraleNo = jsonEventData[i]["localMoraleNo"];
-        country.eventData.push(new EventRequest(game, country.eventX, country.eventY, eventText, country.name, wheatNeeded, globalMoraleYes, localMoraleYes, globalMoraleNo, localMoraleNo));
-    }
 
-    
+    console.log(country.name);
+
+    if (typeof jsonEventData != 'undefined') {
+        for (let i = 0; i < jsonEventData.length; i++) {
+            let eventText = jsonEventData[i]["eventText"];
+            let wheatNeeded = jsonEventData[i]["wheatNeeded"];
+            let globalMoraleYes =jsonEventData[i]["globalMoraleYes"];
+            let localMoraleYes = jsonEventData[i]["localMoraleYes"];
+            let globalMoraleNo = jsonEventData[i]["globalMoraleNo"];
+            let localMoraleNo = jsonEventData[i]["localMoraleNo"];
+            country.eventData.push(new EventRequest(game, country.eventX, country.eventY, eventText, country.name, wheatNeeded, globalMoraleYes, localMoraleYes, globalMoraleNo, localMoraleNo));
+        }
+    }
 };
 
 /* Country class */
@@ -32,6 +35,7 @@ let Country = function(game, name) {
     this.startX = 0;
     this.currentIndex = 0;
 
+    console.log(this.name);
     loadCountryData(this, game);
     
 };
@@ -40,7 +44,7 @@ Country.prototype = Object.create(Phaser.Sprite.prototype);
 Country.prototype.constructor = Country;
 /* automatically called by gameplayState.update() */
 Country.prototype.processDecision = function(choseYes) {
-    if (this.name === "India") {
+    if (this.name === "India" || this.name == "Soviet Union" || this.name == "East Europe") {
         this.updateStoryEvent(choseYes);
     } else {
         this.currentIndex++;

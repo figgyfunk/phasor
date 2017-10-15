@@ -1,4 +1,100 @@
 {
+    "Blue Countries": {
+        "initialState": "blue",
+        "eventX": 0,
+        "eventY": 0
+    },
+    "Brazil": {
+        "initialState": "green",
+        "eventX": 690,
+        "eventY": 480,
+        "eventData": [
+            { 
+                "eventText": "First Ever Brazil Event", 
+                "wheatNeeded": 1,
+                "globalMoraleYes": 1,
+                "localMoraleYes": 1,
+                "globalMoraleNo": 1,
+                "localMoraleNo": 1
+            }
+        ]
+    },
+    "Central America": {
+        "initialState": "red",
+        "eventX": 510,
+        "eventY": 425,
+        "eventData": [
+            { 
+                "eventText": "First Ever Central America Event", 
+                "wheatNeeded": 1,
+                "globalMoraleYes": 1,
+                "localMoraleYes": 1,
+                "globalMoraleNo": 1,
+                "localMoraleNo": 1
+            }
+        ]
+    },
+    "China": {
+        "initialState": "yellow",
+        "eventX": 2040,
+        "eventY": 220,
+        "eventData": [
+            { 
+                "eventText": "First Ever China Event", 
+                "wheatNeeded": 1,
+                "globalMoraleYes": 1,
+                "localMoraleYes": 1,
+                "globalMoraleNo": 1,
+                "localMoraleNo": 1
+            }
+        ]
+    },
+    "East Africa": {
+        "initialState": "yellow",
+        "eventX": 1450,
+        "eventY": 410,
+        "eventData": [
+            { 
+                "eventText": "First Ever East Africa Event", 
+                "wheatNeeded": 1,
+                "globalMoraleYes": 1,
+                "localMoraleYes": 1,
+                "globalMoraleNo": 1,
+                "localMoraleNo": 1
+            }
+        ]
+    },
+    "East Europe": {
+        "initialState": "red",
+        "eventX": 1340,
+        "eventY": 80,
+        "eventData": [
+            { 
+                "eventText": "First Ever East Europe Event", 
+                "wheatNeeded": 1,
+                "globalMoraleYes": 1,
+                "localMoraleYes": 1,
+                "globalMoraleNo": 1,
+                "localMoraleNo": 1
+            },
+            { 
+                "eventText": "First East Europe Yes Event", 
+                "wheatNeeded": 1,
+                "globalMoraleYes": 1,
+                "localMoraleYes": 1,
+                "globalMoraleNo": 1,
+                "localMoraleNo": 1
+            },
+            { 
+                "eventText": "First East Europe No Event", 
+                "wheatNeeded": 1,
+                "globalMoraleYes": 1,
+                "localMoraleYes": 1,
+                "globalMoraleNo": 1,
+                "localMoraleNo": 1
+            }
+        ]
+    },
     "India": {
         "initialState": "red",
         "eventX": 1850,
@@ -29,8 +125,97 @@
                 "localMoraleNo": 1
             }
         ]
-    }, 
-
+    },
+    "Middle East": {
+        "initialState": "green",
+        "eventX": 1600,
+        "eventY": 200,
+        "eventData": [
+            { 
+                "eventText": "First Ever Middle East Event", 
+                "wheatNeeded": 1,
+                "globalMoraleYes": 1,
+                "localMoraleYes": 1,
+                "globalMoraleNo": 1,
+                "localMoraleNo": 1
+            }
+        ]
+    },
+    "North Africa": {
+        "initialState": "red",
+        "eventX": 1300,
+        "eventY": 285,
+        "eventData": [
+            { 
+                "eventText": "First Ever North Africa Event", 
+                "wheatNeeded": 1,
+                "globalMoraleYes": 1,
+                "localMoraleYes": 1,
+                "globalMoraleNo": 1,
+                "localMoraleNo": 1
+            }
+        ]
+    },
+    "Pacific Islands": {
+        "initialState": "yellow",
+        "eventX": 2170,
+        "eventY": 340,
+        "eventData": [
+            { 
+                "eventText": "First Ever Pacific Islands Event", 
+                "wheatNeeded": 1,
+                "globalMoraleYes": 1,
+                "localMoraleYes": 1,
+                "globalMoraleNo": 1,
+                "localMoraleNo": 1
+            }
+        ] 
+    },
+    "South Africa": {
+        "initialState": "green",
+        "eventX": 1370,
+        "eventY": 520,
+        "eventData": [
+            { 
+                "eventText": "First Ever South Africa Event", 
+                "wheatNeeded": 1,
+                "globalMoraleYes": 1,
+                "localMoraleYes": 1,
+                "globalMoraleNo": 1,
+                "localMoraleNo": 1
+            }
+        ]
+    },
+    "Soviet Union": {
+        "initialState": "red",
+        "eventX": 1800,
+        "eventY": 80,
+        "eventData": [
+            { 
+                "eventText": "First Ever Soviet Union Event", 
+                "wheatNeeded": 1,
+                "globalMoraleYes": 1,
+                "localMoraleYes": 1,
+                "globalMoraleNo": 1,
+                "localMoraleNo": 1
+            }
+        ]
+    },
+    "West Africa": {
+        "initialState": "green",
+        "eventX": 1200,
+        "eventY": 360,
+        "eventData": [
+            { 
+                "eventText": "First Ever West Africa Event", 
+                "wheatNeeded": 1,
+                "globalMoraleYes": 1,
+                "localMoraleYes": 1,
+                "globalMoraleNo": 1,
+                "localMoraleNo": 1
+            }
+        ]
+    },
     "West Europe": {
         "initialState": "yellow",
         "eventX": 1300,

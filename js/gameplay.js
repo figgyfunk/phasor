@@ -1,6 +1,40 @@
 // The constructor.  A function constructor
 let gameplayState = function(){
 
+    // // Variables used for dragging with mouse pointer.
+    // this.dragging = false;
+    // this.pointerDownStartX = 0;
+    // this.fixedPointX = 0;
+    // this.gamePointer = null;
+
+
+    // // For displaying map and each country, and displaying events for countries.
+    // this.mapSprite = null
+    // this.inMapView = true;
+    // this.countryObjectMap = new Map(); // Keys will be country names, values will be countries.
+
+    // // Used for determining current event.
+    // //this.eventArray = [];
+    // this.countryEvents = [];
+    // this.turnCounter = 0;
+
+
+    // // Gameplay variables.
+    // this.wheatQty = 50;
+    // this.globalMorale = 50;
+    // this.localMorale = 50;
+    // this.WHEATMAX = 100;
+    // this.GLOBALMAX = 100;
+    // this.LOCALMAX = 100;
+
+    // this.wheatIncreaseFlatRate = 15;
+};
+
+gameplayState.prototype.preload = function() {
+    
+};
+
+gameplayState.prototype.create = function() {
     // Variables used for dragging with mouse pointer.
     this.dragging = false;
     this.pointerDownStartX = 0;
@@ -28,13 +62,15 @@ let gameplayState = function(){
     this.LOCALMAX = 100;
 
     this.wheatIncreaseFlatRate = 15;
-};
 
-gameplayState.prototype.preload = function() {
-    
-};
+    let WHEAT_BAR_START_POS = 60;
+    let LOCALMORALE_BAR_POS = 410;
+    let GLOBALMORALE_BAR_POS = 810;
+    let STATUS_BAR_LENGTH = 10;
+    this.wheatBar = new Phaser.Rectangle(90, 30, 200, 10);
+    this.localMoraleBar = new Phaser.Rectangle(440, 30, 200, 10);
+    this.globalMoraleBar = new Phaser.Rectangle(840, 30, 200, 10);
 
-gameplayState.prototype.create = function() {
     // Assign gamePointer. Reassign for mobile support.
     this.gamePointer = game.input.mousePointer;
 
@@ -45,6 +81,18 @@ gameplayState.prototype.create = function() {
     // Begin initializing Countries and adding to countryObjectMap
     this.countryObjectMap.set("West Europe", new Country(game, 'West Europe'));
     this.countryObjectMap.set("India", new Country(game,'India'));
+    this.countryObjectMap.set("Blue Countries", new Country(game, 'Blue Countries'));
+    this.countryObjectMap.set("Brazil", new Country(game, 'Brazil'));
+    this.countryObjectMap.set("Central America", new Country(game, 'Central America'));
+    this.countryObjectMap.set("China", new Country(game, "China"));
+    this.countryObjectMap.set("East Africa", new Country(game, 'East Africa'));
+    this.countryObjectMap.set("East Europe", new Country(game, 'East Europe'));
+    this.countryObjectMap.set("Middle East", new Country(game, "Middle East"));
+    this.countryObjectMap.set("North Africa", new Country(game, 'North Africa'));
+    this.countryObjectMap.set("Pacific Islands", new Country(game, "Pacific Islands"));
+    this.countryObjectMap.set("South Africa", new Country(game, 'South Africa'));
+    this.countryObjectMap.set("Soviet Union", new Country(game, 'Soviet Union'));
+    this.countryObjectMap.set("West Africa", new Country(game, 'West Africa'));
 
 
     this.textWheat = game.add.text(50, 20, this.wheatQty);
@@ -57,6 +105,18 @@ gameplayState.prototype.create = function() {
     this.textTurn.visible = true;
 
     // add events.
+    // this.countryEvents.push("Pacific Islands");
+    // this.countryEvents.push("Middle East");
+    // this.countryEvents.push("China");
+    // this.countryEvents.push("West Africa");
+    // this.countryEvents.push("Soviet Union");
+    // this.countryEvents.push("South Africa");
+    // this.countryEvents.push("North Africa");
+    this.countryEvents.push("East Europe");
+    this.countryEvents.push("East Europe");
+    this.countryEvents.push("East Africa");
+    this.countryEvents.push("Central America");
+    this.countryEvents.push("Brazil");
     this.countryEvents.push("India");
     this.countryEvents.push("West Europe");
     this.countryEvents.push("India");
@@ -112,6 +172,18 @@ gameplayState.prototype.eventSwiped = function(isRight) {
         console.log("Left");
     }
 
+    if (this.localMorale > this.LOCALMAX) {
+        this.localMorale = this.LOCALMAX;
+    }
+    if (this.globalMorale > this.GLOBALMAX) {
+        this.globalMorale = this.GLOBALMAX;
+    }
+    if (this.wheatQty > this.WHEATMAX) {
+        this.wheatQty = this.WHEATMAX;
+    }
+
+    // ALSO NEED TO CHECK FOR LOSS
+    
     currentEvent.endEvent();
 
     // pass in true for choosing yes, and false for choosing no.
@@ -121,9 +193,11 @@ gameplayState.prototype.eventSwiped = function(isRight) {
     this.wheatQty += this.calculateWheatGain();
 
     
-
+    console.log(this.turnCounter);
+    console.log(this.countryEvents.length);
     if (this.turnCounter === this.countryEvents.length - 1) {
         console.log("No More Events!");
+        this.state.start("HighScore");
     } else {
         this.turnCounter++;
 
@@ -157,6 +231,39 @@ gameplayState.prototype.updateCountryPositions = function() {
 };
 
 gameplayState.prototype.update = function() {
+    // status bar colour logic resize(w, h)
+    if (true){
+        this.wheatBar.resize(200*(this.globalMorale/this.GLOBALMAX), 10); 
+        this.localMoraleBar.resize(200*(this.globalMorale/this.GLOBALMAX), 10); 
+        this.globalMoraleBar.resize(200*(this.globalMorale/this.GLOBALMAX), 10);
+        // this.wheatBar = new Phaser.Rectangle(90, 30, 200, 10);
+
+        if ((this.wheatQty/this.WHEATMAX)*100 < 66){
+            game.debug.geom(this.wheatBar,'#ffff00');
+        } else if ((this.wheatQty/this.WHEATMAX)*100 < 33){
+            game.debug.geom(this.wheatBar,'#ff0000');
+        }
+        else{
+            game.debug.geom(this.wheatBar,'#00ff00');
+        }
+        if ((this.globalMorale/this.GLOBALMAX)*100 < 66){
+            game.debug.geom(this.globalMoraleBar,'#ffff00');
+        } else if ((this.globalMorale/this.GLOBALMAX)*100 < 33){
+            game.debug.geom(this.globalMoraleBar,'#ff0000');
+        }
+        else{
+            game.debug.geom(this.globalMoraleBar,'#00ff00');
+        }
+        if ((this.localMorale/this.LOCALMAX)*100 < 66){
+            game.debug.geom(this.localMoraleBar,'#ffff00');
+        } else if ((this.localMorale/this.LOCALMAX)*100 < 33){
+            game.debug.geom(this.localMoraleBar,'#ff0000');
+        }
+        else{
+            game.debug.geom(this.localMoraleBar,'#00ff00');
+        }
+    }
+
     let currentCountry = this.countryObjectMap.get(this.countryEvents[this.turnCounter]);
     //console.log(this.countryEvents[this.turnCounter]);
     let currentEvent = currentCountry.eventData[currentCountry.currentIndex];
@@ -213,4 +320,6 @@ gameplayState.prototype.update = function() {
             }
         }
     }
+    window.localStorage.setItem('Score', this.wheatQty);
+    // console.log(window.localStorage.getItem('Score'));
 };
