@@ -41,8 +41,12 @@ EventRequest.prototype.startEvent = function() {
 	this.pic.inputEnabled = false;
 	this.text.position.y = 600;
 	this.text.position.x = 50;
-
+	this.bgpic = game.add.sprite(0, 0, "ovaloffice");
+	this.president1 = game.add.sprite(120, game.world.height - 450 - 210, "USA");
+	this.president2 = game.add.sprite(game.world.width - 130 - 450 , game.world.height - 450 - 210, this.country);
+	this.deskpic = game.add.sprite(game.world.centerX - 1150/2, game.world.height - 280, "desk");
 	this.personPic = game.add.sprite(300, 300, "man");
+	this.personPic.visible = false;
 }
 
 EventRequest.prototype.resetPicPosition = function() {
@@ -53,4 +57,8 @@ EventRequest.prototype.endEvent = function() {
 	this.text.visible = false;
 	this.eventStarted = false;
 	this.personPic.visible = false;
+	this.president1.visible = false;
+	this.president2.visible = false;
+	this.deskpic.visible = false;
+	this.bgpic.visible = false;
 }
