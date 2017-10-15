@@ -18,18 +18,6 @@ preloadState.prototype.preload = function() {
     game.load.image("restartbutton", "assets/restart.png");
 
     /* BEGIN LOADING COUNTRY IMAGES */
-    // India
-    game.load.image("redIndia", "assets/map/India/red_I_map.png");
-    game.load.image("yellowIndia", "assets/map/India/yellow_I_map.png");
-    game.load.image("greenIndia", "assets/map/India/green_I_map.png");
-    game.load.image("blueIndia", "assets/map/India/blue_I_map.png");
-
-    // West Europe
-    game.load.image("redWest Europe", "assets/map/West_Europe/red_WE_map.png");
-    game.load.image("yellowWest Europe", "assets/map/West_Europe/yellow_WE_map.png");
-    game.load.image("greenWest Europe", "assets/map/West_Europe/green_WE_map.png");
-    game.load.image("blueWest Europe", "assets/map/West_Europe/blue_WE_map.png");
-
     // Blue Countries
     game.load.image("blueBlue Countries", "assets/map/b_countries_map.png");
 
@@ -45,6 +33,12 @@ preloadState.prototype.preload = function() {
     game.load.image("greenCentral America", "assets/map/central_America/green_ca_map.png");
     game.load.image("blueCentral America", "assets/map/central_America/blue_ca_map.png");
 
+    // China
+    game.load.image("redChina", "assets/map/china/red_c_map.png");
+    game.load.image("yellowChina", "assets/map/china/yellow_c_map.png");
+    game.load.image("greenChina", "assets/map/china/green_c_map.png");
+    game.load.image("blueChina", "assets/map/china/blue_c_map.png"); 
+
     // East Africa
     game.load.image("redEast Africa", "assets/map/East_Africa/red_EA_map.png");
     game.load.image("yellowEast Africa", "assets/map/East_Africa/yellow_EA_map.png");
@@ -57,11 +51,29 @@ preloadState.prototype.preload = function() {
     game.load.image("greenEast Europe", "assets/map/East_Europe/green_EE_map.png");
     game.load.image("blueEast Europe", "assets/map/East_Europe/blue_EE_map.png"); 
 
+    // India
+    game.load.image("redIndia", "assets/map/India/red_I_map.png");
+    game.load.image("yellowIndia", "assets/map/India/yellow_I_map.png");
+    game.load.image("greenIndia", "assets/map/India/green_I_map.png");
+    game.load.image("blueIndia", "assets/map/India/blue_I_map.png");
+
+    // Middle East
+    game.load.image("redMiddle East", "assets/map/Middle_east/red_ME_map.png");
+    game.load.image("yellowMiddle East", "assets/map/Middle_east/yellow_ME_map.png");
+    game.load.image("greenMiddle East", "assets/map/Middle_east/green_ME_map.png");
+    game.load.image("blueMiddle East", "assets/map/Middle_east/blue_ME_map.png"); 
+
     // North Africa
     game.load.image("redNorth Africa", "assets/map/North_Africa/red_NA_map.png");
     game.load.image("yellowNorth Africa", "assets/map/North_Africa/yellow_NA_map.png");
     game.load.image("greenNorth Africa", "assets/map/North_Africa/green_NA_map.png");
     game.load.image("blueNorth Africa", "assets/map/North_Africa/blue_NA_map.png"); 
+
+    // Pacific Islands
+    game.load.image("redPacific Islands", "assets/map/pacific_Islands/red_PI_map.png");
+    game.load.image("yellowPacific Islands", "assets/map/pacific_Islands/yellow_PI_map.png");
+    game.load.image("greenPacific Islands", "assets/map/pacific_Islands/green_PI_map.png");
+    game.load.image("bluePacific Islands", "assets/map/pacific_Islands/blue_PI_map.png"); 
 
     // South Africa
     game.load.image("redSouth Africa", "assets/map/South_Africa/red_SA_map.png");
@@ -81,25 +93,12 @@ preloadState.prototype.preload = function() {
     game.load.image("greenWest Africa", "assets/map/west_Africa/green_WA_map.png");
     game.load.image("blueWest Africa", "assets/map/west_Africa/blue_WA_map.png"); 
 
-     // China
-     game.load.image("redChina", "assets/map/china/red_c_map.png");
-     game.load.image("yellowChina", "assets/map/china/yellow_c_map.png");
-     game.load.image("greenChina", "assets/map/china/green_c_map.png");
-     game.load.image("blueChina", "assets/map/china/blue_c_map.png"); 
-
-     // Middle East
-     game.load.image("redMiddle East", "assets/map/Middle_east/red_ME_map.png");
-     game.load.image("yellowMiddle East", "assets/map/Middle_east/yellow_ME_map.png");
-     game.load.image("greenMiddle East", "assets/map/Middle_east/green_ME_map.png");
-     game.load.image("blueMiddle East", "assets/map/Middle_east/blue_ME_map.png"); 
-
-    // Pacific Islands
-    game.load.image("redPacific Islands", "assets/map/pacific_Islands/red_PI_map.png");
-    game.load.image("yellowPacific Islands", "assets/map/pacific_Islands/yellow_PI_map.png");
-    game.load.image("greenPacific Islands", "assets/map/pacific_Islands/green_PI_map.png");
-    game.load.image("bluePacific Islands", "assets/map/pacific_Islands/blue_PI_map.png"); 
-
-     
+    // West Europe
+    game.load.image("redWest Europe", "assets/map/West_Europe/red_WE_map.png");
+    game.load.image("yellowWest Europe", "assets/map/West_Europe/yellow_WE_map.png");
+    game.load.image("greenWest Europe", "assets/map/West_Europe/green_WE_map.png");
+    game.load.image("blueWest Europe", "assets/map/West_Europe/blue_WE_map.png");
+    
 }
 
 
