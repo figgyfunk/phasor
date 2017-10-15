@@ -45,6 +45,15 @@ gameplayState.prototype.create = function() {
     // Begin initializing Countries and adding to countryObjectMap
     this.countryObjectMap.set("West Europe", new Country(game, 'West Europe'));
     this.countryObjectMap.set("India", new Country(game,'India'));
+    this.countryObjectMap.set("Blue Countries", new Country(game, 'Blue Countries'));
+    this.countryObjectMap.set("Brazil", new Country(game, 'Brazil'));
+    this.countryObjectMap.set("Central America", new Country(game, 'Central America'));
+    this.countryObjectMap.set("East Africa", new Country(game, 'East Africa'));
+    this.countryObjectMap.set("East Europe", new Country(game, 'East Europe'));
+    this.countryObjectMap.set("North Africa", new Country(game, 'North Africa'));
+    this.countryObjectMap.set("South Africa", new Country(game, 'South Africa'));
+    this.countryObjectMap.set("Soviet Union", new Country(game, 'Soviet Union'));
+    this.countryObjectMap.set("West Africa", new Country(game, 'West Africa'));
 
 
     this.textWheat = game.add.text(50, 20, this.wheatQty);
@@ -57,6 +66,14 @@ gameplayState.prototype.create = function() {
     this.textTurn.visible = true;
 
     // add events.
+    this.countryEvents.push("West Africa");
+    this.countryEvents.push("Soviet Union");
+    this.countryEvents.push("South Africa");
+    this.countryEvents.push("North Africa");
+    this.countryEvents.push("East Europe");
+    this.countryEvents.push("East Africa");
+    this.countryEvents.push("Central America");
+    this.countryEvents.push("Brazil");
     this.countryEvents.push("India");
     this.countryEvents.push("West Europe");
     this.countryEvents.push("India");
