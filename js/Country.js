@@ -44,7 +44,7 @@ Country.prototype = Object.create(Phaser.Sprite.prototype);
 Country.prototype.constructor = Country;
 /* automatically called by gameplayState.update() */
 Country.prototype.processDecision = function(choseYes) {
-    if (this.name === "India") {
+    if (this.name === "India" || this.name == "Soviet Union" || this.name == "East Europe") {
         this.updateStoryEvent(choseYes);
     } else {
         this.currentIndex++;

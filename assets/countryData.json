@@ -77,6 +77,7 @@
         "eventX": 1340,
         "eventY": 80,
         "eventData": [
+<<<<<<< HEAD
             {
                 "eventText": "All our young keep traveling to the West and we have no one left to labor the fields other than the old who are inefficient at best. We need help to feed those who still bother to work.",
                 "wheatNeeded": 25,
@@ -136,7 +137,7 @@
                 "localMoraleYes": 20,
                 "globalMoraleNo": -10,
                 "localMoraleNo": -35
-            }
+              }
         ]
     },
     "India": {

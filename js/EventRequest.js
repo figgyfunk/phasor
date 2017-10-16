@@ -7,8 +7,8 @@ EventRequest = function(game, x, y, text, country, wheatNeeded, globalMoraleYes,
 	this.localMoraleNo = localMoraleNo;
 	this.text = game.add.text(x, y, text);
 	this.text.visible = false;
-	this.pic = game.add.sprite(x, y, "smiley");
-	this.pic.scale.setTo(RESOLUTION_SCALE / 4, RESOLUTION_SCALE / 4);
+	this.pic = game.add.sprite(x, y, "Alert");
+	this.pic.scale.setTo(RESOLUTION_SCALE / 1.5, RESOLUTION_SCALE / 1.5);
 	this.pic.visible = false;
 
 	this.pic.inputEnabled = true;
