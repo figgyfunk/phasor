@@ -31,7 +31,7 @@ let gameplayState = function(){
 };
 
 gameplayState.prototype.preload = function() {
-    
+
 };
 
 gameplayState.prototype.create = function() {
@@ -77,7 +77,7 @@ gameplayState.prototype.create = function() {
     this.gamePointerUp();
 
     this.mapSprite = game.add.sprite(0, 0, "worldmap");
-    this.mapSprite.scale.setTo(RESOLUTION_SCALE, RESOLUTION_SCALE); 
+    this.mapSprite.scale.setTo(RESOLUTION_SCALE, RESOLUTION_SCALE);
     // Begin initializing Countries and adding to countryObjectMap
     this.countryObjectMap.set("West Europe", new Country(game, 'West Europe'));
     this.countryObjectMap.set("India", new Country(game,'India'));
@@ -112,15 +112,25 @@ gameplayState.prototype.create = function() {
     // this.countryEvents.push("Soviet Union");
     // this.countryEvents.push("South Africa");
     // this.countryEvents.push("North Africa");
-    this.countryEvents.push("East Europe");
-    this.countryEvents.push("East Europe");
+    this.countryEvents.push("West Europe");
     this.countryEvents.push("East Africa");
+    this.countryEvents.push("Soviet Union");
     this.countryEvents.push("Central America");
+    this.countryEvents.push("China");
+    this.countryEvents.push("East Europe");
     this.countryEvents.push("Brazil");
     this.countryEvents.push("India");
-    this.countryEvents.push("West Europe");
+    this.countryEvents.push("Soviet Union");
     this.countryEvents.push("India");
-    this.countryEvents.push("West Europe");
+    this.countryEvents.push("North Africa");
+    this.countryEvents.push("East Europe");
+    this.countryEvents.push("Pacific Islands");
+    this.countryEvents.push("West Africa");
+    this.countryEvents.push("Pacific Islands");
+    this.countryEvents.push("South Africa");
+    this.countryEvents.push("India");
+    this.countryEvents.push("East Europe");
+    this.countryEvents.push("Soviet Union");
 };
 
 
@@ -140,17 +150,17 @@ gameplayState.prototype.displayCurrentEvent = function() {
 // Sets mouse-related variables for dragging images.
 gameplayState.prototype.gamePointerDown = function(fixedPointX) {
     // Verify this function was called correctly.
-    if (this.gamePointer.isDown) { 
+    if (this.gamePointer.isDown) {
         this.dragging = true;
         this.pointerDownStartX = this.gamePointer.x;
-        this.fixedPointX = fixedPointX;   
+        this.fixedPointX = fixedPointX;
     }
 };
 
 // Reets mouse-related variables to defaults for dragging images.
 gameplayState.prototype.gamePointerUp = function() {
     // Verify this function was called correctly.
-    if (this.gamePointer.isUp) { 
+    if (this.gamePointer.isUp) {
         this.dragging = false;
         this.pointerDownStartX = 0;
         this.fixedPointX = 0;
@@ -165,7 +175,7 @@ gameplayState.prototype.eventSwiped = function(isRight) {
         this.wheatQty -= currentEvent.wheatNeeded;
         this.globalMorale += currentEvent.globalMoraleYes;
         this.localMorale += currentEvent.localMoraleYes;
-        console.log("Right");  
+        console.log("Right");
     } else {
         this.globalMorale += currentEvent.globalMoraleNo;
         this.localMorale += currentEvent.localMoraleNo;
@@ -183,7 +193,7 @@ gameplayState.prototype.eventSwiped = function(isRight) {
     }
 
     // ALSO NEED TO CHECK FOR LOSS
-    
+
     currentEvent.endEvent();
 
     // pass in true for choosing yes, and false for choosing no.
@@ -192,7 +202,7 @@ gameplayState.prototype.eventSwiped = function(isRight) {
     this.inMapView = true;
     this.wheatQty += this.calculateWheatGain();
 
-    
+
     console.log(this.turnCounter);
     console.log(this.countryEvents.length);
     if (this.turnCounter === this.countryEvents.length - 1) {
@@ -210,21 +220,21 @@ gameplayState.prototype.eventSwiped = function(isRight) {
 
 
     console.log(this.countryObjectMap.get(currentEvent.country).currentState);
-    
+
 };
 
 gameplayState.prototype.updateCountryPositions = function() {
      // loop through countries and update their position as the screen is dragged across.
      let mapIter = this.countryObjectMap.values();
      let count = 0;
-     while (true) {  
+     while (true) {
         //console.log(mapIter);
          let countryItr = mapIter.next();
          if (countryItr.done)
          {
              break;
          }
-         let country = countryItr.value;        
+         let country = countryItr.value;
          country.updatePosition(this.mapSprite.x + country.startX);
          count++;
      }
@@ -233,8 +243,8 @@ gameplayState.prototype.updateCountryPositions = function() {
 gameplayState.prototype.update = function() {
     // status bar colour logic resize(w, h)
     if (true){
-        this.wheatBar.resize(200*(this.globalMorale/this.GLOBALMAX), 10); 
-        this.localMoraleBar.resize(200*(this.globalMorale/this.GLOBALMAX), 10); 
+        this.wheatBar.resize(200*(this.globalMorale/this.GLOBALMAX), 10);
+        this.localMoraleBar.resize(200*(this.globalMorale/this.GLOBALMAX), 10);
         this.globalMoraleBar.resize(200*(this.globalMorale/this.GLOBALMAX), 10);
         // this.wheatBar = new Phaser.Rectangle(90, 30, 200, 10);
 
@@ -288,17 +298,17 @@ gameplayState.prototype.update = function() {
             if (this.gamePointer.isUp) {
                 this.gamePointerUp();
             }
-            
+
             this.updateCountryPositions();
 
-        } else if (this.gamePointer.isDown) { 
+        } else if (this.gamePointer.isDown) {
             // Not dragging, pointer was just pressed down.
             this.gamePointerDown(this.mapSprite.x);
         }
 
         this.displayCurrentEvent();
     } else {
-        // Event screen is up, 
+        // Event screen is up,
         if (this.dragging) {
             let pointerDragDistance = this.gamePointer.x - this.pointerDownStartX;
             let newImagePosX = this.fixedPointX + pointerDragDistance;
