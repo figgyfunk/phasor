@@ -140,6 +140,11 @@ gameplayState.prototype.create = function() {
     this.countryEvents.push("India");
     this.countryEvents.push("East Europe");
     this.countryEvents.push("Soviet Union");
+
+
+    // Music
+    ovalOfficeMusic.pause();
+    overworldMusic.play();
 };
 
 
@@ -339,6 +344,8 @@ gameplayState.prototype.update = function() {
                 if (Math.abs(pointerDragDistance) >= 200) {
                     // a pointerDragDistance value below zero indicates a swipe to the left.
                     this.eventSwiped(pointerDragDistance > 0);
+                    ovalOfficeMusic.pause();
+                    overworldMusic.play();
                 }
                 this.gamePointerUp();
             }

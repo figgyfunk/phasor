@@ -53,6 +53,9 @@ EventRequest.prototype.startEvent = function() {
 	tween2.to({ x: game.world.width - 130 - 450  }, 300, 'Linear', true, 0);
 	tween3.to({ x: game.world.width - 130 - 450  }, 300, 'Linear', true, 0);
 	this.deskpic = game.add.sprite(game.world.centerX - 1150/2, game.world.height - 280, "desk");
+
+	overworldMusic.pause();
+	ovalOfficeMusic.play();
 }
 
 EventRequest.prototype.resetPicPosition = function() {

@@ -4,6 +4,10 @@ let preloadState = function(){
 }
 
 preloadState.prototype.preload = function() {
+    // Music and sound
+    game.load.audio("Overworld Music", "assets/Music/map_theme.ogg");
+    game.load.audio("Oval Office Music", "assets/Music/oval_office_theme.ogg");
+
     game.load.image("worldmap", "assets/map/map.png");
     game.load.image("ocean", "assets/map/ocean.png");
 
@@ -141,6 +145,12 @@ preloadState.prototype.preload = function() {
 
 
 preloadState.prototype.create = function() {
+    // Dirty global music variables - please understand.
+    ovalOfficeMusic = game.add.audio('Oval Office Music');
+    overworldMusic = game.add.audio('Overworld Music');
+    ovalOfficeMusic.loop = true;
+    overworldMusic.loop = true;
+
     game.state.start("MenuState");
 }
 
