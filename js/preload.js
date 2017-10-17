@@ -41,6 +41,8 @@ preloadState.prototype.preload = function() {
     // presidents
     //game.load.image("Argentina", "assets/finished presidents/Argentina.png");
     game.load.image("Australia", "assets/finished presidents/Australia.png");
+    // Blue Countries is America's VP, don't worry about it.
+    game.load.image("Blue Countries", "assets/finished presidents/USA_vp.png")
     game.load.image("Brazil", "assets/finished presidents/Brazil.png");
     game.load.image("Canada", "assets/finished presidents/Canada.png");
     game.load.image("Central America", "assets/finished presidents/Central_America.png");
