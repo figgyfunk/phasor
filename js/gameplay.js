@@ -277,8 +277,8 @@ gameplayState.prototype.updateCountryPositions = function() {
 gameplayState.prototype.update = function() {
     // status bar colour logic
     if (true){
-        this.wheatBar.resize(this.STATUS_BAR_LENGTH*(this.globalMorale/this.GLOBALMAX), 10); 
-        this.localMoraleBar.resize(this.STATUS_BAR_LENGTH*(this.globalMorale/this.GLOBALMAX), 10); 
+        this.wheatBar.resize(this.STATUS_BAR_LENGTH*(this.wheatQty/this.GLOBALMAX), 10); 
+        this.localMoraleBar.resize(this.STATUS_BAR_LENGTH*(this.localMorale/this.GLOBALMAX), 10); 
         this.globalMoraleBar.resize(this.STATUS_BAR_LENGTH*(this.globalMorale/this.GLOBALMAX), 10);
 
         if ((this.wheatQty/this.WHEATMAX)*100 < 66){
