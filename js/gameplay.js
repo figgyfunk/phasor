@@ -49,7 +49,6 @@ gameplayState.prototype.create = function() {
     this.countryObjectMap = new Map(); // Keys will be country names, values will be countries.
 
     // Used for determining current event.
-    //this.eventArray = [];
     this.countryEvents = [];
     this.turnCounter = 0;
 
@@ -88,12 +87,13 @@ gameplayState.prototype.create = function() {
     this.oceanSprite = game.add.sprite(0, 0, "ocean");
     this.oceanSprite.scale.setTo(RESOLUTION_SCALE, RESOLUTION_SCALE); 
     // Begin initializing Countries and adding to countryObjectMap
-    this.countryObjectMap.set("West Europe", new Country(game, 'West Europe'));
-    this.countryObjectMap.set("India", new Country(game,'India'));
+    
+    
     this.countryObjectMap.set("Blue Countries", new Country(game, 'Blue Countries'));
     this.countryObjectMap.set("Brazil", new Country(game, 'Brazil'));
     this.countryObjectMap.set("Central America", new Country(game, 'Central America'));
     this.countryObjectMap.set("China", new Country(game, "China"));
+    this.countryObjectMap.set("India", new Country(game,'India'));
     this.countryObjectMap.set("East Africa", new Country(game, 'East Africa'));
     this.countryObjectMap.set("East Europe", new Country(game, 'East Europe'));
     this.countryObjectMap.set("Middle East", new Country(game, "Middle East"));
@@ -102,6 +102,7 @@ gameplayState.prototype.create = function() {
     this.countryObjectMap.set("South Africa", new Country(game, 'South Africa'));
     this.countryObjectMap.set("Soviet Union", new Country(game, 'Soviet Union'));
     this.countryObjectMap.set("West Africa", new Country(game, 'West Africa'));
+    this.countryObjectMap.set("West Europe", new Country(game, 'West Europe'));
 
 
     this.textWheat = game.add.text(this.WHEAT_STATUS_X, this.WHEAT_STATUS_Y, this.wheatQty);
@@ -121,6 +122,7 @@ gameplayState.prototype.create = function() {
     // this.countryEvents.push("Soviet Union");
     // this.countryEvents.push("South Africa");
     // this.countryEvents.push("North Africa");
+    this.countryEvents.push("Blue Countries");
     this.countryEvents.push("West Europe");
     this.countryEvents.push("East Africa");
     this.countryEvents.push("Soviet Union");

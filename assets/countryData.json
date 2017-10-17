@@ -1,8 +1,20 @@
 {
     "Blue Countries": {
         "initialState": "blue",
-        "eventX": 0,
-        "eventY": 0
+        "eventX": 300,
+        "eventY": 200,
+        "eventData": [
+            {
+                "eventText": "Hello I am America",
+                "eventYesText":"Haha",
+                "eventNoText": "HahaNo",
+                "wheatNeeded": 0,
+                "globalMoraleYes": 0,
+                "localMoraleYes": 0,
+                "globalMoraleNo": 0,
+                "localMoraleNo": 0
+            }
+        ]
     },
     "Brazil": {
         "initialState": "green",
