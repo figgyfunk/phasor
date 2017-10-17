@@ -77,12 +77,12 @@
         "eventX": 1340,
         "eventY": 80,
         "eventData": [
-<<<<<<< HEAD
+
             {
                 "eventText": "All our young keep traveling to the West and we have no one left to labor the fields other than the old who are inefficient at best. We need help to feed those who still bother to work.",
                 "wheatNeeded": 25,
                 "eventYesText":"Thank you, your support means a lot in these times.",
-                "eventNoText":"Make sure not let your personal grudges block you from true leadership.",
+                "eventNoText":"I suppose to you we're all under the same red flag huh?",
                 "globalMoraleYes": 10,
                 "localMoraleYes": 20,
                 "globalMoraleNo": -10,
@@ -146,7 +146,7 @@
         "eventY": 300,
         "eventData": [
             {
-                "eventText": "Hello! We’re in a bit if you will. A monsoon took out the rest of our dwindling farms. Simply put we have too little food and too many people and it doesn’t look like it’s going to get better any time soon. Can you help us?",
+                "eventText": "Hello! We’re in a bit of a pickle if you will. A monsoon took out the rest of our dwindling farms. Simply put we have too little food and too many people and it doesn’t look like it’s going to get better any time soon. Can you help us?",
                 "wheatNeeded": 45,
                 "eventYesText":"Thank you! You have helped many many people today.",
                 "eventNoText":"I understand, resources are tight. Perhaps another time.",
@@ -247,14 +247,14 @@
         "eventY": 340,
         "eventData": [
             {
-                "eventText": "We need help, a tsunami has destroyed our countries. We have no resources our way to produce resources. Please anything would help",
-                "wheatNeeded": 25,
-                "eventYesText":"Thank you, I hope that it’s enough.",
-                "eventNoText":"Thank you for your time since it seems we are not worth yours.",
-                "globalMoraleYes": 15,
+                "eventText": "You left our country in turmoil and we now have no way to feed those you didn't kill. I am only here out of necessity not that I expect much from the great USA.",
+                "wheatNeeded": 35,
+                "eventYesText":"We will take years to recover from your impact. You will never give a worthy apology.",
+                "eventNoText":"Interesting that now is the time you choose not to meddle with others affairs.",
+                "globalMoraleYes": 10,
                 "localMoraleYes": 10,
                 "globalMoraleNo": -10,
-                "localMoraleNo": -15
+                "localMoraleNo": -20
             }
         ]
     },
@@ -281,29 +281,29 @@
         "eventY": 80,
         "eventData": [
             {
-                "eventText": "Our silos didn’t stand up to this year’s winter, we need more wheat.",
+                "eventText": "Our resources are low after our little conflict, we need more wheat.",
                 "wheatNeeded": 30,
-                "eventYesText":"Bye.",
-                "eventNoText":"We don’t need your attitude.",
+                "eventYesText":"Are you finally learning who you should be making friends with?",
+                "eventNoText":"Sore loser huh?",
                 "globalMoraleYes": 15,
                 "localMoraleYes": -10,
                 "globalMoraleNo": -15,
                 "localMoraleNo": 10
             },
             {
-                "eventText": "I see we are as popular as ever with your citizens as ever. Unfortunately my people are still hungry, what’s your side?",
+                "eventText": "Your people seem upset that you helped us with all that propaganda you have floating around, still we don't mind a little hypocrisy. People are still hungry and you have the food.",
                 "wheatNeeded": 20,
-                "eventYesText":"Perhaps there’s a compromise somewhere in our future.",
-                "eventNoText":" A leader of the people, but only those who count for re-election it seems.",
+                "eventYesText":"I'm glad to see you so willing, you are making the right choice my friend.",
+                "eventNoText":"As expected, bending to the will and whims of the people.",
                 "globalMoraleYes": 10,
                 "localMoraleYes": -15,
                 "globalMoraleNo": -10,
                 "localMoraleNo": 15
             },
             {
-                "eventText": "I know many who would argue that following the whims of your people doesn’t lead to the strongest government. Will you let whims starve my people? ",
+                "eventText": "So you do follow through on your propaganda. Your people may hate us and you may as well, but will you let 293 million suffer for your grudges?",
                 "wheatNeeded": 40,
-                "eventYesText":"Guilt is the lowest motivation for charity, but one I’ll have to take for now.",
+                "eventYesText":"Turning your back on your people, it takes courage. Don't let them influence you too much.",
                 "eventNoText":"The power of democracy strikes again.",
                 "globalMoraleYes": 15,
                 "localMoraleYes": -15,
@@ -311,12 +311,12 @@
                 "localMoraleNo": 15
             },
             {
-                "eventText": "You efforts have not gone unnoticed by our people, nor by us. We need to restock our silos for the coming year so our people may continue to eat.",
+                "eventText": "I know I'm not the only one who sees the potential here. Together we could do anything.",
                 "wheatNeeded": 10,
-                "eventYesText":"I will see you soon to discuss defrosting our relationship comrade.",
+                "eventYesText":"I will see you soon to discuss defrosting our relationship and our future endevours.",
                 "eventNoText":"Hm, still as cold at heart as ever I suppose.",
                 "globalMoraleYes": 5,
-                "localMoraleYes": -5,
+                "localMoraleYes": -15,
                 "globalMoraleNo": -5,
                 "localMoraleNo": 5
             },
@@ -324,17 +324,17 @@
                 "eventText": "Your politics are irregular at best if not just indecisive. What side of the coin does our people’s next meal fall on today?",
                 "wheatNeeded": 30,
                 "eventYesText":"Your efforts are appreciated and I hope to never return here again.",
-                "eventNoText":"What’s the point of charity if you don’t get positive press for it right? Just another showboat of a leader.",
+                "eventNoText":"Let us know how that gas shortage turns out for you. It'd be a shame if it got worse.",
                 "globalMoraleYes": 10,
                 "localMoraleYes": -10,
                 "globalMoraleNo": -10,
                 "localMoraleNo": 15
             },
             {
-                "eventText": "I don’t have the time to wait on what will be another fruitless effort for a hopeless cause, so what fate do your people have for us now?",
+                "eventText": "You continue the war against us even though you already lost so recently. Are you ready to go up in arms again?",
                 "wheatNeeded": 45,
-                "eventYesText":"There will be no forgiveness.",
-                "eventNoText":"Things will be heating up very soon in the U.S. of A.",
+                "eventYesText":"Coward.",
+                "eventNoText":"You're in for a real red scare my friend.",
                 "globalMoraleYes": 10,
                 "localMoraleYes": -10,
                 "globalMoraleNo": -20,
