@@ -15,5 +15,5 @@ MenuState.prototype.create = function() {
 };
 
 MenuState.prototype.startGame = function() {
-    this.state.start('Gameplay');
+    this.state.start('NewspaperSpinState', true, false, "start");
 }
