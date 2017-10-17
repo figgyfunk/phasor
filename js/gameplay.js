@@ -65,11 +65,11 @@ gameplayState.prototype.create = function() {
     this.wheatIncreaseFlatRate = 15;
 
     //global variables to control status locations respectively. Based on the top left corner of the text fields/graphics
-    this.WHEAT_STATUS_X = 50;
+    this.WHEAT_STATUS_X = 190-100;
     this.WHEAT_STATUS_Y = 20;
-    this.LOCALMORALE_STATUS_X = 400;
+    this.LOCALMORALE_STATUS_X = 570-100;
     this.LOCALMORALE_STATUS_Y = 20;
-    this.GLOBALMORALE_STATUS_X = 800;
+    this.GLOBALMORALE_STATUS_X = 950-100;
     this.GLOBALMORALE_STATUS_Y = 20;
     //length of the status bar. Changes on w.r.t the value.
     this.STATUS_BAR_LENGTH = 200;
@@ -104,15 +104,26 @@ gameplayState.prototype.create = function() {
     this.countryObjectMap.set("West Africa", new Country(game, 'West Africa'));
 
 
-    this.textWheat = game.add.text(this.WHEAT_STATUS_X, this.WHEAT_STATUS_Y, this.wheatQty);
+    this.textWheat = game.add.text(this.WHEAT_STATUS_X+200, this.WHEAT_STATUS_Y, this.wheatQty);
     this.textWheat.visible = true;
-    this.textLocal = game.add.text(this.LOCALMORALE_STATUS_X, this.LOCALMORALE_STATUS_Y, this.localMorale);
+    this.textLocal = game.add.text(this.LOCALMORALE_STATUS_X+200, this.LOCALMORALE_STATUS_Y, this.localMorale);
     this.textLocal.visible = true;
-    this.textGlobal = game.add.text(this.GLOBALMORALE_STATUS_X, this.GLOBALMORALE_STATUS_Y, this.globalMorale);
+    this.textGlobal = game.add.text(this.GLOBALMORALE_STATUS_X+200, this.GLOBALMORALE_STATUS_Y, this.globalMorale);
     this.textGlobal.visible = true;
-    this.textTurn = game.add.text(1000, 20, this.turnCounter + 1);
+    this.textTurn = game.add.text(1200, 20, this.turnCounter + 1);
     this.textTurn.visible = true;
 
+    this.wheatQIcon = game.add.image(this.WHEAT_STATUS_X-30, this.WHEAT_STATUS_Y-10, "wheatQ");
+    this.localMoraleIcon = game.add.image(this.LOCALMORALE_STATUS_X-30, this.LOCALMORALE_STATUS_Y, "localmorale");
+    this.globalMoraleIcon = game.add.image(this.GLOBALMORALE_STATUS_X-20, this.GLOBALMORALE_STATUS_Y-5, "globalmorale");
+
+    game.world.bringToTop(this.textWheat);
+    game.world.bringToTop(this.textLocal);
+    game.world.bringToTop(this.textGlobal);
+    game.world.bringToTop(this.textTurn);
+    game.world.bringToTop(this.wheatQIcon);
+    game.world.bringToTop(this.localMoraleIcon);
+    game.world.bringToTop(this.globalMoraleIcon);
     // add events.
     // this.countryEvents.push("Pacific Islands");
     // this.countryEvents.push("Middle East");
@@ -205,6 +216,9 @@ gameplayState.prototype.eventSwiped = function(isRight) {
     if (this.wheatQty > this.WHEATMAX) {
         this.wheatQty = this.WHEATMAX;
     }
+    if (this.wheatQty <= 0) {
+        this.state.start("LoseState");
+    }
 
     // ALSO NEED TO CHECK FOR LOSS
 
@@ -221,7 +235,7 @@ gameplayState.prototype.eventSwiped = function(isRight) {
     console.log(this.countryEvents.length);
     if (this.turnCounter === this.countryEvents.length - 1) {
         console.log("No More Events!");
-        this.state.start("HighScore");
+        this.state.start("WinState");
     } else {
         this.turnCounter++;
 
@@ -305,6 +319,13 @@ gameplayState.prototype.update = function() {
     if (currentEvent.eventStarted) {
         // Necessary to check as the event can be started whenever the user taps on it. This happens within EventRequest and not gameplayState.
         this.inMapView = false;
+        game.world.bringToTop(this.textWheat);
+        game.world.bringToTop(this.textLocal);
+        game.world.bringToTop(this.textGlobal);
+        game.world.bringToTop(this.textTurn);
+        game.world.bringToTop(this.wheatQIcon);
+        game.world.bringToTop(this.localMoraleIcon);
+        game.world.bringToTop(this.globalMoraleIcon);
     }
 
     if (this.inMapView) {
