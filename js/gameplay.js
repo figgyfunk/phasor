@@ -113,6 +113,11 @@ gameplayState.prototype.create = function() {
     this.textTurn = game.add.text(1200, 20, this.turnCounter + 1);
     this.textTurn.visible = true;
 
+    this.textWheat.fill = '#FFFFFF';
+    this.textLocal.fill = '#FFFFFF';
+    this.textGlobal.fill = '#FFFFFF';
+    this.textTurn.fill = '#FFFFFF';
+
     this.wheatQIcon = game.add.image(this.WHEAT_STATUS_X-30, this.WHEAT_STATUS_Y-10, "wheatQ");
     this.localMoraleIcon = game.add.image(this.LOCALMORALE_STATUS_X-30, this.LOCALMORALE_STATUS_Y, "localmorale");
     this.globalMoraleIcon = game.add.image(this.GLOBALMORALE_STATUS_X-20, this.GLOBALMORALE_STATUS_Y-5, "globalmorale");
