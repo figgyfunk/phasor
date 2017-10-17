@@ -18,6 +18,8 @@
 	<script type="text/javascript" src="js/MenuState.js"></script>
 	<script type="text/javascript" src="js/HighScore.js"></script>
 	<script type="text/javascript" src="js/NewspaperSpinState.js"></script>
+	<script type="text/javascript" src="js/LoseState.js"></script>
+	<script type="text/javascript" src="js/WinState.js"></script>
     <style type="text/css">
         body {
             margin: 0;
@@ -34,6 +36,8 @@
 	game.state.add("NewspaperSpinState", NewspaperSpinState);
 	game.state.add("Gameplay", gameplayState);
 	game.state.add("HighScore", HighScore);
+	game.state.add("WinState", WinState);
+	game.state.add("LoseState", LoseState);
 	game.state.start("Preload", true, true);
 
 
