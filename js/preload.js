@@ -33,25 +33,28 @@ preloadState.prototype.preload = function() {
     game.load.image("desk", "assets/main_screen/deskbase.png");
 
     // presidents
-    game.load.image("Argentina", "assets/temp_presidents/Argentina.png");
+    //game.load.image("Argentina", "assets/finished presidents/Argentina.png");
     game.load.image("Australia", "assets/finished presidents/Australia.png");
-    game.load.image("Brazil", "assets/temp_presidents/Brazil.png");
+    game.load.image("Brazil", "assets/finished presidents/Brazil.png");
     game.load.image("Canada", "assets/finished presidents/Canada.png");
-    game.load.image("Central America", "assets/temp_presidents/Central_America.png");
-    game.load.image("China", "assets/temp_presidents/China.png");
-    game.load.image("East Africa", "assets/temp_presidents/East_Africa.png");
-    game.load.image("East Europe", "assets/temp_presidents/East_Europe.png");
-    game.load.image("India", "assets/temp_presidents/India.png");
-    game.load.image("Middle East", "assets/temp_presidents/Middle_East.png");
-    game.load.image("North Africa", "assets/temp_presidents/North_Africa.png");
-    game.load.image("Pacific Islands", "assets/temp_presidents/Pacific_islands.png");
-    game.load.image("South Africa", "assets/temp_presidents/South_Africa.png");
-    game.load.image("Soviet Union", "assets/temp_presidents/soviet_union.png");
+    game.load.image("Central America", "assets/finished presidents/Central_America.png");
+    game.load.image("China", "assets/finished presidents/China.png");
+    game.load.image("East Africa", "assets/finished presidents/Eastern_Africa.png");
+    game.load.image("East Europe", "assets/finished presidents/Eastern_Eurpoe.png");
+    game.load.image("India", "assets/finished presidents/India.png");
+    game.load.image("Middle East", "assets/finished presidents/middle_east.png");
+    game.load.image("North Africa", "assets/finished presidents/Northern_Africa.png");
+    game.load.image("Pacific Islands", "assets/finished presidents/Pacific Islands.png");
+    game.load.image("South Africa", "assets/finished presidents/Southern_Africa.png");
+    game.load.image("Soviet Union", "assets/finished presidents/Soviet_Union.png");
     game.load.image("USA", "assets/finished presidents/USA.png");
-    game.load.image("West Africa", "assets/temp_presidents/West_Africa.png");
-    game.load.image("West Europe", "assets/temp_presidents/West_Europe.png");
+    game.load.image("West Africa", "assets/finished presidents/Western_Africa.png");
+    game.load.image("West Europe", "assets/finished presidents/western_Europe.png");
 
-
+    game.load.image("redHalo", "assets/finished presidents/red_halo.png");
+    game.load.image("yellowHalo", "assets/finished presidents/yellow_halo.png");
+    game.load.image("greenHalo", "assets/finished presidents/green_halo.png");
+    game.load.image("blueHalo", "assets/finished presidents/blue_halo.png");
 
 
     /* BEGIN LOADING COUNTRY IMAGES */

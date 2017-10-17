@@ -348,7 +348,6 @@ gameplayState.prototype.update = function() {
         } else if (this.gamePointer.isDown) {
             // Not dragging, pointer was just pressed down.
             this.gamePointerDown(this.mapSprite.x);
-            this.gamePointerDown(this.oceanSprite.x);
         }
 
         this.displayCurrentEvent();
@@ -356,13 +355,9 @@ gameplayState.prototype.update = function() {
         // Event screen is up,
         if (this.dragging) {
             let pointerDragDistance = this.gamePointer.x - this.pointerDownStartX;
-            let newImagePosX = this.fixedPointX + pointerDragDistance;
-            currentEvent.personPic.position.x = newImagePosX;
 
             if (this.gamePointer.isUp) {
-                if (Math.abs(pointerDragDistance) < 200) {
-                    currentEvent.resetPicPosition();
-                } else {
+                if (Math.abs(pointerDragDistance) >= 200) {
                     // a pointerDragDistance value below zero indicates a swipe to the left.
                     this.eventSwiped(pointerDragDistance > 0);
                 }
@@ -371,7 +366,7 @@ gameplayState.prototype.update = function() {
         } else {
             if (this.gamePointer.isDown)
             {
-                this.gamePointerDown(currentEvent.personPic.position.x);
+                this.gamePointerDown(0);
             }
         }
     }

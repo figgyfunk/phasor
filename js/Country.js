@@ -24,7 +24,7 @@ let loadCountryData = function(country, game) {
             let localMoraleYes = jsonEventData[i]["localMoraleYes"];
             let globalMoraleNo = jsonEventData[i]["globalMoraleNo"];
             let localMoraleNo = jsonEventData[i]["localMoraleNo"];
-            country.eventData.push(new EventRequest(game, country.eventX, country.eventY, eventText, country.name, wheatNeeded, globalMoraleYes, localMoraleYes, globalMoraleNo, localMoraleNo));
+            country.eventData.push(new EventRequest(game, country.eventX, country.eventY, eventText, country.name, wheatNeeded, globalMoraleYes, localMoraleYes, globalMoraleNo, localMoraleNo, country.currentState));
         }
     }
 };
@@ -63,6 +63,10 @@ Country.prototype.processDecision = function(choseYes) {
         } else if (this.currentState === 'yellow') {
             this.currentState = 'red';
         }
+    }
+
+    for (let i =0; i < this.eventData.length; i++) {
+        this.eventData[i].currentCountryState = this.currentState;
     }
     let picX = this.pic.position.x;
     this.pic.visible = false;
