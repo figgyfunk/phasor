@@ -1,0 +1,380 @@
+{
+    "Blue Countries": {
+        "initialState": "blue",
+        "eventX": 0,
+        "eventY": 0
+    },
+    "Brazil": {
+        "initialState": "green",
+        "eventX": 690,
+        "eventY": 480,
+        "eventData": [
+            {
+                "eventText": "Good news, we’ve had record coffee bean production! Bad news, we haven’t had much luck with corn. Could you give us a little help?",
+                "eventYesText":"Thank you!",
+                "eventNoText": "Ah well, maybe next time.",
+                "wheatNeeded": 5,
+                "globalMoraleYes": 10,
+                "localMoraleYes": 10,
+                "globalMoraleNo": -10,
+                "localMoraleNo": -10
+            }
+        ]
+    },
+    "Central America": {
+        "initialState": "yellow",
+        "eventX": 510,
+        "eventY": 425,
+        "eventData": [
+            {
+                "eventText": "We’ve had severe landslides this past month that have ruined our sugar fields. We need some extra food while we clean up the damage.",
+                "wheatNeeded": 10,
+                "eventYesText":"You’re too sweet, thank you.",
+                "eventNoText":"Not so sweet in the end.",
+                "globalMoraleYes": 10,
+                "localMoraleYes": 15,
+                "globalMoraleNo": -10,
+                "localMoraleNo": -15
+            }
+        ]
+    },
+    "China": {
+        "initialState": "green",
+        "eventX": 2040,
+        "eventY": 220,
+        "eventData": [
+            {
+                "eventText": "Natural disasters have torn apart our fields, we need only a little wheat during our recovery.",
+                "wheatNeeded": 10,
+                "eventYesText":"Your favor will not be forgotten.",
+                "eventNoText":"Ah another bitter year indeed.",
+                "globalMoraleYes": 10,
+                "localMoraleYes": 5,
+                "globalMoraleNo": -10,
+                "localMoraleNo": -5
+            }
+        ]
+    },
+    "East Africa": {
+        "initialState": "yellow",
+        "eventX": 1450,
+        "eventY": 410,
+        "eventData": [
+            {
+                "eventText": "The largest producers of maize have been hit by a terrible parasite in their fields. We need to make sure we can cover while they eradicate it.",
+                "wheatNeeded": 10,
+                "eventYesText":"Thanks, don’t be afraid to bug us in the future if you need help.",
+                "eventNoText":"Alright, we won’t bug you again.",
+                "globalMoraleYes": 10,
+                "localMoraleYes": 5,
+                "globalMoraleNo": -10,
+                "localMoraleNo": -5
+            }
+        ]
+    },
+    "East Europe": {
+        "initialState": "red",
+        "eventX": 1340,
+        "eventY": 80,
+        "eventData": [
+
+            {
+                "eventText": "All our young keep traveling to the West and we have no one left to labor the fields other than the old who are inefficient at best. We need help to feed those who still bother to work.",
+                "wheatNeeded": 25,
+                "eventYesText":"Thank you, your support means a lot in these times.",
+                "eventNoText":"I suppose to you we're all under the same red flag huh?",
+                "globalMoraleYes": 10,
+                "localMoraleYes": 20,
+                "globalMoraleNo": -10,
+                "localMoraleNo": -20
+            },
+            {
+                "eventText": "There has been some talk of change among the young folk and they have decided to stay, but we still must make up our previous losses. Can you assist us?",
+                "wheatNeeded": 30,
+                "eventYesText":"The future is uncertain, but I think in the best way possible.",
+                "eventNoText":"I hope we don’t remain stagnant in our ways for long.",
+                "globalMoraleYes": 10,
+                "localMoraleYes": 25,
+                "globalMoraleNo": -10,
+                "localMoraleNo": -25
+            },
+            {
+                "eventText": "We’ve lost almost all of our livestock to the famine and the elderly aren’t fairing much better. We need to act now.",
+                "wheatNeeded": 35,
+                "eventYesText":"Thank you, now dinner bowls won’t need to be so empty.",
+                "eventNoText":"There will be repercussions that I don’t know we’ll be able to mend.",
+                "globalMoraleYes": 10,
+                "localMoraleYes": 15,
+                "globalMoraleNo": -10,
+                "localMoraleNo": -25
+            },
+            {
+                "eventText": "The people are happy, and soon we’ll see the benefits of everyone’s hard work, but can you help us take that final step?",
+                "wheatNeeded": 35,
+                "eventYesText":"Thank you, I think it might be time to tear down a wall that’s been bothering me for some time now.",
+                "eventNoText":"I understand, thank you for your time.",
+                "globalMoraleYes": 10,
+                "localMoraleYes": 45,
+                "globalMoraleNo": -10,
+                "localMoraleNo": -20
+            },
+            {
+                "eventText": "Your help in the past brought us back to our feet. Now we need to take our next steps forward. Will you be there to support us?",
+                "wheatNeeded": 25,
+                "eventYesText":"You have brought us closer to a brighter future, thank you.",
+                "eventNoText":"I suppose I will have to learn to be grateful for a one time charity.",
+                "globalMoraleYes": 10,
+                "localMoraleYes": 30,
+                "globalMoraleNo": -10,
+                "localMoraleNo": -30
+            },
+            {
+                "eventText": "You have ignored morals and the voice of your people to push us further into a downward spiral. What do you say now to the people at the bottom?",
+                "wheatNeeded": 45,
+                "eventYesText":"The gift of false hope carries the same weight as an empty box.",
+                "eventNoText":"I would call you a monster, but I don’t wish to offend the beasts of the world.",
+                "globalMoraleYes": 10,
+                "localMoraleYes": 20,
+                "globalMoraleNo": -10,
+                "localMoraleNo": -35
+              }
+        ]
+    },
+    "India": {
+        "initialState": "red",
+        "eventX": 1850,
+        "eventY": 300,
+        "eventData": [
+            {
+                "eventText": "Hello! We’re in a bit of a pickle if you will. A monsoon took out the rest of our dwindling farms. Simply put we have too little food and too many people and it doesn’t look like it’s going to get better any time soon. Can you help us?",
+                "wheatNeeded": 45,
+                "eventYesText":"Thank you! You have helped many many people today.",
+                "eventNoText":"I understand, resources are tight. Perhaps another time.",
+                "globalMoraleYes": 20,
+                "localMoraleYes": 5,
+                "globalMoraleNo": -5,
+                "localMoraleNo": -20
+            },
+            {
+                "eventText": "Good news! Our farmers and their families are getting back on their feet. Progress is still slow though and people are still hungry, more help would be wonderful if you are able.",
+                "wheatNeeded": 45,
+                "eventYesText":"Fantastic! You won’t be disappointed, I’ll make sure of it!",
+                "eventNoText":"Completely understandable, we will do our best with what we already have.",
+                "globalMoraleYes": 5,
+                "localMoraleYes": 30,
+                "globalMoraleNo": -5,
+                "localMoraleNo": -30
+            },
+            {
+                "eventText": "Unfortunately things have gotten worse since we last spoke. Our farmers are too hungry to work and keep fainting in the fields. We’re down to a meal per week per person. We need food now or I fear the worst may come.",
+                "wheatNeeded": 50,
+                "eventYesText":"Thank you, we hope to bring people back their hope.",
+                "eventNoText":"It is your choice. I hope to be able to return in the future.",
+                "globalMoraleYes": 20,
+                "localMoraleYes": 5,
+                "globalMoraleNo": -30,
+                "localMoraleNo": -5
+            },
+            {
+                "eventText": "The news only gets better my friend! Farms are at maximum production  and we’ll be better than ever with the next harvest. Unfortunately harvest isn’t for another few weeks and we need some help until then.",
+                "wheatNeeded": 45,
+                "eventYesText":"You have been generous to no end and we will be forever grateful.",
+                "eventNoText":"No worries, you have helped us start what will be a historic recovery.",
+                "globalMoraleYes": 50,
+                "localMoraleYes": 5,
+                "globalMoraleNo": -20,
+                "localMoraleNo": -5
+            },
+            {
+                "eventText": "Your past help is greatly appreciated, but progress is slow and only some of our farmers have enough food to start working again. We need everyone to be fed and productive. Can you help?",
+                "wheatNeeded": 45,
+                "eventYesText":"Thank you, the next few months will be much easier.",
+                "eventNoText":"Ah, that’s fine. It will be a rough couple of months.",
+                "globalMoraleYes": 30,
+                "localMoraleYes": 5,
+                "globalMoraleNo": -40,
+                "localMoraleNo": -5
+            },
+            {
+                "eventText": "It has gotten bad, those who are left are barely hanging on. I promise we are asking for no more that we need to save who we can. Please.",
+                "wheatNeeded": 50,
+                "eventYesText":"Thank you, I think we can make it through this.",
+                "eventNoText":"I suppose to you it would just be like throwing sand into the ocean.",
+                "globalMoraleYes": 15,
+                "localMoraleYes": 5,
+                "globalMoraleNo": -50,
+                "localMoraleNo": -5
+            }
+        ]
+    },
+    "Middle East": {
+        "initialState": "green",
+        "eventX": 1600,
+        "eventY": 200,
+        "eventData": [
+            {
+                "eventText": "We’re currently in the middle of renovating our irrigation system so we lose less water to leakage. Could you help cover our food production for the time being?",
+                "wheatNeeded": 5,
+                "eventYesText":"Thank you!",
+                "eventNoText":"It’s fine I’m sure we’ll be fine.",
+                "globalMoraleYes": 5,
+                "localMoraleYes": 5,
+                "globalMoraleNo": -5,
+                "localMoraleNo": -5
+            }
+        ]
+    },
+    "North Africa": {
+        "initialState": "red",
+        "eventX": 1300,
+        "eventY": 285,
+        "eventData": [
+            {
+                "eventText": "Our canals have all filled from awful storms. There’s no water left to grow any food. Please I don’t know that we’ll make it.",
+                "wheatNeeded": 25,
+                "eventYesText":"You are our first step to recovery",
+                "eventNoText":"Selfish to another’s end, I should’ve expected as much.",
+                "globalMoraleYes": 20,
+                "localMoraleYes": 5,
+                "globalMoraleNo": -20,
+                "localMoraleNo": -5
+            }
+        ]
+    },
+    "Pacific Islands": {
+        "initialState": "red",
+        "eventX": 2170,
+        "eventY": 340,
+        "eventData": [
+            {
+                "eventText": "You left our country in turmoil and we now have no way to feed those you didn't kill. I am only here out of necessity not that I expect much from the great USA.",
+                "wheatNeeded": 35,
+                "eventYesText":"We will take years to recover from your impact. You will never give a worthy apology.",
+                "eventNoText":"Interesting that now is the time you choose not to meddle with others affairs.",
+                "globalMoraleYes": 10,
+                "localMoraleYes": 10,
+                "globalMoraleNo": -10,
+                "localMoraleNo": -20
+            }
+        ]
+    },
+    "South Africa": {
+        "initialState": "green",
+        "eventX": 1370,
+        "eventY": 520,
+        "eventData": [
+            {
+                "eventText": "Our maize is running in short supply and it would be rough to convince families to skip out on their pap. Could you spare some wheat while we up our production? ",
+                "wheatNeeded": 5,
+                "eventYesText":"Thank you! Let us know if you want some citrus.",
+                "eventNoText":"It’s fine, I’m sure we’ll find a way to get by.",
+                "globalMoraleYes": 10,
+                "localMoraleYes": 5,
+                "globalMoraleNo": -10,
+                "localMoraleNo": -5
+            }
+        ]
+    },
+    "Soviet Union": {
+        "initialState": "red",
+        "eventX": 1800,
+        "eventY": 80,
+        "eventData": [
+            {
+                "eventText": "Our resources are low after our little conflict, we need more wheat.",
+                "wheatNeeded": 30,
+                "eventYesText":"Are you finally learning who you should be making friends with?",
+                "eventNoText":"Sore loser huh?",
+                "globalMoraleYes": 15,
+                "localMoraleYes": -10,
+                "globalMoraleNo": -15,
+                "localMoraleNo": 10
+            },
+            {
+                "eventText": "Your people seem upset that you helped us with all that propaganda you have floating around, still we don't mind a little hypocrisy. People are still hungry and you have the food.",
+                "wheatNeeded": 20,
+                "eventYesText":"I'm glad to see you so willing, you are making the right choice my friend.",
+                "eventNoText":"As expected, bending to the will and whims of the people.",
+                "globalMoraleYes": 10,
+                "localMoraleYes": -15,
+                "globalMoraleNo": -10,
+                "localMoraleNo": 15
+            },
+            {
+                "eventText": "So you do follow through on your propaganda. Your people may hate us and you may as well, but will you let 293 million suffer for your grudges?",
+                "wheatNeeded": 40,
+                "eventYesText":"Turning your back on your people, it takes courage. Don't let them influence you too much.",
+                "eventNoText":"The power of democracy strikes again.",
+                "globalMoraleYes": 15,
+                "localMoraleYes": -15,
+                "globalMoraleNo": -15,
+                "localMoraleNo": 15
+            },
+            {
+                "eventText": "I know I'm not the only one who sees the potential here. Together we could do anything.",
+                "wheatNeeded": 10,
+                "eventYesText":"I will see you soon to discuss defrosting our relationship and our future endevours.",
+                "eventNoText":"Hm, still as cold at heart as ever I suppose.",
+                "globalMoraleYes": 5,
+                "localMoraleYes": -15,
+                "globalMoraleNo": -5,
+                "localMoraleNo": 5
+            },
+            {
+                "eventText": "Your politics are irregular at best if not just indecisive. What side of the coin does our people’s next meal fall on today?",
+                "wheatNeeded": 30,
+                "eventYesText":"Your efforts are appreciated and I hope to never return here again.",
+                "eventNoText":"Let us know how that gas shortage turns out for you. It'd be a shame if it got worse.",
+                "globalMoraleYes": 10,
+                "localMoraleYes": -10,
+                "globalMoraleNo": -10,
+                "localMoraleNo": 15
+            },
+            {
+                "eventText": "You continue the war against us even though you already lost so recently. Are you ready to go up in arms again?",
+                "wheatNeeded": 45,
+                "eventYesText":"Coward.",
+                "eventNoText":"You're in for a real red scare my friend.",
+                "globalMoraleYes": 10,
+                "localMoraleYes": -10,
+                "globalMoraleNo": -20,
+                "localMoraleNo": 20
+            }
+        ]
+    },
+    "West Africa": {
+        "initialState": "green",
+        "eventX": 1200,
+        "eventY": 360,
+        "eventData": [
+            {
+                "eventText": "Our tubers aren’t doing terrific, we need some wheat while we relocate our fields.",
+                "wheatNeeded": 10,
+                "eventYesText": "Thank you, I know this was spudden.",
+                "eventNoText":"Ah, I fear we may end up tatering on the edge of disaster.",
+                "globalMoraleYes": 10,
+                "localMoraleYes": 5,
+                "globalMoraleNo": -10,
+                "localMoraleNo": -5
+            }
+        ]
+    },
+    "West Europe": {
+        "initialState": "green",
+        "eventX": 1300,
+        "eventY": 150,
+        "eventData": [
+            {
+                "eventText": "Bonjour mon ami, we seem to have run into a little trouble in our fields zis year. A little help would be wonderful.",
+                "wheatNeeded": 10,
+                "eventYesText":"My little cabbage, I knew I could count on you.",
+                "eventNoText":"Hmmph, no one knows where the shoe pinches except for he who wears it.",
+                "globalMoraleYes": 5,
+                "localMoraleYes": 5,
+                "globalMoraleNo": -5,
+                "localMoraleNo": -5
+            }
+
+        ]
+    }
+}
