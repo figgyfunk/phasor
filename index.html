@@ -18,6 +18,10 @@
 	<script type="text/javascript" src="js/MenuState.js"></script>
 	<script type="text/javascript" src="js/HighScore.js"></script>
 	<script type="text/javascript" src="js/NewspaperSpinState.js"></script>
+	<script type="text/javascript" src="js/LocalMoraleState.js"></script>
+	<script type="text/javascript" src="js/GlobalMoraleState.js"></script>
+	<script type="text/javascript" src="js/WheatState.js"></script>
+	<script type="text/javascript" src="js/WinState.js"></script>
     <style type="text/css">
         body {
             margin: 0;
@@ -34,6 +38,10 @@
 	game.state.add("NewspaperSpinState", NewspaperSpinState);
 	game.state.add("Gameplay", gameplayState);
 	game.state.add("HighScore", HighScore);
+	game.state.add("WinState", WinState);
+	game.state.add("GlobalEnd", GlobalMoraleState);
+	game.state.add("LocalEnd", LocalMoraleState);
+	game.state.add("WheatEnd", WheatState);
 	game.state.start("Preload", true, true);
 
 

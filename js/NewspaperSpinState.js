@@ -17,6 +17,8 @@ NewspaperSpinState.prototype.create = function() {
     this.spinning = true;
     this.counter = 0;
     this.maxAngles = 4320;
+
+    ovalOfficeMusic.pause();
     
 };
 

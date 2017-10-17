@@ -4,6 +4,10 @@ let preloadState = function(){
 }
 
 preloadState.prototype.preload = function() {
+    // Music and sound
+    game.load.audio("Overworld Music", "assets/Music/map_theme.ogg");
+    game.load.audio("Oval Office Music", "assets/Music/oval_office_theme.ogg");
+
     game.load.image("worldmap", "assets/map/map.png");
     game.load.image("ocean", "assets/map/ocean.png");
 
@@ -20,6 +24,10 @@ preloadState.prototype.preload = function() {
 
     // Newspapers
     game.load.image("startNewspaper", "assets/first_newspaper.png");
+    game.load.image("WheatNewspaper", "assets/wheat_end.png");
+    game.load.image("LocalMoraleNewspaper", "assets/US_moral_end.png");
+    game.load.image("GlobalMoraleNewspaper", "assets/Global_end.png");
+    game.load.image("winNewspaper", "assets/ge_newspaper.png");
 
     // icons
     game.load.image("localmorale", "assets/main_screen/moral_flag.png");
@@ -34,6 +42,8 @@ preloadState.prototype.preload = function() {
     // presidents
     //game.load.image("Argentina", "assets/finished presidents/Argentina.png");
     game.load.image("Australia", "assets/finished presidents/Australia.png");
+    // Blue Countries is America's VP, don't worry about it.
+    game.load.image("Blue Countries", "assets/finished presidents/USA_vp.png")
     game.load.image("Brazil", "assets/finished presidents/Brazil.png");
     game.load.image("Canada", "assets/finished presidents/Canada.png");
     game.load.image("Central America", "assets/finished presidents/Central_America.png");
@@ -142,6 +152,12 @@ preloadState.prototype.preload = function() {
 
 
 preloadState.prototype.create = function() {
+    // Dirty global music variables - please understand.
+    ovalOfficeMusic = game.add.audio('Oval Office Music');
+    overworldMusic = game.add.audio('Overworld Music');
+    ovalOfficeMusic.loop = true;
+    overworldMusic.loop = true;
+
     game.state.start("MenuState");
 }
 

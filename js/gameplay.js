@@ -49,7 +49,6 @@ gameplayState.prototype.create = function() {
     this.countryObjectMap = new Map(); // Keys will be country names, values will be countries.
 
     // Used for determining current event.
-    //this.eventArray = [];
     this.countryEvents = [];
     this.turnCounter = 0;
 
@@ -65,11 +64,11 @@ gameplayState.prototype.create = function() {
     this.wheatIncreaseFlatRate = 15;
 
     //global variables to control status locations respectively. Based on the top left corner of the text fields/graphics
-    this.WHEAT_STATUS_X = 50;
+    this.WHEAT_STATUS_X = 190-100;
     this.WHEAT_STATUS_Y = 20;
-    this.LOCALMORALE_STATUS_X = 400;
+    this.LOCALMORALE_STATUS_X = 570-100;
     this.LOCALMORALE_STATUS_Y = 20;
-    this.GLOBALMORALE_STATUS_X = 800;
+    this.GLOBALMORALE_STATUS_X = 950-100;
     this.GLOBALMORALE_STATUS_Y = 20;
     //length of the status bar. Changes on w.r.t the value.
     this.STATUS_BAR_LENGTH = 200;
@@ -88,12 +87,13 @@ gameplayState.prototype.create = function() {
     this.oceanSprite = game.add.sprite(0, 0, "ocean");
     this.oceanSprite.scale.setTo(RESOLUTION_SCALE, RESOLUTION_SCALE); 
     // Begin initializing Countries and adding to countryObjectMap
-    this.countryObjectMap.set("West Europe", new Country(game, 'West Europe'));
-    this.countryObjectMap.set("India", new Country(game,'India'));
+    
+    
     this.countryObjectMap.set("Blue Countries", new Country(game, 'Blue Countries'));
     this.countryObjectMap.set("Brazil", new Country(game, 'Brazil'));
     this.countryObjectMap.set("Central America", new Country(game, 'Central America'));
     this.countryObjectMap.set("China", new Country(game, "China"));
+    this.countryObjectMap.set("India", new Country(game,'India'));
     this.countryObjectMap.set("East Africa", new Country(game, 'East Africa'));
     this.countryObjectMap.set("East Europe", new Country(game, 'East Europe'));
     this.countryObjectMap.set("Middle East", new Country(game, "Middle East"));
@@ -102,17 +102,34 @@ gameplayState.prototype.create = function() {
     this.countryObjectMap.set("South Africa", new Country(game, 'South Africa'));
     this.countryObjectMap.set("Soviet Union", new Country(game, 'Soviet Union'));
     this.countryObjectMap.set("West Africa", new Country(game, 'West Africa'));
+    this.countryObjectMap.set("West Europe", new Country(game, 'West Europe'));
 
 
-    this.textWheat = game.add.text(this.WHEAT_STATUS_X, this.WHEAT_STATUS_Y, this.wheatQty);
+    this.textWheat = game.add.text(this.WHEAT_STATUS_X+200, this.WHEAT_STATUS_Y, this.wheatQty);
     this.textWheat.visible = true;
-    this.textLocal = game.add.text(this.LOCALMORALE_STATUS_X, this.LOCALMORALE_STATUS_Y, this.localMorale);
+    this.textLocal = game.add.text(this.LOCALMORALE_STATUS_X+200, this.LOCALMORALE_STATUS_Y, this.localMorale);
     this.textLocal.visible = true;
-    this.textGlobal = game.add.text(this.GLOBALMORALE_STATUS_X, this.GLOBALMORALE_STATUS_Y, this.globalMorale);
+    this.textGlobal = game.add.text(this.GLOBALMORALE_STATUS_X+200, this.GLOBALMORALE_STATUS_Y, this.globalMorale);
     this.textGlobal.visible = true;
-    this.textTurn = game.add.text(1000, 20, this.turnCounter + 1);
+    this.textTurn = game.add.text(1200, 20, this.turnCounter + 1);
     this.textTurn.visible = true;
 
+    this.textWheat.fill = '#FFFFFF';
+    this.textLocal.fill = '#FFFFFF';
+    this.textGlobal.fill = '#FFFFFF';
+    this.textTurn.fill = '#FFFFFF';
+
+    this.wheatQIcon = game.add.image(this.WHEAT_STATUS_X-30, this.WHEAT_STATUS_Y-10, "wheatQ");
+    this.localMoraleIcon = game.add.image(this.LOCALMORALE_STATUS_X-30, this.LOCALMORALE_STATUS_Y, "localmorale");
+    this.globalMoraleIcon = game.add.image(this.GLOBALMORALE_STATUS_X-20, this.GLOBALMORALE_STATUS_Y-5, "globalmorale");
+
+    game.world.bringToTop(this.textWheat);
+    game.world.bringToTop(this.textLocal);
+    game.world.bringToTop(this.textGlobal);
+    game.world.bringToTop(this.textTurn);
+    game.world.bringToTop(this.wheatQIcon);
+    game.world.bringToTop(this.localMoraleIcon);
+    game.world.bringToTop(this.globalMoraleIcon);
     // add events.
     // this.countryEvents.push("Pacific Islands");
     // this.countryEvents.push("Middle East");
@@ -121,6 +138,7 @@ gameplayState.prototype.create = function() {
     // this.countryEvents.push("Soviet Union");
     // this.countryEvents.push("South Africa");
     // this.countryEvents.push("North Africa");
+    this.countryEvents.push("Blue Countries");
     this.countryEvents.push("West Europe");
     this.countryEvents.push("East Africa");
     this.countryEvents.push("Soviet Union");
@@ -140,6 +158,11 @@ gameplayState.prototype.create = function() {
     this.countryEvents.push("India");
     this.countryEvents.push("East Europe");
     this.countryEvents.push("Soviet Union");
+
+
+    // Music
+    ovalOfficeMusic.pause();
+    overworldMusic.play();
 };
 
 
@@ -200,6 +223,15 @@ gameplayState.prototype.eventSwiped = function(isRight) {
     if (this.wheatQty > this.WHEATMAX) {
         this.wheatQty = this.WHEATMAX;
     }
+    if (this.wheatQty <= 0) {
+        this.state.start("WheatEnd");
+    }
+    if (this.localMorale <= 0) {
+        this.state.start("LocalEnd");
+    }
+    if (this.globalMorale <= 0) {
+        this.state.start("GlobalEnd");
+    }
 
     // ALSO NEED TO CHECK FOR LOSS
 
@@ -216,7 +248,7 @@ gameplayState.prototype.eventSwiped = function(isRight) {
     console.log(this.countryEvents.length);
     if (this.turnCounter === this.countryEvents.length - 1) {
         console.log("No More Events!");
-        this.state.start("HighScore");
+        this.state.start("WinState");
     } else {
         this.turnCounter++;
 
@@ -252,27 +284,28 @@ gameplayState.prototype.updateCountryPositions = function() {
 gameplayState.prototype.update = function() {
     // status bar colour logic
     if (true){
-        this.wheatBar.resize(this.STATUS_BAR_LENGTH*(this.globalMorale/this.GLOBALMAX), 10); 
-        this.localMoraleBar.resize(this.STATUS_BAR_LENGTH*(this.globalMorale/this.GLOBALMAX), 10); 
+        this.wheatBar.resize(this.STATUS_BAR_LENGTH*(this.wheatQty/this.GLOBALMAX), 10); 
+        this.localMoraleBar.resize(this.STATUS_BAR_LENGTH*(this.localMorale/this.GLOBALMAX), 10); 
         this.globalMoraleBar.resize(this.STATUS_BAR_LENGTH*(this.globalMorale/this.GLOBALMAX), 10);
 
-        if ((this.wheatQty/this.WHEATMAX)*100 < 66){
-            game.debug.geom(this.wheatBar,'#ffff00');
-        } 
-        else if ((this.wheatQty/this.WHEATMAX)*100 < 33){
+        if ((this.wheatQty/this.WHEATMAX)*100 < 33){
             game.debug.geom(this.wheatBar,'#ff0000');
         } 
+        else if ((this.wheatQty/this.WHEATMAX)*100 < 66){
+            game.debug.geom(this.wheatBar,'#ffff00');
+        }  
         else if ((this.wheatQty/this.WHEATMAX)*100 > 100){ //overflow case for debugging
             game.debug.geom(this.wheatBar,'#000000');
         }
         else{
             game.debug.geom(this.wheatBar,'#00ff00');
         }
-        if ((this.globalMorale/this.GLOBALMAX)*100 < 66){
-            game.debug.geom(this.globalMoraleBar,'#ffff00');
-        } 
-        else if ((this.globalMorale/this.GLOBALMAX)*100 < 33){
+
+        if ((this.globalMorale/this.GLOBALMAX)*100 < 33){
             game.debug.geom(this.globalMoraleBar,'#ff0000');
+        } 
+        else if ((this.globalMorale/this.GLOBALMAX)*100 < 66){
+            game.debug.geom(this.globalMoraleBar,'#ffff00');
         } 
         else if ((this.globalMorale/this.GLOBALMAX)*100 > 100){ //overflow case for debugging
             game.debug.geom(this.wheatBar,'#000000');
@@ -280,11 +313,12 @@ gameplayState.prototype.update = function() {
         else{
             game.debug.geom(this.globalMoraleBar,'#00ff00');
         }
-        if ((this.localMorale/this.LOCALMAX)*100 < 66){
-            game.debug.geom(this.localMoraleBar,'#ffff00');
-        } 
-        else if ((this.localMorale/this.LOCALMAX)*100 < 33){
+
+        if ((this.localMorale/this.LOCALMAX)*100 < 33){
             game.debug.geom(this.localMoraleBar,'#ff0000');
+        } 
+        else if ((this.localMorale/this.LOCALMAX)*100 < 66){
+            game.debug.geom(this.localMoraleBar,'#ffff00');
         } 
         else if ((this.localMorale/this.LOCALMAX)*100 > 100){ //overflow case for debugging
             game.debug.geom(this.wheatBar,'#000000');
@@ -300,6 +334,13 @@ gameplayState.prototype.update = function() {
     if (currentEvent.eventStarted) {
         // Necessary to check as the event can be started whenever the user taps on it. This happens within EventRequest and not gameplayState.
         this.inMapView = false;
+        game.world.bringToTop(this.textWheat);
+        game.world.bringToTop(this.textLocal);
+        game.world.bringToTop(this.textGlobal);
+        game.world.bringToTop(this.textTurn);
+        game.world.bringToTop(this.wheatQIcon);
+        game.world.bringToTop(this.localMoraleIcon);
+        game.world.bringToTop(this.globalMoraleIcon);
     }
 
     if (this.inMapView) {
@@ -328,7 +369,13 @@ gameplayState.prototype.update = function() {
             // Not dragging, pointer was just pressed down.
             this.gamePointerDown(this.mapSprite.x);
         }
-
+        game.world.bringToTop(this.textWheat);
+        game.world.bringToTop(this.textLocal);
+        game.world.bringToTop(this.textGlobal);
+        game.world.bringToTop(this.textTurn);
+        game.world.bringToTop(this.wheatQIcon);
+        game.world.bringToTop(this.localMoraleIcon);
+        game.world.bringToTop(this.globalMoraleIcon);
         this.displayCurrentEvent();
     } else {
         // Event screen is up,
@@ -339,6 +386,8 @@ gameplayState.prototype.update = function() {
                 if (Math.abs(pointerDragDistance) >= 200) {
                     // a pointerDragDistance value below zero indicates a swipe to the left.
                     this.eventSwiped(pointerDragDistance > 0);
+                    ovalOfficeMusic.pause();
+                    overworldMusic.play();
                 }
                 this.gamePointerUp();
             }
