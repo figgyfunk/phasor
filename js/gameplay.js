@@ -43,7 +43,8 @@ gameplayState.prototype.create = function() {
 
 
     // For displaying map and each country, and displaying events for countries.
-    this.mapSprite = null
+    this.mapSprite = null;
+    this.oceanSprite = null;
     this.inMapView = true;
     this.countryObjectMap = new Map(); // Keys will be country names, values will be countries.
 
@@ -78,6 +79,8 @@ gameplayState.prototype.create = function() {
 
     this.mapSprite = game.add.sprite(0, 0, "worldmap");
     this.mapSprite.scale.setTo(RESOLUTION_SCALE, RESOLUTION_SCALE); 
+    this.oceanSprite = game.add.sprite(0, 0, "ocean");
+    this.oceanSprite.scale.setTo(RESOLUTION_SCALE, RESOLUTION_SCALE); 
     // Begin initializing Countries and adding to countryObjectMap
     this.countryObjectMap.set("West Europe", new Country(game, 'West Europe'));
     this.countryObjectMap.set("India", new Country(game,'India'));
@@ -268,10 +271,13 @@ gameplayState.prototype.update = function() {
             let newMapPosX = this.fixedPointX + pointerDragDistance;
             if (newMapPosX > 0) {
                 this.mapSprite.x = 0;
+                this.oceanSprite.x = 0;
             } else if (newMapPosX > -(this.mapSprite.width - game.width)) {
                 this.mapSprite.x = newMapPosX;
+                this.oceanSprite.x = newMapPosX;
             } else {
                 this.mapSprite.x = -(this.mapSprite.width - game.width);
+                this.oceanSprite.x = -(this.mapSprite.width - game.width);
             }
 
             if (this.gamePointer.isUp) {
@@ -283,6 +289,7 @@ gameplayState.prototype.update = function() {
         } else if (this.gamePointer.isDown) { 
             // Not dragging, pointer was just pressed down.
             this.gamePointerDown(this.mapSprite.x);
+            this.gamePointerDown(this.oceanSprite.x);
         }
 
         this.displayCurrentEvent();
