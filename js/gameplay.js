@@ -138,7 +138,7 @@ gameplayState.prototype.create = function() {
     // this.countryEvents.push("Soviet Union");
     // this.countryEvents.push("South Africa");
     // this.countryEvents.push("North Africa");
-    this.countryEvents.push("Blue Countries");
+    // this.countryEvents.push("Blue Countries");
     this.countryEvents.push("West Europe");
     this.countryEvents.push("East Africa");
     this.countryEvents.push("Soviet Union");
@@ -380,6 +380,7 @@ gameplayState.prototype.update = function() {
     } else {
         // Event screen is up,
         if (this.dragging) {
+
             let pointerDragDistance = this.gamePointer.x - this.pointerDownStartX;
 
             if (this.gamePointer.isUp) {

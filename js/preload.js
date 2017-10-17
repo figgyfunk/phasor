@@ -7,6 +7,8 @@ preloadState.prototype.preload = function() {
     // Music and sound
     game.load.audio("Overworld Music", "assets/Music/map_theme.ogg");
     game.load.audio("Oval Office Music", "assets/Music/oval_office_theme.ogg");
+    game.load.audio("Newspaper Music", "assets/Music/newspaper_theme.ogg");
+    game.load.audio("Alert", "assts/Music/alert_noise.ogg");
 
     game.load.image("worldmap", "assets/map/map.png");
     game.load.image("ocean", "assets/map/ocean.png");
