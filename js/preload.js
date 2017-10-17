@@ -25,6 +25,7 @@ preloadState.prototype.preload = function() {
     game.load.image("localmorale", "assets/main_screen/moral_flag.png");
     game.load.image("globalmorale", "assets/main_screen/moral_world.png");
     game.load.image("wheatQ", "assets/main_screen/wheat_for_now.png");
+    game.load.image("eventLocationArrow", "assets/main_screen/arrow");
 
     // oval office
     game.load.image("ovaloffice", "assets/main_screen/oval_office.png");
