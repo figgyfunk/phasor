@@ -1,28 +1,3 @@
-// // global variables for highscores
-// var score, highscore, scoreDisplay, highscoreText;
-
-//         //Score and Highscore variables.
-//     var score = 0;
-
-//     game.add.text(30, 20, "SCORE:", { font: "bold 12px sans-serif",
-//     fill: "#46c0f9",
-//     align: "center" });
-
-//     scoreDisplay = game.add.text(80, 19, score,{ font: "bold 14px sans-serif",
-//     fill: "#46c0f9",
-//     align: "center" });
-
-//     highScoreText = this.game.add.text(game.width-100, 20,
-//     'High Score: ' + highscore,
-//     { font: "bold 10px Lato", fill: "#46c0f9", align: "center" });
-
-//         //Highscore CODE
-//         highScoreText.text = 'High Score: ' + localStorage.getItem("flappyhighscore"); {
-//         if (score > localStorage.getItem("flappyhighscore")) { 
-//             localStorage.setItem("flappyhighscore", score);
-//         }
-//     }
-
 // The constructor.  A function constructor
 let HighScore = function(){
 	this.highest = 0;

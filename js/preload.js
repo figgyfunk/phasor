@@ -5,6 +5,7 @@ let preloadState = function(){
 
 preloadState.prototype.preload = function() {
     game.load.image("worldmap", "assets/map/map.png");
+    game.load.image("ocean", "assets/map/ocean.png");
 
     game.load.json("countryData", "assets/countryData.json");
 
@@ -31,9 +32,9 @@ preloadState.prototype.preload = function() {
 
     // presidents
     game.load.image("Argentina", "assets/temp_presidents/Argentina.png");
-    game.load.image("Australia", "assets/temp_presidents/Australia.png");
+    game.load.image("Australia", "assets/finished presidents/Australia.png");
     game.load.image("Brazil", "assets/temp_presidents/Brazil.png");
-    game.load.image("Canada", "assets/temp_presidents/Canada.png");
+    game.load.image("Canada", "assets/finished presidents/Canada.png");
     game.load.image("Central America", "assets/temp_presidents/Central_America.png");
     game.load.image("China", "assets/temp_presidents/China.png");
     game.load.image("East Africa", "assets/temp_presidents/East_Africa.png");
@@ -44,7 +45,7 @@ preloadState.prototype.preload = function() {
     game.load.image("Pacific Islands", "assets/temp_presidents/Pacific_islands.png");
     game.load.image("South Africa", "assets/temp_presidents/South_Africa.png");
     game.load.image("Soviet Union", "assets/temp_presidents/soviet_union.png");
-    game.load.image("USA", "assets/temp_presidents/USA.png");
+    game.load.image("USA", "assets/finished presidents/USA.png");
     game.load.image("West Africa", "assets/temp_presidents/West_Africa.png");
     game.load.image("West Europe", "assets/temp_presidents/West_Europe.png");
 
