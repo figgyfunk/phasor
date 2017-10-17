@@ -217,7 +217,13 @@ gameplayState.prototype.eventSwiped = function(isRight) {
         this.wheatQty = this.WHEATMAX;
     }
     if (this.wheatQty <= 0) {
-        this.state.start("LoseState");
+        this.state.start("WheatEnd");
+    }
+    if (this.localMorale <= 0) {
+        this.state.start("LocalEnd");
+    }
+    if (this.globalMorale <= 0) {
+        this.state.start("GlobalEnd");
     }
 
     // ALSO NEED TO CHECK FOR LOSS
@@ -354,7 +360,13 @@ gameplayState.prototype.update = function() {
             // Not dragging, pointer was just pressed down.
             this.gamePointerDown(this.mapSprite.x);
         }
-
+        game.world.bringToTop(this.textWheat);
+        game.world.bringToTop(this.textLocal);
+        game.world.bringToTop(this.textGlobal);
+        game.world.bringToTop(this.textTurn);
+        game.world.bringToTop(this.wheatQIcon);
+        game.world.bringToTop(this.localMoraleIcon);
+        game.world.bringToTop(this.globalMoraleIcon);
         this.displayCurrentEvent();
     } else {
         // Event screen is up,

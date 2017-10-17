@@ -24,7 +24,9 @@ preloadState.prototype.preload = function() {
 
     // Newspapers
     game.load.image("startNewspaper", "assets/first_newspaper.png");
-    game.load.image("loseNewspaper", "assets/ge_newspaper.png");
+    game.load.image("WheatNewspaper", "assets/wheat_end.png");
+    game.load.image("LocalMoraleNewspaper", "assets/US_moral_end.png");
+    game.load.image("GlobalMoraleNewspaper", "assets/final_newspaper.png");
     game.load.image("winNewspaper", "assets/ge_newspaper.png");
 
     // icons
