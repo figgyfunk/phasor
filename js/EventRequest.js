@@ -76,10 +76,15 @@ EventRequest.prototype.endEvent = function() {
 	this.president2.visible = false;
 	this.deskpic.visible = false;
 	this.bgpic.visible = false;
-	this.president2Halo.visible = false;
+	if (this.country !== "Blue Countries") {
+		this.president2Halo.visible = false;
+	}
+	
 	this.president1.destroy();
 	this.president2.destroy();
 	this.deskpic.destroy();
 	this.bgpic.destroy();
-	this.president2Halo.destroy();
+	if (this.country !== "Blue Countries") {
+		this.president2Halo.destroy();
+	}
 }
