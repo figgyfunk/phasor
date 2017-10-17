@@ -17,6 +17,9 @@ preloadState.prototype.preload = function() {
     // Temporary restart button
     game.load.image("restartbutton", "assets/restart.png");
 
+    // Newspapers
+    game.load.image("startNewspaper", "assets/first_newspaper.png");
+
     // icons
     game.load.image("localmorale", "assets/main_screen/moral_flag.png");
     game.load.image("globalmorale", "assets/main_screen/moral_world.png");
