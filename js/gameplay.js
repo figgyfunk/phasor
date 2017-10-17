@@ -281,23 +281,24 @@ gameplayState.prototype.update = function() {
         this.localMoraleBar.resize(this.STATUS_BAR_LENGTH*(this.localMorale/this.GLOBALMAX), 10); 
         this.globalMoraleBar.resize(this.STATUS_BAR_LENGTH*(this.globalMorale/this.GLOBALMAX), 10);
 
-        if ((this.wheatQty/this.WHEATMAX)*100 < 66){
-            game.debug.geom(this.wheatBar,'#ffff00');
-        } 
-        else if ((this.wheatQty/this.WHEATMAX)*100 < 33){
+        if ((this.wheatQty/this.WHEATMAX)*100 < 33){
             game.debug.geom(this.wheatBar,'#ff0000');
         } 
+        else if ((this.wheatQty/this.WHEATMAX)*100 < 66){
+            game.debug.geom(this.wheatBar,'#ffff00');
+        }  
         else if ((this.wheatQty/this.WHEATMAX)*100 > 100){ //overflow case for debugging
             game.debug.geom(this.wheatBar,'#000000');
         }
         else{
             game.debug.geom(this.wheatBar,'#00ff00');
         }
-        if ((this.globalMorale/this.GLOBALMAX)*100 < 66){
-            game.debug.geom(this.globalMoraleBar,'#ffff00');
-        } 
-        else if ((this.globalMorale/this.GLOBALMAX)*100 < 33){
+
+        if ((this.globalMorale/this.GLOBALMAX)*100 < 33){
             game.debug.geom(this.globalMoraleBar,'#ff0000');
+        } 
+        else if ((this.globalMorale/this.GLOBALMAX)*100 < 66){
+            game.debug.geom(this.globalMoraleBar,'#ffff00');
         } 
         else if ((this.globalMorale/this.GLOBALMAX)*100 > 100){ //overflow case for debugging
             game.debug.geom(this.wheatBar,'#000000');
@@ -305,11 +306,12 @@ gameplayState.prototype.update = function() {
         else{
             game.debug.geom(this.globalMoraleBar,'#00ff00');
         }
-        if ((this.localMorale/this.LOCALMAX)*100 < 66){
-            game.debug.geom(this.localMoraleBar,'#ffff00');
-        } 
-        else if ((this.localMorale/this.LOCALMAX)*100 < 33){
+
+        if ((this.localMorale/this.LOCALMAX)*100 < 33){
             game.debug.geom(this.localMoraleBar,'#ff0000');
+        } 
+        else if ((this.localMorale/this.LOCALMAX)*100 < 66){
+            game.debug.geom(this.localMoraleBar,'#ffff00');
         } 
         else if ((this.localMorale/this.LOCALMAX)*100 > 100){ //overflow case for debugging
             game.debug.geom(this.wheatBar,'#000000');
