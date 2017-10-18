@@ -104,4 +104,6 @@ EventRequest.prototype.endEvent = function() {
 	if (this.country !== "Blue Countries") {
 		this.president2Halo.destroy();
 	}
+
+	eventAlertSound.play();
 }
