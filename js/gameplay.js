@@ -181,6 +181,8 @@ gameplayState.prototype.create = function() {
     this.eventDecayLength = 3;
     this.eventDecaying = false;
 
+    this.endOfGame = false;
+
 
 };
 
@@ -244,7 +246,10 @@ gameplayState.prototype.eventSwiped = function(isRight) {
     if (this.globalMorale > this.GLOBALMAX) {
         this.globalMorale = this.GLOBALMAX;
     }
-    this.wheatQty += this.calculateWheatGain();
+
+    if (currentCountry.name !== 'Blue Countries') {
+        this.wheatQty += this.calculateWheatGain();
+    }
     if (this.wheatQty > this.WHEATMAX) {
         this.wheatQty = this.WHEATMAX;
     }
@@ -281,7 +286,8 @@ gameplayState.prototype.eventSwiped = function(isRight) {
     console.log(this.countryEvents.length);
     if (this.turnCounter === this.countryEvents.length - 1) {
         console.log("No More Events!");
-        this.state.start('NewspaperSpinState', true, false, "win");
+        this.endOfGame = true;
+        currentCountry.currentIndex = 0;
     } else {
         this.turnCounter++;
 
@@ -329,40 +335,40 @@ gameplayState.prototype.eventInScreen = function() {
 }
 
 gameplayState.prototype.checkBarColor = function() {
-    if ((this.wheatQty/this.WHEATMAX)*100 < 33 || this.wheatBar.width/2 < 33){
+    if ((this.wheatQty/this.WHEATMAX)*100 < 33 || this.wheatBar.width/1.5 < 33){
         game.debug.geom(this.wheatBar,'#ff0000');
     } 
-    else if ((this.wheatQty/this.WHEATMAX)*100 < 66 || this.wheatBar.width/2 < 66){
+    else if ((this.wheatQty/this.WHEATMAX)*100 < 66 || this.wheatBar.width/1.5 < 66){
         game.debug.geom(this.wheatBar,'#ffff00');
     }  
-    else if ((this.wheatQty/this.WHEATMAX)*100 > 100 || this.wheatBar.width/2 > 100){ //overflow case for debugging
+    else if ((this.wheatQty/this.WHEATMAX)*100 > 100 || this.wheatBar.width/1.5 > 100){ //overflow case for debugging
         game.debug.geom(this.wheatBar,'#000000');
     }
     else{
         game.debug.geom(this.wheatBar,'#00ff00');
     }
 
-    if ((this.globalMorale/this.GLOBALMAX)*100 < 33 || this.globalMoraleBar.width/2 < 33){
+    if ((this.globalMorale/this.GLOBALMAX)*100 < 33 || this.globalMoraleBar.width/1.5 < 33){
         game.debug.geom(this.globalMoraleBar,'#ff0000');
     } 
-    else if ((this.globalMorale/this.GLOBALMAX)*100 < 66 || this.globalMoraleBar.width/2 < 66){
+    else if ((this.globalMorale/this.GLOBALMAX)*100 < 66 || this.globalMoraleBar.width/1.5 < 66){
         game.debug.geom(this.globalMoraleBar,'#ffff00');
     } 
-    else if ((this.globalMorale/this.GLOBALMAX)*100 > 100 || this.globalMoraleBar.width/2 > 100){ //overflow case for debugging
-        game.debug.geom(this.wheatBar,'#000000');
+    else if ((this.globalMorale/this.GLOBALMAX)*100 > 100 || this.globalMoraleBar.width/1.5 > 100){ //overflow case for debugging
+        game.debug.geom(this.globalMoraleBar,'#000000');
     }
     else{
         game.debug.geom(this.globalMoraleBar,'#00ff00');
     }
 
-    if ((this.localMorale/this.LOCALMAX)*100 < 33 || this.localMoraleBar.width/2 < 33){
+    if ((this.localMorale/this.LOCALMAX)*100 < 33 || this.localMoraleBar.width/1.5 < 33){
         game.debug.geom(this.localMoraleBar,'#ff0000');
     } 
-    else if ((this.localMorale/this.LOCALMAX)*100 < 66 || this.localMoraleBar.width/2 < 66){
+    else if ((this.localMorale/this.LOCALMAX)*100 < 66 || this.localMoraleBar.width/1.5 < 66){
         game.debug.geom(this.localMoraleBar,'#ffff00');
     } 
-    else if ((this.localMorale/this.LOCALMAX)*100 > 100 || this.localMoraleBar.width/2 > 100){ //overflow case for debugging
-        game.debug.geom(this.wheatBar,'#000000');
+    else if ((this.localMorale/this.LOCALMAX)*100 > 100 || this.localMoraleBar.width/1.5 > 100){ //overflow case for debugging
+        game.debug.geom(this.localMoraleBar,'#000000');
     }
     else{
         game.debug.geom(this.localMoraleBar,'#00ff00');
@@ -478,7 +484,9 @@ gameplayState.prototype.update = function() {
             // this means the previous event screen is still up
             this.eventDecayTimer -= game.time.physicsElapsed;
             if (this.eventDecayTimer <= 0) {
-                
+                if (this.endOfGame) {
+                    this.state.start('NewspaperSpinState', true, false, "win");                    
+                }
                 // Times up! need to get rid of the screen.
                 this.eventDecaying = false;
                 this.eventDecayTimer = 0;
@@ -534,6 +542,6 @@ gameplayState.prototype.update = function() {
         this.textGlobal.fill = '#000000';
         // this.textTurn.fill = '#000000';
     }
-    window.localStorage.setItem('Score', Math.ceil(this.wheatQty * 0.2 + this.localMorale * 0.2 + this.globalMorale * 0.2 + (this.turnCounter + 4) * 0.4));
+    window.localStorage.setItem('Score', Math.ceil(this.wheatQty * 0.2 + this.localMorale * 0.2 + this.globalMorale * 0.2 + (this.turnCounter + 4) * 2 * 0.4));
     // console.log(window.localStorage.getItem('Score'));
 };
