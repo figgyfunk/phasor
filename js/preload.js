@@ -170,6 +170,8 @@ preloadState.prototype.create = function() {
     // Arbitrary numbers !!
     overworldMusic.volume = 0.4;
     ovalOfficeMusic.volume = 0.8;
+    
+    eventAlertSound.volume = 2;
 
     ovalOfficeMusic.loop = true;
     overworldMusic.loop = true;

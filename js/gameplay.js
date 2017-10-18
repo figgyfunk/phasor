@@ -171,11 +171,17 @@ gameplayState.prototype.create = function() {
 
     // Music
     ovalOfficeMusic.pause();
+
+    eventAlertSound.play();
     overworldMusic.play();
+
+    
 
     this.eventDecayTimer = 0;
     this.eventDecayLength = 2;
     this.eventDecaying = false;
+
+
 };
 
 
@@ -284,6 +290,8 @@ gameplayState.prototype.eventSwiped = function(isRight) {
     this.textLocal.text = this.localMorale;
     this.textGlobal.text = this.globalMorale;
 
+
+    
 
     console.log(this.countryObjectMap.get(currentEvent.country).currentState);
 
