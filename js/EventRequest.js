@@ -1,12 +1,13 @@
 /* EventRequest class*/
-EventRequest = function(game, x, y, text, country, wheatNeeded, globalMoraleYes, localMoraleYes,  globalMoraleNo, localMoraleNo, startState) {
+EventRequest = function(game, x, y, text, country, wheatNeeded, globalMoraleYes, localMoraleYes,  globalMoraleNo, localMoraleNo, startState, yesText, noText) {
     this.wheatNeeded = wheatNeeded;
 	this.globalMoraleYes = globalMoraleYes;
 	this.localMoraleYes = localMoraleYes;
 	this.globalMoraleNo = globalMoraleNo;
 	this.localMoraleNo = localMoraleNo;
-	this.text = game.add.text(x, y, text);
-	this.text.visible = false;
+	this.eventText = text;
+	this.yesText = yesText;
+	this.noText = noText;
 	this.pic = game.add.sprite(x, y, "Alert");
 	this.pic.scale.setTo(RESOLUTION_SCALE / 1.5, RESOLUTION_SCALE / 1.5);
 	this.pic.visible = false;
@@ -36,11 +37,8 @@ EventRequest.prototype.updateXPosition = function(newX) {
 EventRequest.prototype.startEvent = function() {
 	this.eventStarted = true;
 	
-	this.text.visible = true;
 	this.pic.visible = false;
 	this.pic.inputEnabled = false;
-	this.text.position.y = 600;
-	this.text.position.x = 50;
 	this.bgpic = game.add.sprite(0, 0, "ovaloffice");
 	this.president1 = game.add.sprite(-450, game.world.height - 450 - 210, "USA");
 	if (this.country !== "Blue Countries") {
@@ -61,6 +59,9 @@ EventRequest.prototype.startEvent = function() {
 	}
 	this.deskpic = game.add.sprite(game.world.centerX - 1150/2, game.world.height - 280, "desk");
 
+	textBox.updateText(this.eventText);
+	textBox.showText();
+
 	overworldMusic.pause();
 	ovalOfficeMusic.play();
 }
@@ -69,8 +70,24 @@ EventRequest.prototype.resetPicPosition = function() {
 	this.personPic.position.x = 300;
 }
 
+EventRequest.prototype.updateEventForDecay = function(newCountryState) {
+	game.world.bringToTop(this.bgpic);
+	game.world.bringToTop(this.president1);
+
+	if (this.country !== "Blue Countries") {
+		let haloPosX = this.president2Halo.x;
+		let haloPosY = this.president2Halo.y;
+		this.president2Halo.destroy();
+		this.president2Halo = game.add.sprite(haloPosX, haloPosY, newCountryState+"Halo");
+	}
+
+	game.world.bringToTop(this.president2);
+	game.world.bringToTop(this.deskpic);
+	textBox.showText();
+}
+
+
 EventRequest.prototype.endEvent = function() {
-	this.text.visible = false;
 	this.eventStarted = false;
 	this.president1.visible = false;
 	this.president2.visible = false;

@@ -8,7 +8,7 @@ preloadState.prototype.preload = function() {
     game.load.audio("Overworld Music", "assets/Music/map_theme.ogg");
     game.load.audio("Oval Office Music", "assets/Music/oval_office_theme.ogg");
     game.load.audio("Newspaper Music", "assets/Music/newspaper_theme.ogg");
-    game.load.audio("Alert", "assts/Music/alert_noise.ogg");
+    game.load.audio("Alert", "assets/Music/alert_noise.ogg");
 
     game.load.image("worldmap", "assets/map/map.png");
     game.load.image("ocean", "assets/map/ocean.png");
@@ -34,6 +34,7 @@ preloadState.prototype.preload = function() {
     game.load.image("localmorale", "assets/main_screen/moral_flag.png");
     game.load.image("globalmorale", "assets/main_screen/moral_world.png");
     game.load.image("wheatQ", "assets/main_screen/wheat_for_now.png");
+    game.load.image("eventLocationArrow", "assets/map/map_arrow.png");
 
     // oval office
     game.load.image("ovaloffice", "assets/main_screen/oval_office.png");

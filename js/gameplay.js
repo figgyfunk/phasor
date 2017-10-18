@@ -86,10 +86,12 @@ gameplayState.prototype.create = function() {
     this.mapSprite = game.add.sprite(0, 0, "worldmap");
     this.mapSprite.scale.setTo(RESOLUTION_SCALE, RESOLUTION_SCALE);
     this.oceanSprite = game.add.sprite(0, 0, "ocean");
-    this.oceanSprite.scale.setTo(RESOLUTION_SCALE, RESOLUTION_SCALE);
+    this.oceanSprite.scale.setTo(RESOLUTION_SCALE, RESOLUTION_SCALE); 
+    this.eventPointerSprite = game.add.sprite(100, 100, "eventLocationArrow");
+    this.eventPointerSprite.anchor.setTo(0.5, 0.5);
+    this.eventPointerSprite.visible = false;
+
     // Begin initializing Countries and adding to countryObjectMap
-
-
     this.countryObjectMap.set("Blue Countries", new Country(game, 'Blue Countries'));
     this.countryObjectMap.set("Brazil", new Country(game, 'Brazil'));
     this.countryObjectMap.set("Central America", new Country(game, 'Central America'));
@@ -165,9 +167,16 @@ gameplayState.prototype.create = function() {
     this.countryEvents.push("Soviet Union");
 
 
+    // Text Box that is used to display event Text
+    textBox = new TextBox("", 250, 620);
+
     // Music
     ovalOfficeMusic.pause();
     overworldMusic.play();
+
+    this.eventDecayTimer = 0;
+    this.eventDecayLength = 2;
+    this.eventDecaying = false;
 };
 
 
@@ -208,6 +217,11 @@ gameplayState.prototype.gamePointerUp = function() {
 gameplayState.prototype.eventSwiped = function(isRight) {
     let currentCountry = this.countryObjectMap.get(this.countryEvents[this.turnCounter]);
     let currentEvent = currentCountry.eventData[currentCountry.currentIndex];
+
+
+    textBox.updateText((isRight === true) ? currentEvent.yesText : currentEvent.noText);
+
+    textBox.showText();
     if (isRight) {
         this.wheatQty -= currentEvent.wheatNeeded;
         this.globalMorale += currentEvent.globalMoraleYes;
@@ -237,17 +251,26 @@ gameplayState.prototype.eventSwiped = function(isRight) {
     if (this.globalMorale <= 0) {
         this.state.start("GlobalEnd");
     }
-
-    // ALSO NEED TO CHECK FOR LOSS
-
-    currentEvent.endEvent();
+    
 
     // pass in true for choosing yes, and false for choosing no.
     // a swipe to the right means the player chose yes.
     this.countryObjectMap.get(currentEvent.country).processDecision(isRight);
-    this.inMapView = true;
     this.wheatQty += this.calculateWheatGain();
 
+    // Begin decay timer.
+    this.eventDecaying = true;
+    this.eventDecayTimer = this.eventDecayLength;
+    currentEvent.updateEventForDecay(this.countryObjectMap.get(currentEvent.country).currentState);
+
+
+    game.world.bringToTop(this.textWheat);
+    game.world.bringToTop(this.textLocal);
+    game.world.bringToTop(this.textGlobal);
+    game.world.bringToTop(this.textTurn);
+    game.world.bringToTop(this.wheatQIcon);
+    game.world.bringToTop(this.localMoraleIcon);
+    game.world.bringToTop(this.globalMoraleIcon);
 
     console.log(this.turnCounter);
     console.log(this.countryEvents.length);
@@ -285,6 +308,19 @@ gameplayState.prototype.updateCountryPositions = function() {
          count++;
      }
 };
+
+gameplayState.prototype.eventInScreen = function() {
+    let currentCountry = this.countryObjectMap.get(this.countryEvents[this.turnCounter]);
+    let event = currentCountry.eventData[currentCountry.currentIndex];
+    if (event.pic.inCamera){
+        return 0;
+    }
+    if (event.pic.x < 0){
+        return -1
+    }
+    
+    return 1;
+}
 
 gameplayState.prototype.checkBarColor = function() {
     if ((this.wheatQty/this.WHEATMAX)*100 < 33 || this.wheatBar.width/2 < 33){
@@ -397,11 +433,55 @@ gameplayState.prototype.update = function() {
             // Not dragging, pointer was just pressed down.
             this.gamePointerDown(this.mapSprite.x);
         }
+
+        let currentCountry = this.countryObjectMap.get(this.countryEvents[this.turnCounter]);
+        let event = currentCountry.eventData[currentCountry.currentIndex];
+        if (this.eventInScreen() < 0){
+            this.eventPointerSprite.visible = true;
+            game.world.bringToTop(this.eventPointerSprite);
+            this.eventPointerSprite.x = 45;
+            this.eventPointerSprite.y = event.pic.y;
+            this.eventPointerSprite.angle = 180;
+        } else if (this.eventInScreen() > 0){
+            this.eventPointerSprite.visible = true;
+            game.world.bringToTop(this.eventPointerSprite);
+            this.eventPointerSprite.x = 1234;
+            this.eventPointerSprite.y = event.pic.y;
+            this.eventPointerSprite.angle = 0;
+        } else {
+            this.eventPointerSprite.visible = false;
+        }
+        game.world.bringToTop(this.textWheat);
+        game.world.bringToTop(this.textLocal);
+        game.world.bringToTop(this.textGlobal);
+        game.world.bringToTop(this.textTurn);
+        game.world.bringToTop(this.wheatQIcon);
+        game.world.bringToTop(this.localMoraleIcon);
+        game.world.bringToTop(this.globalMoraleIcon);
+
         this.displayCurrentEvent();
     } else {
         this.inEvent = true;
         // Event screen is up,
-        if (this.dragging) {
+        this.eventPointerSprite.visible = false;
+        if (this.eventDecaying) {
+            console.log("GOTHERE");
+            // this means the previous event screen is still up
+            this.eventDecayTimer -= game.time.physicsElapsed;
+            if (this.eventDecayTimer <= 0) {
+                
+                // Times up! need to get rid of the screen.
+                this.eventDecaying = false;
+                this.eventDecayTimer = 0;
+                textBox.hideText();
+
+                let previousCountry = this.countryObjectMap.get(this.countryEvents[this.turnCounter - 1]);
+                let previousEvent = previousCountry.eventData[previousCountry.previousIndex];
+                previousEvent.endEvent();
+
+                this.inMapView = true;
+            }
+        } else if (this.dragging) {
 
             let pointerDragDistance = this.gamePointer.x - this.pointerDownStartX;
 
