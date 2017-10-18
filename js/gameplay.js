@@ -84,12 +84,12 @@ gameplayState.prototype.create = function() {
     this.gamePointerUp();
 
     this.mapSprite = game.add.sprite(0, 0, "worldmap");
-    this.mapSprite.scale.setTo(RESOLUTION_SCALE, RESOLUTION_SCALE); 
+    this.mapSprite.scale.setTo(RESOLUTION_SCALE, RESOLUTION_SCALE);
     this.oceanSprite = game.add.sprite(0, 0, "ocean");
-    this.oceanSprite.scale.setTo(RESOLUTION_SCALE, RESOLUTION_SCALE); 
+    this.oceanSprite.scale.setTo(RESOLUTION_SCALE, RESOLUTION_SCALE);
     // Begin initializing Countries and adding to countryObjectMap
-    
-    
+
+
     this.countryObjectMap.set("Blue Countries", new Country(game, 'Blue Countries'));
     this.countryObjectMap.set("Brazil", new Country(game, 'Brazil'));
     this.countryObjectMap.set("Central America", new Country(game, 'Central America'));
@@ -139,25 +139,29 @@ gameplayState.prototype.create = function() {
     // this.countryEvents.push("Soviet Union");
     // this.countryEvents.push("South Africa");
     // this.countryEvents.push("North Africa");
-    this.countryEvents.push("Blue Countries");
+    // this.countryEvents.push("Blue Countries");
     this.countryEvents.push("West Europe");
+    this.countryEvents.push("Blue Countries");
     this.countryEvents.push("East Africa");
     this.countryEvents.push("Soviet Union");
     this.countryEvents.push("Central America");
     this.countryEvents.push("China");
     this.countryEvents.push("East Europe");
     this.countryEvents.push("Brazil");
+    this.countryEvents.push("Blue Countries");
     this.countryEvents.push("India");
     this.countryEvents.push("Soviet Union");
     this.countryEvents.push("India");
     this.countryEvents.push("North Africa");
     this.countryEvents.push("East Europe");
     this.countryEvents.push("Pacific Islands");
+    this.countryEvents.push("Blue Countries");
     this.countryEvents.push("West Africa");
     this.countryEvents.push("Pacific Islands");
     this.countryEvents.push("South Africa");
     this.countryEvents.push("India");
     this.countryEvents.push("East Europe");
+    this.countryEvents.push("Blue Countries");
     this.countryEvents.push("Soviet Union");
 
 
@@ -410,6 +414,7 @@ gameplayState.prototype.update = function() {
         this.inEvent = true;
         // Event screen is up,
         if (this.dragging) {
+
             let pointerDragDistance = this.gamePointer.x - this.pointerDownStartX;
 
             if (this.gamePointer.isUp) {
