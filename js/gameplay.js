@@ -62,7 +62,7 @@ gameplayState.prototype.create = function() {
     this.LOCALMAX = 100;
     this.inEvent = false;
 
-    this.wheatIncreaseFlatRate = 15;
+    this.wheatIncreaseFlatRate = 20;
 
     //global variables to control status locations respectively. Based on the top left corner of the text fields/graphics
     this.WHEAT_STATUS_X = 190-100;
@@ -167,7 +167,7 @@ gameplayState.prototype.create = function() {
 
 
     // Text Box that is used to display event Text
-    textBox = new TextBox("", 250, 610);
+    textBox = new TextBox("", 200, 550);
 
     // Music
     ovalOfficeMusic.pause();
