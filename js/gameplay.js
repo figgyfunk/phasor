@@ -86,6 +86,9 @@ gameplayState.prototype.create = function() {
     this.mapSprite.scale.setTo(RESOLUTION_SCALE, RESOLUTION_SCALE); 
     this.oceanSprite = game.add.sprite(0, 0, "ocean");
     this.oceanSprite.scale.setTo(RESOLUTION_SCALE, RESOLUTION_SCALE); 
+    this.eventPointerSprite = game.add.sprite(100, 100, "eventLocationArrow");
+    this.eventPointerSprite.anchor.setTo(0.5, 0.5);
+    this.eventPointerSprite.visible = false;
     // Begin initializing Countries and adding to countryObjectMap
     
     
@@ -281,6 +284,19 @@ gameplayState.prototype.updateCountryPositions = function() {
      }
 };
 
+gameplayState.prototype.eventInScreen = function() {
+    let currentCountry = this.countryObjectMap.get(this.countryEvents[this.turnCounter]);
+    let event = currentCountry.eventData[currentCountry.currentIndex];
+    if (event.pic.inCamera){
+        return 0;
+    }
+    if (event.pic.x < 0){
+        return -1
+    }
+    
+    return 1;
+}
+
 gameplayState.prototype.update = function() {
     // status bar colour logic
     if (true){
@@ -369,6 +385,24 @@ gameplayState.prototype.update = function() {
             // Not dragging, pointer was just pressed down.
             this.gamePointerDown(this.mapSprite.x);
         }
+
+        let currentCountry = this.countryObjectMap.get(this.countryEvents[this.turnCounter]);
+        let event = currentCountry.eventData[currentCountry.currentIndex];
+        if (this.eventInScreen() < 0){
+            this.eventPointerSprite.visible = true;
+            game.world.bringToTop(this.eventPointerSprite);
+            this.eventPointerSprite.x = 45;
+            this.eventPointerSprite.y = event.pic.y;
+            this.eventPointerSprite.angle = 180;
+        } else if (this.eventInScreen() > 0){
+            this.eventPointerSprite.visible = true;
+            game.world.bringToTop(this.eventPointerSprite);
+            this.eventPointerSprite.x = 1234;
+            this.eventPointerSprite.y = event.pic.y;
+            this.eventPointerSprite.angle = 0;
+        } else {
+            this.eventPointerSprite.visible = false;
+        }
         game.world.bringToTop(this.textWheat);
         game.world.bringToTop(this.textLocal);
         game.world.bringToTop(this.textGlobal);
@@ -379,6 +413,7 @@ gameplayState.prototype.update = function() {
         this.displayCurrentEvent();
     } else {
         // Event screen is up,
+        this.eventPointerSprite.visible = false;
         if (this.dragging) {
             let pointerDragDistance = this.gamePointer.x - this.pointerDownStartX;
 
