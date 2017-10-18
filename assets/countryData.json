@@ -4,16 +4,46 @@
         "eventX": 300,
         "eventY": 200,
         "eventData": [
-            {
-                "eventText": "Hello I am America",
-                "eventYesText":"Haha",
-                "eventNoText": "HahaNo",
-                "wheatNeeded": 0,
-                "globalMoraleYes": 0,
-                "localMoraleYes": 0,
-                "globalMoraleNo": 0,
-                "localMoraleNo": 0
-            }
+        {
+            "eventText": "As your Secretary of State I feel I should inform you that not everyone from Western Europe is French.",
+            "eventYesText":"I'm glad you understand, please in the future do your research.",
+            "eventNoText": "Please for the sake of those your representing, be better.",
+            "wheatNeeded": 0,
+            "globalMoraleYes": 0,
+            "localMoraleYes": 0,
+            "globalMoraleNo": 0,
+            "localMoraleNo": 0
+        },
+        {
+            "eventText": "Me again. Although Brazil does have a good soccer team, not everyone in the country is on it, especially the President.",
+            "eventYesText":"Don't make promises you don't plan on keeping, but I believe in you.",
+            "eventNoText": "I don't think you understand the full consequences of your actions. Are you should you should be here?",
+            "wheatNeeded": 0,
+            "globalMoraleYes": 0,
+            "localMoraleYes": 0,
+            "globalMoraleNo": 0,
+            "localMoraleNo": 0
+        },
+        {
+            "eventText": "The general population is still recovering from the failure of the Vietnam war and they will be in shambles for years. Do you think we should've gone in?",
+            "eventYesText":"There are many young men now back home who would care to disagree.",
+            "eventNoText": "We can only hope that both sides will recovery I suppose.",
+            "wheatNeeded": 0,
+            "globalMoraleYes": 0,
+            "localMoraleYes": 0,
+            "globalMoraleNo": 0,
+            "localMoraleNo": 0
+        },
+        {
+            "eventText": "After all I've said you're still stuck on your assumptions of another country. Do you even care how your perceptions affect others?",
+            "eventYesText":"I don't care how much good or bad you've done. Anyone who can't learn to change for the better is the worst overall. I quit.",
+            "eventNoText": "Maybe the rest of America would agree with you. If so, then who are we to decide the lives of other countries? I quit.",
+            "wheatNeeded": 0,
+            "globalMoraleYes": 0,
+            "localMoraleYes": 0,
+            "globalMoraleNo": 0,
+            "localMoraleNo": 0
+        }
         ]
     },
     "Brazil": {
@@ -362,7 +392,7 @@
             {
                 "eventText": "Our tubers aren’t doing terrific, we need some wheat while we relocate our fields.",
                 "wheatNeeded": 10,
-                "eventYesText": "Thank you, I know this was spudden.",
+                "eventYesText": "Thank you, I know this was sudden.",
                 "eventNoText":"Ah, I fear we may end up tatering on the edge of disaster.",
                 "globalMoraleYes": 10,
                 "localMoraleYes": 5,
