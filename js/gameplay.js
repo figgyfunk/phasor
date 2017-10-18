@@ -372,22 +372,10 @@ gameplayState.prototype.resizeBar = function(isRight, currentEvent) {
         localMoraleChange = currentEvent.localMoraleYes;
         globalMoraleChange = currentEvent.globalMoraleYes;
     } else {
-        wheatQtyChange = currentEvent.wheatNeeded;
+        wheatQtyChange = 0;
         localMoraleChange = currentEvent.localMoraleNo;
         globalMoraleChange = currentEvent.globalMoraleNo;
     }
-    console.log("-----------");
-    console.log(currentEvent);
-    console.log(localMoraleChange);
-    // for (var i = 0; i < Math.abs(wheatQtyChange); i++) {
-    //     this.wheatBar.resize(this.STATUS_BAR_LENGTH*((this.wheatQty+i)/this.GLOBALMAX), 10); 
-    // }
-    // for (var i = 0; i < Math.abs(localMoraleChange); i++) {
-    //     this.localMoraleBar.resize(this.STATUS_BAR_LENGTH*((this.localMorale+i)/this.GLOBALMAX), 10); 
-    // }
-    // for(var i = 0; i < Math.abs(globalMoraleChange); i++) {
-    //     this.globalMoraleBar.resize(this.STATUS_BAR_LENGTH*((this.globalMorale+i)/this.GLOBALMAX), 10);
-    // }
     this.wheatBar.resize(this.STATUS_BAR_LENGTH*((this.wheatQty+wheatQtyChange)/this.GLOBALMAX), 10); 
     this.localMoraleBar.resize(this.STATUS_BAR_LENGTH*((this.localMorale+localMoraleChange)/this.GLOBALMAX), 10); 
     this.globalMoraleBar.resize(this.STATUS_BAR_LENGTH*((this.globalMorale+globalMoraleChange)/this.GLOBALMAX), 10);
@@ -532,6 +520,6 @@ gameplayState.prototype.update = function() {
         game.world.bringToTop(this.localMoraleIcon);
         game.world.bringToTop(this.globalMoraleIcon);
     }
-    window.localStorage.setItem('Score', this.wheatQty * 0.2 + this.localMorale * 0.2 + this.globalMorale * 0.6);
+    window.localStorage.setItem('Score', Math.ceil(this.wheatQty * 0.2 + this.localMorale * 0.2 + this.globalMorale * 0.6));
     // console.log(window.localStorage.getItem('Score'));
 };
