@@ -375,11 +375,18 @@ gameplayState.prototype.update = function() {
             this.gamePointerDown(this.mapSprite.x);
         }
 
+        let currentCountry = this.countryObjectMap.get(this.countryEvents[this.turnCounter]);
+        let event = currentCountry.eventData[currentCountry.currentIndex];
         if (this.eventInScreen() < 0){
-            game.world.bringToTop(this.eventPointerSprite);
-        } else if (this.eventInScreen() > 0){
+            this.eventPointerSprite.visible = true;
             game.world.bringToTop(this.eventPointerSprite);
             this.eventPointerSprite.x = 0;
+            this.eventPointerSprite.y = event.pic.y;
+        } else if (this.eventInScreen() > 0){
+            this.eventPointerSprite.visible = true;
+            game.world.bringToTop(this.eventPointerSprite);
+            this.eventPointerSprite.x = 1234;
+            this.eventPointerSprite.y = event.pic.y;
         }
         game.world.bringToTop(this.textWheat);
         game.world.bringToTop(this.textLocal);
@@ -391,7 +398,7 @@ gameplayState.prototype.update = function() {
         this.displayCurrentEvent();
     } else {
         // Event screen is up,
-        this.eventLocationArrow.visible = false;
+        this.eventPointerSprite.visible = false;
         if (this.dragging) {
             let pointerDragDistance = this.gamePointer.x - this.pointerDownStartX;
 
