@@ -18,10 +18,18 @@ preloadState.prototype.preload = function() {
     game.load.image("Alert", "assets/map/Alert.png");
     // Temporary event image
     game.load.image("man", "assets/man.png");
+    // Temporary start button
+    game.load.image("startbutton", "assets/start.png");
+    // Temporary restart button
+    game.load.image("restartbutton", "assets/restart.png");
+    //How to play screen background
+    game.load.image("HowToPlayPic", "assets/menu_screen.png");
+
     // menu
     game.load.image("title", "assets/map/title.png");
     game.load.image("startbutton", "assets/map/start.png");
     game.load.image("MenuButton", "assets/map/menu.png");
+    game.load.image("howbutton", "assets/map/How.png");
 
     // Newspapers
     game.load.image("startNewspaper", "assets/first_newspaper.png");

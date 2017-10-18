@@ -477,6 +477,7 @@ gameplayState.prototype.update = function() {
         this.inEvent = true;
         // Event screen is up,
         this.eventPointerSprite.visible = false;
+
         if (this.eventDecaying) {
             // this means the previous event screen is still up
             this.eventDecayTimer -= game.time.physicsElapsed;
