@@ -160,9 +160,16 @@ gameplayState.prototype.create = function() {
     this.countryEvents.push("Soviet Union");
 
 
+    // Text Box that is used to display event Text
+    textBox = new TextBox("", 250, 620);
+
     // Music
     ovalOfficeMusic.pause();
     overworldMusic.play();
+
+    this.eventDecayTimer = 0;
+    this.eventDecayLength = 2;
+    this.eventDecaying = false;
 };
 
 
@@ -203,6 +210,11 @@ gameplayState.prototype.gamePointerUp = function() {
 gameplayState.prototype.eventSwiped = function(isRight) {
     let currentCountry = this.countryObjectMap.get(this.countryEvents[this.turnCounter]);
     let currentEvent = currentCountry.eventData[currentCountry.currentIndex];
+
+
+    textBox.updateText((isRight === true) ? currentEvent.yesText : currentEvent.noText);
+
+    textBox.showText();
     if (isRight) {
         this.wheatQty -= currentEvent.wheatNeeded;
         this.globalMorale += currentEvent.globalMoraleYes;
@@ -232,17 +244,26 @@ gameplayState.prototype.eventSwiped = function(isRight) {
     if (this.globalMorale <= 0) {
         this.state.start("GlobalEnd");
     }
-
-    // ALSO NEED TO CHECK FOR LOSS
-
-    currentEvent.endEvent();
+    
 
     // pass in true for choosing yes, and false for choosing no.
     // a swipe to the right means the player chose yes.
     this.countryObjectMap.get(currentEvent.country).processDecision(isRight);
-    this.inMapView = true;
     this.wheatQty += this.calculateWheatGain();
 
+    // Begin decay timer.
+    this.eventDecaying = true;
+    this.eventDecayTimer = this.eventDecayLength;
+    currentEvent.updateEventForDecay(this.countryObjectMap.get(currentEvent.country).currentState);
+
+
+    game.world.bringToTop(this.textWheat);
+    game.world.bringToTop(this.textLocal);
+    game.world.bringToTop(this.textGlobal);
+    game.world.bringToTop(this.textTurn);
+    game.world.bringToTop(this.wheatQIcon);
+    game.world.bringToTop(this.localMoraleIcon);
+    game.world.bringToTop(this.globalMoraleIcon);
 
     console.log(this.turnCounter);
     console.log(this.countryEvents.length);
@@ -379,7 +400,24 @@ gameplayState.prototype.update = function() {
         this.displayCurrentEvent();
     } else {
         // Event screen is up,
-        if (this.dragging) {
+        if (this.eventDecaying) {
+            console.log("GOTHERE");
+            // this means the previous event screen is still up
+            this.eventDecayTimer -= game.time.physicsElapsed;
+            if (this.eventDecayTimer <= 0) {
+                
+                // Times up! need to get rid of the screen.
+                this.eventDecaying = false;
+                this.eventDecayTimer = 0;
+                textBox.hideText();
+
+                let previousCountry = this.countryObjectMap.get(this.countryEvents[this.turnCounter - 1]);
+                let previousEvent = previousCountry.eventData[previousCountry.previousIndex];
+                previousEvent.endEvent();
+
+                this.inMapView = true;
+            }
+        } else if (this.dragging) {
 
             let pointerDragDistance = this.gamePointer.x - this.pointerDownStartX;
 
