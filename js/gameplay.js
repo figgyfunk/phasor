@@ -534,6 +534,6 @@ gameplayState.prototype.update = function() {
         this.textGlobal.fill = '#000000';
         // this.textTurn.fill = '#000000';
     }
-    window.localStorage.setItem('Score', Math.ceil(this.wheatQty * 0.2 + this.localMorale * 0.2 + this.globalMorale * 0.6));
+    window.localStorage.setItem('Score', Math.ceil(this.wheatQty * 0.2 + this.localMorale * 0.2 + this.globalMorale * 0.2 + (this.turnCounter + 4) * 0.4);
     // console.log(window.localStorage.getItem('Score'));
 };
