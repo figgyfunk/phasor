@@ -392,7 +392,7 @@
             {
                 "eventText": "Our tubers aren’t doing terrific, we need some wheat while we relocate our fields.",
                 "wheatNeeded": 10,
-                "eventYesText": "Thank you, I know this was sudden.",
+                "eventYesText": "Thank you, I know this was spudden.",
                 "eventNoText":"Ah, I fear we may end up tatering on the edge of disaster.",
                 "globalMoraleYes": 10,
                 "localMoraleYes": 5,

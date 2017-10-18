@@ -62,7 +62,7 @@ gameplayState.prototype.create = function() {
     this.LOCALMAX = 100;
     this.inEvent = false;
 
-    this.wheatIncreaseFlatRate = 20;
+    this.wheatIncreaseFlatRate = 17;
 
     //global variables to control status locations respectively. Based on the top left corner of the text fields/graphics
     this.WHEAT_STATUS_X = 190-100;
@@ -186,7 +186,7 @@ gameplayState.prototype.create = function() {
 
 
 gameplayState.prototype.calculateWheatGain = function() {
-    return Math.ceil((this.localMorale / (this.LOCALMAX * 2)) * this.wheatIncreaseFlatRate);
+    return Math.ceil((this.localMorale / this.LOCALMAX) * this.wheatIncreaseFlatRate);
 };
 
 gameplayState.prototype.displayCurrentEvent = function() {
@@ -244,6 +244,7 @@ gameplayState.prototype.eventSwiped = function(isRight) {
     if (this.globalMorale > this.GLOBALMAX) {
         this.globalMorale = this.GLOBALMAX;
     }
+    this.wheatQty += this.calculateWheatGain();
     if (this.wheatQty > this.WHEATMAX) {
         this.wheatQty = this.WHEATMAX;
     }
@@ -261,7 +262,7 @@ gameplayState.prototype.eventSwiped = function(isRight) {
     // pass in true for choosing yes, and false for choosing no.
     // a swipe to the right means the player chose yes.
     this.countryObjectMap.get(currentEvent.country).processDecision(isRight);
-    this.wheatQty += this.calculateWheatGain();
+    
 
     // Begin decay timer.
     this.eventDecaying = true;
