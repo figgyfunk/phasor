@@ -178,7 +178,7 @@ gameplayState.prototype.create = function() {
     
 
     this.eventDecayTimer = 0;
-    this.eventDecayLength = 2;
+    this.eventDecayLength = 3;
     this.eventDecaying = false;
 
 
@@ -534,6 +534,6 @@ gameplayState.prototype.update = function() {
         this.textGlobal.fill = '#000000';
         // this.textTurn.fill = '#000000';
     }
-    window.localStorage.setItem('Score', Math.ceil(this.wheatQty * 0.2 + this.localMorale * 0.2 + this.globalMorale * 0.2 + (this.turnCounter + 4) * 0.4);
+    window.localStorage.setItem('Score', Math.ceil(this.wheatQty * 0.2 + this.localMorale * 0.2 + this.globalMorale * 0.2 + (this.turnCounter + 4) * 0.4));
     // console.log(window.localStorage.getItem('Score'));
 };
