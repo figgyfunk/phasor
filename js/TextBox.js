@@ -1,9 +1,9 @@
 let TextBox = function(startingText, x, y) {
     this.text = game.add.text(x, y, startingText);
     this.text.wordWrap = true;
-    this.text.wordWrapWidth = 850;
+    this.text.wordWrapWidth = 950;
     this.text.fill = "white";
-    this.text.fontSize = '16pt';
+    this.text.fontSize = '25pt';
 }
 
 TextBox.prototype.updateText = function(newText) {
