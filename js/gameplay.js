@@ -243,15 +243,25 @@ gameplayState.prototype.eventSwiped = function(isRight) {
         this.wheatQty = this.WHEATMAX;
     }
     if (this.wheatQty <= 0) {
-        this.state.start("WheatEnd");
+        this.state.start('NewspaperSpinState', true, false, "Wheat");
+        // this.state.start("WheatEnd");
     }
     if (this.localMorale <= 0) {
-        this.state.start("LocalEnd");
+        this.state.start('NewspaperSpinState', true, false, "LocalMorale");
+        // this.state.start("LocalEnd");
     }
     if (this.globalMorale <= 0) {
-        this.state.start("GlobalEnd");
+        this.state.start('NewspaperSpinState', true, false, "GlobalMorale");
+        
+        // this.state.start("GlobalEnd");
     }
     
+
+    // game.load.image("startNewspaper", "assets/first_newspaper.png");
+    // game.load.image("WheatNewspaper", "assets/wheat_end.png");
+    // game.load.image("LocalMoraleNewspaper", "assets/US_moral_end.png");
+    // game.load.image("GlobalMoraleNewspaper", "assets/Global_end.png");
+    // game.load.image("winNewspaper", "assets/ge_newspaper.png");
 
     // pass in true for choosing yes, and false for choosing no.
     // a swipe to the right means the player chose yes.
@@ -276,7 +286,7 @@ gameplayState.prototype.eventSwiped = function(isRight) {
     console.log(this.countryEvents.length);
     if (this.turnCounter === this.countryEvents.length - 1) {
         console.log("No More Events!");
-        this.state.start("WinState");
+        this.state.start('NewspaperSpinState', true, false, "win");
     } else {
         this.turnCounter++;
 
