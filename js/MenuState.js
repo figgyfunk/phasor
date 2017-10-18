@@ -11,8 +11,8 @@ MenuState.prototype.preload = function() {
 MenuState.prototype.create = function() {
     ovalOfficeMusic.play();
     this.menuSprite = game.add.sprite(0, 0, "title");
-    let startbutton = this.add.button(game.world.centerX-275/2, game.world.height-175, 'startbutton', this.startGame, this);
-    let howbutton = this.add.button(game.world.centerX+275/2, game.world.height-175, 'howbutton', this.howTo, this);
+    let startbutton = this.add.button(game.world.centerX-280, game.world.height-140, 'startbutton', this.startGame, this);
+    let howbutton = this.add.button(game.world.centerX+60, game.world.height-140, 'howbutton', this.howTo, this);
 };
 
 
