@@ -458,7 +458,10 @@ gameplayState.prototype.update = function() {
         game.world.bringToTop(this.wheatQIcon);
         game.world.bringToTop(this.localMoraleIcon);
         game.world.bringToTop(this.globalMoraleIcon);
-
+        this.textWheat.fill = '#FFFFFF';
+        this.textLocal.fill = '#FFFFFF';
+        this.textGlobal.fill = '#FFFFFF';
+        this.textTurn.fill = '#FFFFFF';
         this.displayCurrentEvent();
     } else {
         this.inEvent = true;
@@ -519,6 +522,10 @@ gameplayState.prototype.update = function() {
         game.world.bringToTop(this.wheatQIcon);
         game.world.bringToTop(this.localMoraleIcon);
         game.world.bringToTop(this.globalMoraleIcon);
+        this.textWheat.fill = '#000000';
+        this.textLocal.fill = '#000000';
+        this.textGlobal.fill = '#000000';
+        this.textTurn.fill = '#000000';
     }
     window.localStorage.setItem('Score', Math.ceil(this.wheatQty * 0.2 + this.localMorale * 0.2 + this.globalMorale * 0.6));
     // console.log(window.localStorage.getItem('Score'));
