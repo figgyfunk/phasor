@@ -86,6 +86,7 @@ gameplayState.prototype.create = function() {
     this.mapSprite.scale.setTo(RESOLUTION_SCALE, RESOLUTION_SCALE); 
     this.oceanSprite = game.add.sprite(0, 0, "ocean");
     this.oceanSprite.scale.setTo(RESOLUTION_SCALE, RESOLUTION_SCALE); 
+    this.eventPointerSprite = game.add.sprite(100, 100, "eventLocationArrow");
     // Begin initializing Countries and adding to countryObjectMap
     
     
@@ -281,6 +282,10 @@ gameplayState.prototype.updateCountryPositions = function() {
      }
 };
 
+gameplayState.prototype.eventInScreen = function() {
+    return 1;
+}
+
 gameplayState.prototype.update = function() {
     // status bar colour logic
     if (true){
@@ -369,6 +374,13 @@ gameplayState.prototype.update = function() {
             // Not dragging, pointer was just pressed down.
             this.gamePointerDown(this.mapSprite.x);
         }
+
+        if (this.eventInScreen() < 0){
+            game.world.bringToTop(this.eventPointerSprite);
+        } else if (this.eventInScreen() > 0){
+            game.world.bringToTop(this.eventPointerSprite);
+            this.eventPointerSprite.x = 0;
+        }
         game.world.bringToTop(this.textWheat);
         game.world.bringToTop(this.textLocal);
         game.world.bringToTop(this.textGlobal);
@@ -379,6 +391,7 @@ gameplayState.prototype.update = function() {
         this.displayCurrentEvent();
     } else {
         // Event screen is up,
+        this.eventLocationArrow.visible = false;
         if (this.dragging) {
             let pointerDragDistance = this.gamePointer.x - this.pointerDownStartX;
 
