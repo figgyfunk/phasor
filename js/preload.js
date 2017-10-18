@@ -15,7 +15,6 @@ preloadState.prototype.preload = function() {
 
     game.load.json("countryData", "assets/countryData.json");
 
-    // Temporary event icon
     game.load.image("Alert", "assets/map/Alert.png");
     // Temporary event image
     game.load.image("man", "assets/man.png");
@@ -26,6 +25,10 @@ preloadState.prototype.preload = function() {
     //How to play screen background
     game.load.image("HowToPlayPic", "assets/menu_screen.png");
 
+    // menu
+    game.load.image("title", "assets/map/title.png");
+    game.load.image("startbutton", "assets/map/start.png");
+    game.load.image("MenuButton", "assets/map/menu.png");
 
     // Newspapers
     game.load.image("startNewspaper", "assets/first_newspaper.png");
@@ -162,6 +165,10 @@ preloadState.prototype.create = function() {
     overworldMusic = game.add.audio('Overworld Music');
     newspaperMusic = game.add.audio('Newspaper Music');
     eventAlertSound = game.add.audio("Alert");
+
+    // Arbitrary numbers !!
+    overworldMusic.volume = 0.4;
+    ovalOfficeMusic.volume = 0.8;
 
     ovalOfficeMusic.loop = true;
     overworldMusic.loop = true;
