@@ -168,7 +168,7 @@ gameplayState.prototype.create = function() {
 
 
     // Text Box that is used to display event Text
-    textBox = new TextBox("", 250, 620);
+    textBox = new TextBox("", 250, 610);
 
     // Music
     ovalOfficeMusic.pause();
@@ -181,7 +181,7 @@ gameplayState.prototype.create = function() {
 
 
 gameplayState.prototype.calculateWheatGain = function() {
-    return Math.ceil((this.localMorale / this.LOCALMAX) * this.wheatIncreaseFlatRate);
+    return Math.ceil((this.localMorale / (this.LOCALMAX * 2)) * this.wheatIncreaseFlatRate);
 };
 
 gameplayState.prototype.displayCurrentEvent = function() {
@@ -243,15 +243,25 @@ gameplayState.prototype.eventSwiped = function(isRight) {
         this.wheatQty = this.WHEATMAX;
     }
     if (this.wheatQty <= 0) {
-        this.state.start("WheatEnd");
+        this.state.start('NewspaperSpinState', true, false, "Wheat");
+        // this.state.start("WheatEnd");
     }
     if (this.localMorale <= 0) {
-        this.state.start("LocalEnd");
+        this.state.start('NewspaperSpinState', true, false, "LocalMorale");
+        // this.state.start("LocalEnd");
     }
     if (this.globalMorale <= 0) {
-        this.state.start("GlobalEnd");
+        this.state.start('NewspaperSpinState', true, false, "GlobalMorale");
+        
+        // this.state.start("GlobalEnd");
     }
     
+
+    // game.load.image("startNewspaper", "assets/first_newspaper.png");
+    // game.load.image("WheatNewspaper", "assets/wheat_end.png");
+    // game.load.image("LocalMoraleNewspaper", "assets/US_moral_end.png");
+    // game.load.image("GlobalMoraleNewspaper", "assets/Global_end.png");
+    // game.load.image("winNewspaper", "assets/ge_newspaper.png");
 
     // pass in true for choosing yes, and false for choosing no.
     // a swipe to the right means the player chose yes.
@@ -276,7 +286,7 @@ gameplayState.prototype.eventSwiped = function(isRight) {
     console.log(this.countryEvents.length);
     if (this.turnCounter === this.countryEvents.length - 1) {
         console.log("No More Events!");
-        this.state.start("WinState");
+        this.state.start('NewspaperSpinState', true, false, "win");
     } else {
         this.turnCounter++;
 
@@ -468,7 +478,6 @@ gameplayState.prototype.update = function() {
         // Event screen is up,
         this.eventPointerSprite.visible = false;
         if (this.eventDecaying) {
-            console.log("GOTHERE");
             // this means the previous event screen is still up
             this.eventDecayTimer -= game.time.physicsElapsed;
             if (this.eventDecayTimer <= 0) {
@@ -482,6 +491,9 @@ gameplayState.prototype.update = function() {
                 let previousEvent = previousCountry.eventData[previousCountry.previousIndex];
                 previousEvent.endEvent();
 
+                ovalOfficeMusic.pause();
+                overworldMusic.play();
+
                 this.inMapView = true;
             }
         } else if (this.dragging) {
@@ -492,8 +504,6 @@ gameplayState.prototype.update = function() {
                 if (Math.abs(pointerDragDistance) >= 200) {
                     // a pointerDragDistance value below zero indicates a swipe to the left.
                     this.eventSwiped(pointerDragDistance > 0);
-                    ovalOfficeMusic.pause();
-                    overworldMusic.play();
                     this.inEvent = false;
                 } else {
                     this.wheatBar.resize(this.STATUS_BAR_LENGTH*(this.wheatQty/this.GLOBALMAX), 10); 
