@@ -62,7 +62,7 @@ gameplayState.prototype.create = function() {
     this.LOCALMAX = 100;
     this.inEvent = false;
 
-    this.wheatIncreaseFlatRate = 15;
+    this.wheatIncreaseFlatRate = 20;
 
     //global variables to control status locations respectively. Based on the top left corner of the text fields/graphics
     this.WHEAT_STATUS_X = 190-100;
@@ -114,13 +114,13 @@ gameplayState.prototype.create = function() {
     this.textLocal.visible = true;
     this.textGlobal = game.add.text(this.GLOBALMORALE_STATUS_X+200, this.GLOBALMORALE_STATUS_Y, this.globalMorale);
     this.textGlobal.visible = true;
-    this.textTurn = game.add.text(1200, 20, this.turnCounter + 1);
-    this.textTurn.visible = true;
+    // this.textTurn = game.add.text(1200, 20, this.turnCounter + 1);
+    // this.textTurn.visible = true;
 
     this.textWheat.fill = '#FFFFFF';
     this.textLocal.fill = '#FFFFFF';
     this.textGlobal.fill = '#FFFFFF';
-    this.textTurn.fill = '#FFFFFF';
+    // this.textTurn.fill = '#FFFFFF';
 
     this.wheatQIcon = game.add.image(this.WHEAT_STATUS_X-30, this.WHEAT_STATUS_Y-10, "wheatQ");
     this.localMoraleIcon = game.add.image(this.LOCALMORALE_STATUS_X-30, this.LOCALMORALE_STATUS_Y, "localmorale");
@@ -129,7 +129,7 @@ gameplayState.prototype.create = function() {
     game.world.bringToTop(this.textWheat);
     game.world.bringToTop(this.textLocal);
     game.world.bringToTop(this.textGlobal);
-    game.world.bringToTop(this.textTurn);
+    // game.world.bringToTop(this.textTurn);
     game.world.bringToTop(this.wheatQIcon);
     game.world.bringToTop(this.localMoraleIcon);
     game.world.bringToTop(this.globalMoraleIcon);
@@ -167,7 +167,7 @@ gameplayState.prototype.create = function() {
 
 
     // Text Box that is used to display event Text
-    textBox = new TextBox("", 250, 610);
+    textBox = new TextBox("", 200, 550);
 
     // Music
     ovalOfficeMusic.pause();
@@ -243,24 +243,14 @@ gameplayState.prototype.eventSwiped = function(isRight) {
     }
     if (this.wheatQty <= 0) {
         this.state.start('NewspaperSpinState', true, false, "Wheat");
-        // this.state.start("WheatEnd");
     }
     if (this.localMorale <= 0) {
         this.state.start('NewspaperSpinState', true, false, "LocalMorale");
-        // this.state.start("LocalEnd");
     }
     if (this.globalMorale <= 0) {
         this.state.start('NewspaperSpinState', true, false, "GlobalMorale");
-        
-        // this.state.start("GlobalEnd");
     }
     
-
-    // game.load.image("startNewspaper", "assets/first_newspaper.png");
-    // game.load.image("WheatNewspaper", "assets/wheat_end.png");
-    // game.load.image("LocalMoraleNewspaper", "assets/US_moral_end.png");
-    // game.load.image("GlobalMoraleNewspaper", "assets/Global_end.png");
-    // game.load.image("winNewspaper", "assets/ge_newspaper.png");
 
     // pass in true for choosing yes, and false for choosing no.
     // a swipe to the right means the player chose yes.
@@ -276,7 +266,6 @@ gameplayState.prototype.eventSwiped = function(isRight) {
     game.world.bringToTop(this.textWheat);
     game.world.bringToTop(this.textLocal);
     game.world.bringToTop(this.textGlobal);
-    game.world.bringToTop(this.textTurn);
     game.world.bringToTop(this.wheatQIcon);
     game.world.bringToTop(this.localMoraleIcon);
     game.world.bringToTop(this.globalMoraleIcon);
@@ -294,7 +283,6 @@ gameplayState.prototype.eventSwiped = function(isRight) {
     this.textWheat.text = this.wheatQty;
     this.textLocal.text = this.localMorale;
     this.textGlobal.text = this.globalMorale;
-    this.textTurn.text = this.turnCounter+ 1;
 
 
     console.log(this.countryObjectMap.get(currentEvent.country).currentState);
@@ -410,7 +398,7 @@ gameplayState.prototype.update = function() {
         game.world.bringToTop(this.textWheat);
         game.world.bringToTop(this.textLocal);
         game.world.bringToTop(this.textGlobal);
-        game.world.bringToTop(this.textTurn);
+        // game.world.bringToTop(this.textTurn);
         game.world.bringToTop(this.wheatQIcon);
         game.world.bringToTop(this.localMoraleIcon);
         game.world.bringToTop(this.globalMoraleIcon);
@@ -463,19 +451,20 @@ gameplayState.prototype.update = function() {
         game.world.bringToTop(this.textWheat);
         game.world.bringToTop(this.textLocal);
         game.world.bringToTop(this.textGlobal);
-        game.world.bringToTop(this.textTurn);
+        // game.world.bringToTop(this.textTurn);
         game.world.bringToTop(this.wheatQIcon);
         game.world.bringToTop(this.localMoraleIcon);
         game.world.bringToTop(this.globalMoraleIcon);
         this.textWheat.fill = '#FFFFFF';
         this.textLocal.fill = '#FFFFFF';
         this.textGlobal.fill = '#FFFFFF';
-        this.textTurn.fill = '#FFFFFF';
+        // this.textTurn.fill = '#FFFFFF';
         this.displayCurrentEvent();
     } else {
         this.inEvent = true;
         // Event screen is up,
         this.eventPointerSprite.visible = false;
+
         if (this.eventDecaying) {
             // this means the previous event screen is still up
             this.eventDecayTimer -= game.time.physicsElapsed;
@@ -527,14 +516,14 @@ gameplayState.prototype.update = function() {
         game.world.bringToTop(this.textWheat);
         game.world.bringToTop(this.textLocal);
         game.world.bringToTop(this.textGlobal);
-        game.world.bringToTop(this.textTurn);
+        // game.world.bringToTop(this.textTurn);
         game.world.bringToTop(this.wheatQIcon);
         game.world.bringToTop(this.localMoraleIcon);
         game.world.bringToTop(this.globalMoraleIcon);
         this.textWheat.fill = '#000000';
         this.textLocal.fill = '#000000';
         this.textGlobal.fill = '#000000';
-        this.textTurn.fill = '#000000';
+        // this.textTurn.fill = '#000000';
     }
     window.localStorage.setItem('Score', Math.ceil(this.wheatQty * 0.2 + this.localMorale * 0.2 + this.globalMorale * 0.6));
     // console.log(window.localStorage.getItem('Score'));
