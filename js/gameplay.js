@@ -475,7 +475,6 @@ gameplayState.prototype.update = function() {
         // Event screen is up,
         this.eventPointerSprite.visible = false;
         if (this.eventDecaying) {
-            console.log("GOTHERE");
             // this means the previous event screen is still up
             this.eventDecayTimer -= game.time.physicsElapsed;
             if (this.eventDecayTimer <= 0) {
@@ -489,6 +488,9 @@ gameplayState.prototype.update = function() {
                 let previousEvent = previousCountry.eventData[previousCountry.previousIndex];
                 previousEvent.endEvent();
 
+                ovalOfficeMusic.pause();
+                overworldMusic.play();
+
                 this.inMapView = true;
             }
         } else if (this.dragging) {
@@ -499,8 +501,6 @@ gameplayState.prototype.update = function() {
                 if (Math.abs(pointerDragDistance) >= 200) {
                     // a pointerDragDistance value below zero indicates a swipe to the left.
                     this.eventSwiped(pointerDragDistance > 0);
-                    ovalOfficeMusic.pause();
-                    overworldMusic.play();
                     this.inEvent = false;
                 } else {
                     this.wheatBar.resize(this.STATUS_BAR_LENGTH*(this.wheatQty/this.GLOBALMAX), 10); 
