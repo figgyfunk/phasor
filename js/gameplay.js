@@ -168,7 +168,7 @@ gameplayState.prototype.create = function() {
 
 
     // Text Box that is used to display event Text
-    textBox = new TextBox("", 250, 620);
+    textBox = new TextBox("", 250, 610);
 
     // Music
     ovalOfficeMusic.pause();
