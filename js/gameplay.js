@@ -181,7 +181,7 @@ gameplayState.prototype.create = function() {
 
 
 gameplayState.prototype.calculateWheatGain = function() {
-    return Math.ceil((this.localMorale / this.LOCALMAX) * this.wheatIncreaseFlatRate);
+    return Math.ceil((this.localMorale / (this.LOCALMAX * 2)) * this.wheatIncreaseFlatRate);
 };
 
 gameplayState.prototype.displayCurrentEvent = function() {

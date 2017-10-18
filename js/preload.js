@@ -159,6 +159,9 @@ preloadState.prototype.create = function() {
     newspaperMusic = game.add.audio('Newspaper Music');
     eventAlertSound = game.add.audio("Alert");
 
+    overworldMusic.volume = 0.4;
+    ovalOfficeMusic.volume = .8;
+
     ovalOfficeMusic.loop = true;
     overworldMusic.loop = true;
 
