@@ -19,7 +19,7 @@ NewspaperSpinState.prototype.create = function() {
     this.maxAngles = 4320;
 
     ovalOfficeMusic.pause();
-    
+    newspaperMusic.play();
 };
 
 NewspaperSpinState.prototype.update = function() {
@@ -54,5 +54,6 @@ NewspaperSpinState.prototype.update = function() {
 }
 
 NewspaperSpinState.prototype.startGame = function() {
+    newspaperMusic.pause();
     this.state.start('Gameplay');
 }

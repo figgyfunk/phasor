@@ -156,6 +156,9 @@ preloadState.prototype.create = function() {
     // Dirty global music variables - please understand.
     ovalOfficeMusic = game.add.audio('Oval Office Music');
     overworldMusic = game.add.audio('Overworld Music');
+    newspaperMusic = game.add.audio('Newspaper Music');
+    eventAlertSound = game.add.audio("Alert");
+
     ovalOfficeMusic.loop = true;
     overworldMusic.loop = true;
 
