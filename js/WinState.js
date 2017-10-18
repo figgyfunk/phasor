@@ -10,7 +10,5 @@ WinState.prototype.create = function() {
 
 WinState.prototype.update = function() {
 	this.counter += game.time.physicsElapsed;
-	if (this.counter >= 4) {
-		this.state.start("HighScore");
-	}
+	
 }

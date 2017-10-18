@@ -17,5 +17,6 @@ MenuState.prototype.create = function() {
 
 
 MenuState.prototype.startGame = function() {
-    this.state.start('NewspaperSpinState', true, false, "start");
+    //this.state.start('NewspaperSpinState', true, false, "start");
+    this.state.start("HowToPlay", true, false, "start");
 }

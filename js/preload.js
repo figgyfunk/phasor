@@ -23,6 +23,9 @@ preloadState.prototype.preload = function() {
     game.load.image("startbutton", "assets/start.png");
     // Temporary restart button
     game.load.image("restartbutton", "assets/restart.png");
+    //How to play screen background
+    game.load.image("HowToPlayPic", "assets/menu_screen.png");
+
 
     // Newspapers
     game.load.image("startNewspaper", "assets/first_newspaper.png");
