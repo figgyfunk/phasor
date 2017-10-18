@@ -19,6 +19,7 @@ NewspaperSpinState.prototype.create = function() {
     this.maxAngles = 4320;
 
     ovalOfficeMusic.pause();
+    overworldMusic.pause();
     newspaperMusic.play();
 };
 
@@ -50,10 +51,13 @@ NewspaperSpinState.prototype.update = function() {
         this.counter = 0;
     }
     
-
 }
 
 NewspaperSpinState.prototype.startGame = function() {
     newspaperMusic.pause();
-    this.state.start('Gameplay');
+    if (this.whichNewspaper === "start") {
+        this.state.start('Gameplay');
+    } else {
+        this.state.start("HighScore");
+    }
 }
