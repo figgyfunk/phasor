@@ -159,7 +159,6 @@ gameplayState.prototype.create = function() {
     this.countryEvents.push("Pacific Islands");
     this.countryEvents.push("Blue Countries");
     this.countryEvents.push("West Africa");
-    this.countryEvents.push("Pacific Islands");
     this.countryEvents.push("South Africa");
     this.countryEvents.push("India");
     this.countryEvents.push("East Europe");
